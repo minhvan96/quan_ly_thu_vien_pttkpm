@@ -28,7 +28,7 @@ public class ListBooksQueryHandler : IListQueryHandler<ListBooksQuery, BookDto>
             Expression<Func<Book, bool>> searchByAuthorNamePredicate =
                 book => book.Author.Name.Contains(request.SearchCriteria);
             Expression<Func<Book, bool>> searchByTypeNamePredicate =
-                book => book.Type.Name.Contains(request.SearchCriteria);
+                book => book.BookType.Name.Contains(request.SearchCriteria);
             if ((request.SearchOption & SearchBookOptions.All) == SearchBookOptions.All)
             {
                 searchPredicate = searchPredicate.BuildSearchPredicate(searchByBookNamePredicate,
@@ -56,7 +56,7 @@ public class ListBooksQueryHandler : IListQueryHandler<ListBooksQuery, BookDto>
                 Name = x.Name,
                 Code = x.Code,
                 Author = x.Author.Name,
-                Type = x.Type.Name
+                Type = x.BookType.Name
             })
             .ToPagedListAsync(request.PageIndex, request.PageSize, cancellationToken: cancellationToken);
         return books;

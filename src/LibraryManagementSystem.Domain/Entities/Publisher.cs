@@ -12,7 +12,9 @@ public class Publisher : Entity
         Name = string.Empty;
     }
 
-    public Publisher(string name)
+    public Publisher(Guid id,
+        string name)
+        : base(id)
     {
         Name = name;
     }

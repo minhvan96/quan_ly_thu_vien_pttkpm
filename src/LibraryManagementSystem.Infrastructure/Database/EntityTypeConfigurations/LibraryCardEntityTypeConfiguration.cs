@@ -4,10 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace LibraryManagementSystem.Infrastructure.Database.EntityTypeConfigurations;
 
-internal class LibraryCardEntityTypeConfiguration : IEntityTypeConfiguration<LibraryCard>
+internal class LibraryCardEntityTypeConfiguration : DomainEntityTypeConfiguration<LibraryCard>
 {
-    public void Configure(EntityTypeBuilder<LibraryCard> builder)
+    public override void Configure(EntityTypeBuilder<LibraryCard> builder)
     {
+        base.Configure(builder);
         builder.ToTable("LibraryCards");
         builder.HasKey(x => x.Id);
     }

@@ -20,14 +20,14 @@ public class Book : Entity
     public Book(Guid id,
         string name,
         string code,
-        Guid typeId,
+        Guid bookTypeId,
         Guid authorId,
         Guid publisherId,
         int published)
         : base(id)
     {
         Code = code;
-        TypeId = typeId;
+        BookTypeId = bookTypeId;
         Name = name;
         AuthorId = authorId;
         Published = published;
@@ -36,13 +36,13 @@ public class Book : Entity
 
     public Book(string name,
         string code,
-        Guid typeId,
+        Guid bookTypeId,
         Guid authorId,
         Guid publisherId,
         int published)
     {
         Code = code;
-        TypeId = typeId;
+        BookTypeId = bookTypeId;
         Name = name;
         AuthorId = authorId;
         Published = published;
@@ -53,14 +53,14 @@ public class Book : Entity
     public int Published { get; }
     public string Code { get; }
     public Guid PublisherId { get; }
-    public Guid TypeId { get; }
+    public Guid BookTypeId { get; }
     public Guid AuthorId { get; }
 
-    public BookType Type
+    public BookType BookType
     {
         set => _bookType = value;
         get => _bookType
-               ?? throw new InvalidOperationException("Uninitialized property: " + nameof(Type));
+               ?? throw new InvalidOperationException("Uninitialized property: " + nameof(BookType));
     }
 
 

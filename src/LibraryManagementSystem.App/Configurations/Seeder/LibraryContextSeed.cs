@@ -25,25 +25,28 @@ public class LibraryContextSeed
         {
             var executingFolder = Path.GetDirectoryName(Application.ExecutablePath);
 
+            if (!await context.Publishers.AnyAsync())
+            {
+                var predefinedPublishers = PredefinedPublishers.GetPredefinedPublishers(executingFolder);
+                context.AddRange(predefinedPublishers);
+            }
+            
             if (!await context.Authors.AnyAsync())
             {
                 var authors = PredefinedAuthors.GetPredefinedAuthors(executingFolder);
                 context.AddRange(authors);
-                await context.SaveChangesAsync();
             }
 
             if (!await context.BookTypes.AnyAsync())
             {
                 var bookTypes = PredefinedBookTypes.GetPredefinedBookTypes(executingFolder);
                 context.AddRange(bookTypes);
-                await context.SaveChangesAsync();
             }
 
             if (!await context.Books.AnyAsync())
             {
                 var books = PredefinedBooks.GetPredefinedBooks(executingFolder);
                 context.AddRange(books);
-                await context.SaveChangesAsync();
             }
 
             await context.SaveChangesAsync();

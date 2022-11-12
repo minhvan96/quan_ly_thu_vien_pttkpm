@@ -18,7 +18,7 @@ public class GetBookQueryHandler : IRequestHandler<GetBookQuery, BookDto?>
     public async Task<BookDto?> Handle(GetBookQuery request, CancellationToken cancellationToken)
     {
         var book = await _context.Books
-            .Include(x => x.Type)
+            .Include(x => x.BookType)
             .Include(x => x.Author)
             .Select(x => new BookDto
             {
@@ -26,7 +26,7 @@ public class GetBookQueryHandler : IRequestHandler<GetBookQuery, BookDto?>
                 Name = x.Name,
                 Code = x.Code,
                 Author = x.Author.Name,
-                Type = x.Type.Name
+                Type = x.BookType.Name
             })
             .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
 

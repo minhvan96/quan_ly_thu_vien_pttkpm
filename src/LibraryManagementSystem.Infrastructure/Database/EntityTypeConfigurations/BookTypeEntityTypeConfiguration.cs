@@ -4,10 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace LibraryManagementSystem.Infrastructure.Database.EntityTypeConfigurations;
 
-internal class BookTypeEntityTypeConfiguration : IEntityTypeConfiguration<BookType>
+internal class BookTypeEntityTypeConfiguration : DomainEntityTypeConfiguration<BookType>
 {
-    public void Configure(EntityTypeBuilder<BookType> builder)
+    public override void Configure(EntityTypeBuilder<BookType> builder)
     {
+        
+        base.Configure(builder);
         builder.ToTable("BookTypes");
         builder.HasKey(x => x.Id);
     }

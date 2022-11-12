@@ -4,21 +4,37 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace LibraryManagementSystem.Infrastructure.Database.EntityTypeConfigurations;
 
-internal class BookEntityTypeConfiguration : IEntityTypeConfiguration<Book>
+internal class BookEntityTypeConfiguration : DomainEntityTypeConfiguration<Book>
 {
-    public void Configure(EntityTypeBuilder<Book> builder)
+    public override void Configure(EntityTypeBuilder<Book> builder)
     {
+        base.Configure(builder);
         builder.ToTable("Books");
-        builder.HasKey(x => x.Id);
+        builder.HasKey(book => book.Id);
 
-        builder.HasOne(x => x.Type)
+        builder.HasOne(x => x.BookType)
             .WithMany()
-            .HasForeignKey(x => x.TypeId)
+            .HasForeignKey(book => book.BookTypeId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        builder.HasOne(x => x.Author)
+        builder.HasOne(book => book.Author)
             .WithMany()
-            .HasForeignKey(x => x.AuthorId)
+            .HasForeignKey(book => book.AuthorId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.Property(book => book.Name)
+            .IsRequired()
+            .HasMaxLength(512);
+        builder.Property(book => book.Code)
+            .IsRequired()
+            .HasMaxLength(128);
+
+        builder.HasOne(book => book.Publisher)
+            .WithMany()
+            .HasForeignKey(book => book.PublisherId)
+            .IsRequired();
+
+        builder.Property(book => book.Published)
+            .IsRequired();
     }
 }

@@ -10,20 +10,27 @@ public static class PredefinedBooks
         if (!File.Exists(csvFileBooks)) return null;
 
         using var reader = new StreamReader(csvFileBooks);
-        var bookTypes = new List<Book>();
+        var books = new List<Book>();
         while (!reader.EndOfStream)
         {
             var line = reader.ReadLine();
             var values = line?.Split(',');
-            var bookType = CreateBook(values[0], values[1], values[2], values[3], values[4]);
-            bookTypes.Add(bookType);
+            var book = CreateBook(values[0], values[1], values[2], values[3], values[4], values[5]);
+            books.Add(book);
         }
 
-        return bookTypes;
+        return books;
     }
 
-    private static Book CreateBook(string id, string name, string barCode, string typeId, string authorId)
+    private static Book CreateBook(string id, string name, string barCode, string typeId, string authorId,
+        string publisherId)
     {
-        return new Book(new Guid(id), name, barCode, new Guid(typeId), new Guid(authorId), Guid.Empty, 0);
+        return new Book(new Guid(id),
+            name,
+            barCode,
+            new Guid(typeId),
+            new Guid(authorId),
+            new Guid(publisherId),
+            0);
     }
 }
