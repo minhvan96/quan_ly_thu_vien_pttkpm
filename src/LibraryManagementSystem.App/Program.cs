@@ -1,5 +1,6 @@
 using LibraryManagementSystem.App.Configurations;
 using LibraryManagementSystem.Infrastructure.Database;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -37,6 +38,7 @@ namespace LibraryManagementSystem.App
                 {
                     services.AddDbContext<LibraryDbContext>();
                     services.AddTransient<LibraryManagementSystemUI>();
+                    services.AddMediatR(typeof(Program).Assembly);
                 });
         }
     }
