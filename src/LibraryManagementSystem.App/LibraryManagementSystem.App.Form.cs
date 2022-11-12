@@ -1,10 +1,9 @@
-namespace LibraryManagementSystem.App
+namespace LibraryManagementSystem.App;
+
+public partial class LibraryManagementSystemUI : Form
 {
-    public partial class LibraryManagementSystemUI : Form
+    public LibraryManagementSystemUI()
     {
-        public LibraryManagementSystemUI()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

@@ -1,11 +1,10 @@
 ﻿using LibraryManagementSystem.Domain.Common;
 
-namespace LibraryManagementSystem.Domain.Entities
+namespace LibraryManagementSystem.Domain.Entities;
+
+/// <summary>
+///     Quy định
+/// </summary>
+public class LibraryConfiguration : Entity
 {
-    /// <summary>
-    ///     Quy định
-    /// </summary>
-    public class LibraryConfiguration : Entity
-    {
-    }
 }

@@ -1,22 +1,21 @@
 ﻿using LibraryManagementSystem.Domain.Common;
 
-namespace LibraryManagementSystem.Domain.Entities
+namespace LibraryManagementSystem.Domain.Entities;
+
+/// <summary>
+///     Nhà xuất bản
+/// </summary>
+public class Publisher : Entity
 {
-    /// <summary>
-    ///     Nhà xuất bản
-    /// </summary>
-    public class Publisher : Entity
+    private Publisher()
     {
-        public string Name { get; private set; }
-
-        private Publisher()
-        {
-            Name = string.Empty;
-        }
-
-        public Publisher(string name)
-        {
-            Name = name;
-        }
+        Name = string.Empty;
     }
+
+    public Publisher(string name)
+    {
+        Name = name;
+    }
+
+    public string Name { get; }
 }

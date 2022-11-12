@@ -1,22 +1,21 @@
 ﻿using LibraryManagementSystem.Domain.Common;
 
-namespace LibraryManagementSystem.Domain.Entities
+namespace LibraryManagementSystem.Domain.Entities;
+
+/// <summary>
+///     Loại sách, thể loại
+/// </summary>
+public class BookType : Entity
 {
-    /// <summary>
-    ///     Loại sách, thể loại
-    /// </summary>
-    public class BookType : Entity
+    private BookType()
     {
-        public string Name { get; private set; }
-
-        private BookType()
-        {
-            Name = string.Empty;
-        }
-
-        public BookType(string name)
-        {
-            Name = name;
-        }
+        Name = string.Empty;
     }
+
+    public BookType(string name)
+    {
+        Name = name;
+    }
+
+    public string Name { get; }
 }

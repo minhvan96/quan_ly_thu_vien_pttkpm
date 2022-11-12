@@ -1,22 +1,21 @@
 ﻿using LibraryManagementSystem.Domain.Common;
 
-namespace LibraryManagementSystem.Domain.Entities
+namespace LibraryManagementSystem.Domain.Entities;
+
+/// <summary>
+///     Tình trạng sách
+/// </summary>
+public class BookStatus : Entity
 {
-    /// <summary>
-    ///     Tình trạng sách
-    /// </summary>
-    public class BookStatus : Entity
+    private BookStatus()
     {
-        public string Name { get; private set; }
-
-        private BookStatus()
-        {
-            Name = string.Empty;
-        }
-
-        public BookStatus(string name)
-        {
-            Name = name;
-        }
+        Name = string.Empty;
     }
+
+    public BookStatus(string name)
+    {
+        Name = name;
+    }
+
+    public string Name { get; }
 }

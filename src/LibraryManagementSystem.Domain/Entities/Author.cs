@@ -1,22 +1,21 @@
 ﻿using LibraryManagementSystem.Domain.Common;
 
-namespace LibraryManagementSystem.Domain.Entities
+namespace LibraryManagementSystem.Domain.Entities;
+
+/// <summary>
+///     Tác giả
+/// </summary>
+public class Author : Entity
 {
-    /// <summary>
-    ///     Tác giả
-    /// </summary>
-    public class Author : Entity
+    private Author()
     {
-        public string Name { get; private set; }
-
-        private Author()
-        {
-            Name = string.Empty;
-        }
-
-        public Author(string name)
-        {
-            Name = name;
-        }
+        Name = string.Empty;
     }
+
+    public Author(string name)
+    {
+        Name = name;
+    }
+
+    public string Name { get; }
 }

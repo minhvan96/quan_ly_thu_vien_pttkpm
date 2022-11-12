@@ -2,14 +2,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace LibraryManagementSystem.Infrastructure.Database.EntityTypeConfigurations
+namespace LibraryManagementSystem.Infrastructure.Database.EntityTypeConfigurations;
+
+internal class CallCardEntityTypeConfiguration : IEntityTypeConfiguration<CallCard>
 {
-    internal class CallCardEntityTypeConfiguration : IEntityTypeConfiguration<CallCard>
+    public void Configure(EntityTypeBuilder<CallCard> builder)
     {
-        public void Configure(EntityTypeBuilder<CallCard> builder)
-        {
-            builder.ToTable("CallCards");
-            builder.HasKey(x => x.Id);
-        }
+        builder.ToTable("CallCards");
+        builder.HasKey(x => x.Id);
     }
 }

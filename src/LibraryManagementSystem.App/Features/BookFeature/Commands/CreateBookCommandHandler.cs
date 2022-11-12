@@ -12,6 +12,7 @@ public class CreateBookCommandHandler : IRequestHandler<CreateBookCommand, Creat
     {
         _context = context;
     }
+
     /// <inheritdoc />
     public async Task<CreateBookResult> Handle(CreateBookCommand request, CancellationToken cancellationToken)
     {

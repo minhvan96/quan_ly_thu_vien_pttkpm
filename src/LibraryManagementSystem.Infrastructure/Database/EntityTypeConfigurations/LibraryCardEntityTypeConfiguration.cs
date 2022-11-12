@@ -2,14 +2,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace LibraryManagementSystem.Infrastructure.Database.EntityTypeConfigurations
+namespace LibraryManagementSystem.Infrastructure.Database.EntityTypeConfigurations;
+
+internal class LibraryCardEntityTypeConfiguration : IEntityTypeConfiguration<LibraryCard>
 {
-    internal class LibraryCardEntityTypeConfiguration : IEntityTypeConfiguration<LibraryCard>
+    public void Configure(EntityTypeBuilder<LibraryCard> builder)
     {
-        public void Configure(EntityTypeBuilder<LibraryCard> builder)
-        {
-            builder.ToTable("LibraryCards");
-            builder.HasKey(x => x.Id);
-        }
+        builder.ToTable("LibraryCards");
+        builder.HasKey(x => x.Id);
     }
 }

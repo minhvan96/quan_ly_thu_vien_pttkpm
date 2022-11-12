@@ -1,12 +1,11 @@
-﻿namespace LibraryManagementSystem.Domain.Common
-{
-    public abstract class Entity
-    {
-        public Guid Id { get; }
+﻿namespace LibraryManagementSystem.Domain.Common;
 
-        protected Entity()
-        {
-            Id = Guid.NewGuid();
-        }
+public abstract class Entity
+{
+    protected Entity()
+    {
+        Id = Guid.NewGuid();
     }
+
+    public Guid Id { get; }
 }

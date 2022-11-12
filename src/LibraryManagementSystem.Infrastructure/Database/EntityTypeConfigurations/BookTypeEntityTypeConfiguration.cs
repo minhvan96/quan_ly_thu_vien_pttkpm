@@ -2,14 +2,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace LibraryManagementSystem.Infrastructure.Database.EntityTypeConfigurations
+namespace LibraryManagementSystem.Infrastructure.Database.EntityTypeConfigurations;
+
+internal class BookTypeEntityTypeConfiguration : IEntityTypeConfiguration<BookType>
 {
-    internal class BookTypeEntityTypeConfiguration : IEntityTypeConfiguration<BookType>
+    public void Configure(EntityTypeBuilder<BookType> builder)
     {
-        public void Configure(EntityTypeBuilder<BookType> builder)
-        {
-            builder.ToTable("BookTypes");
-            builder.HasKey(x => x.Id);
-        }
+        builder.ToTable("BookTypes");
+        builder.HasKey(x => x.Id);
     }
 }

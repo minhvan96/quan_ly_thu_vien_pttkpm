@@ -2,10 +2,10 @@
 
 public record RequestResult
 {
-    public bool Success { get; }
-
     public RequestResult(bool success)
     {
         Success = success;
     }
+
+    public bool Success { get; }
 }
