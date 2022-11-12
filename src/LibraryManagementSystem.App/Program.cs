@@ -1,4 +1,5 @@
 using LibraryManagementSystem.App.Configurations;
+using LibraryManagementSystem.App.Configurations.Seeder;
 using LibraryManagementSystem.Infrastructure.Database;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,7 +26,10 @@ internal static class Program
 
         var host = CreateHostBuilder().Build();
         ServiceProvider = host.Services;
-        host.MigrateDbContext<LibraryDbContext>((context, service) => { });
+        host.MigrateDbContext<LibraryDbContext>((context, service) =>
+        {
+            LibraryContextSeed.SeedAsync(context).Wait();
+        });
         Application.Run(ServiceProvider.GetRequiredService<LibraryManagementSystemUI>());
     }
 

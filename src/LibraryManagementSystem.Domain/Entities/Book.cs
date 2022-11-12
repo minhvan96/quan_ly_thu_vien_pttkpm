@@ -17,6 +17,19 @@ public class Book : Entity
         Code = string.Empty;
     }
 
+    public Book(Guid id,
+        string name,
+        string code,
+        Guid typeId,
+        Guid authorId)
+        : base(id)
+    {
+        Code = code;
+        TypeId = typeId;
+        Name = name;
+        AuthorId = authorId;
+    }
+
     public Book(string name,
         string code,
         Guid typeId,

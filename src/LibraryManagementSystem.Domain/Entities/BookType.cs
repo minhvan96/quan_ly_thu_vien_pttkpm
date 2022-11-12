@@ -12,6 +12,12 @@ public class BookType : Entity
         Name = string.Empty;
     }
 
+    public BookType(Guid id, string name)
+        : base(id)
+    {
+        Name = name;
+    }
+
     public BookType(string name)
     {
         Name = name;

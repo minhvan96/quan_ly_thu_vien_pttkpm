@@ -17,5 +17,11 @@ public class Author : Entity
         Name = name;
     }
 
+    public Author(Guid id, string name)
+        : base(id)
+    {
+        Name = name;
+    }
+
     public string Name { get; }
 }
