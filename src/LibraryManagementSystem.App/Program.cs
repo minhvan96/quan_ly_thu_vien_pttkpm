@@ -28,7 +28,7 @@ internal static class Program
         ServiceProvider = host.Services;
         host.MigrateDbContext<LibraryDbContext>((context, service) =>
         {
-            LibraryContextSeed.SeedAsync(context).Wait();
+            // LibraryContextSeed.SeedAsync(context).Wait();
         });
         Application.Run(ServiceProvider.GetRequiredService<LibraryManagementSystemUI>());
     }
