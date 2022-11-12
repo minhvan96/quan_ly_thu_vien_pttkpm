@@ -11,5 +11,9 @@ internal class AuthorEntityTypeConfiguration : DomainEntityTypeConfiguration<Aut
         base.Configure(builder);
         builder.ToTable("Authors");
         builder.HasKey(x => x.Id);
+
+        builder.Property(author => author.Name)
+            .IsRequired()
+            .HasMaxLength(256);
     }
 }

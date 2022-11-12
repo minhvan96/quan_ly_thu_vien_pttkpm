@@ -8,9 +8,12 @@ internal class BookTypeEntityTypeConfiguration : DomainEntityTypeConfiguration<B
 {
     public override void Configure(EntityTypeBuilder<BookType> builder)
     {
-        
         base.Configure(builder);
         builder.ToTable("BookTypes");
         builder.HasKey(x => x.Id);
+
+        builder.Property(bookType => bookType.Name)
+            .IsRequired()
+            .HasMaxLength(128);
     }
 }
