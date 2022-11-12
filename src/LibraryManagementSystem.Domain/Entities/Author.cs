@@ -2,6 +2,9 @@
 
 namespace LibraryManagementSystem.Domain.Entities
 {
+    /// <summary>
+    ///     Tác giả
+    /// </summary>
     public class Author : Entity
     {
         public string Name { get; private set; }

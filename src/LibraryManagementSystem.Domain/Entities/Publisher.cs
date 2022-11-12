@@ -3,18 +3,18 @@
 namespace LibraryManagementSystem.Domain.Entities
 {
     /// <summary>
-    ///     Loại sách, thể loại
+    ///     Nhà xuất bản
     /// </summary>
-    public class BookType : Entity
+    public class Publisher : Entity
     {
         public string Name { get; private set; }
 
-        private BookType()
+        private Publisher()
         {
             Name = string.Empty;
         }
 
-        public BookType(string name)
+        public Publisher(string name)
         {
             Name = name;
         }

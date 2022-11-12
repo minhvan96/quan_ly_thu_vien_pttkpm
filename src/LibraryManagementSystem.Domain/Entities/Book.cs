@@ -2,6 +2,9 @@
 
 namespace LibraryManagementSystem.Domain.Entities
 {
+    /// <summary>
+    ///     Sách
+    /// </summary>
     public class Book : Entity
     {
         public BookType? Type { get; private set; }

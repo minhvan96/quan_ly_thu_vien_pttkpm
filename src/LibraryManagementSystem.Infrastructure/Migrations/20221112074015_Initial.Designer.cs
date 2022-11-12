@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryManagementSystem.Infrastructure.Migrations
 {
     [DbContext(typeof(LibraryDbContext))]
-    [Migration("20221112070634_Init")]
-    partial class Init
+    [Migration("20221112074015_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,6 +69,21 @@ namespace LibraryManagementSystem.Infrastructure.Migrations
                     b.ToTable("Books", (string)null);
                 });
 
+            modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.BookStatus", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BookStatus", (string)null);
+                });
+
             modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.BookType", b =>
                 {
                     b.Property<Guid>("Id")
@@ -82,6 +97,55 @@ namespace LibraryManagementSystem.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("BookTypes", (string)null);
+                });
+
+            modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.CallCard", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CallCards", (string)null);
+                });
+
+            modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.LibraryCard", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LibraryCards", (string)null);
+                });
+
+            modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.LibraryConfiguration", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LibraryConfigurations", (string)null);
+                });
+
+            modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.Publisher", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Publishers", (string)null);
                 });
 
             modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.Book", b =>
