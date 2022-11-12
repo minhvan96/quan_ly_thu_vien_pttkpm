@@ -7,17 +7,8 @@ namespace LibraryManagementSystem.Domain.Entities;
 /// </summary>
 public class LibraryCard : Entity
 {
-    public string Name { get; private set; }
-    public DateTime BirthDay{ get; private set; }
-    public string Address { get; private set; }
-    public string Email { get; private set; }
-    public DateTime CreationDate { get; private set; }
-
-    //because readers only have 2 types and no reader type creation function,
-    //so I think we don't need to create type of reader entity
-    public string TypeOfReader { get; private set; }
-
-    public LibraryCard(string name, DateTime birthDay, string address, string email, string typeOfReader, DateTime creationDate)
+    public LibraryCard(string name, DateTime birthDay, string address, string email, string typeOfReader,
+        DateTime creationDate)
     {
         Name = name;
         BirthDay = birthDay;
@@ -27,11 +18,22 @@ public class LibraryCard : Entity
         CreationDate = creationDate;
     }
 
-    private LibraryCard() {
+    private LibraryCard()
+    {
         Name = string.Empty;
         Address = string.Empty;
         Email = string.Empty;
-        CreationDate = DateTime.Now;    
-        TypeOfReader= string.Empty;
+        CreationDate = DateTime.Now;
+        TypeOfReader = string.Empty;
     }
+
+    public string Name { get; }
+    public DateTime BirthDay { get; }
+    public string Address { get; }
+    public string Email { get; }
+    public DateTime CreationDate { get; }
+
+    //because readers only have 2 types and no reader type creation function,
+    //so I think we don't need to create type of reader entity
+    public string TypeOfReader { get; }
 }

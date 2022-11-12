@@ -24,6 +24,6 @@ public static class PredefinedBooks
 
     private static Book CreateBook(string id, string name, string barCode, string typeId, string authorId)
     {
-        return new Book(new Guid(id), name, barCode, new Guid(typeId), new Guid(authorId));
+        return new Book(new Guid(id), name, barCode, new Guid(typeId), new Guid(authorId), Guid.Empty, 0);
     }
 }

@@ -9,6 +9,7 @@ public class CreateBookCommand : IRequest<CreateBookResult>
     public string Code { get; init; } = string.Empty;
     public Guid TypeId { get; init; }
     public Guid AuthorId { get; init; }
+    public Guid PublisherId { get;init; }
 }
 
 public record CreateBookResult : RequestResult

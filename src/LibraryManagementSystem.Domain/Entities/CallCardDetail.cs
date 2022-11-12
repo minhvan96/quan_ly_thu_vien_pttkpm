@@ -1,22 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace LibraryManagementSystem.Domain.Entities;
 
-namespace LibraryManagementSystem.Domain.Entities
+internal class CallCardDetail
 {
-    internal class CallCardDetail
+    public CallCardDetail(Guid calLCardId, Guid bookId)
     {
-        public CallCard? CallCard { get; private set; }
-        public Guid CalLCardId { get; private set; }
-        public Book? Book { get; private set; }
-        public Guid BookId { get; private set; }
-
-        public CallCardDetail(Guid calLCardId, Guid bookId)
-        {
-            CalLCardId = calLCardId;
-            BookId = bookId;
-        }
+        CalLCardId = calLCardId;
+        BookId = bookId;
     }
+
+    public CallCard? CallCard { get; private set; }
+    public Guid CalLCardId { get; }
+    public Book? Book { get; private set; }
+    public Guid BookId { get; }
 }

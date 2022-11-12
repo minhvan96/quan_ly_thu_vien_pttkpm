@@ -7,9 +7,8 @@ namespace LibraryManagementSystem.Domain.Entities;
 /// </summary>
 public class LibraryConfiguration : Entity
 {
-    public string Name { get; private set; }
-    public int Value { get; private set; }
-    public LibraryConfiguration() { 
+    public LibraryConfiguration()
+    {
         Name = string.Empty;
         Value = 10;
     }
@@ -19,4 +18,7 @@ public class LibraryConfiguration : Entity
         Name = name;
         Value = value;
     }
+
+    public string Name { get; }
+    public int Value { get; }
 }

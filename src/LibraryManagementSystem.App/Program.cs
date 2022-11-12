@@ -1,5 +1,4 @@
 using LibraryManagementSystem.App.Configurations;
-using LibraryManagementSystem.App.Configurations.Seeder;
 using LibraryManagementSystem.Infrastructure.Database;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
