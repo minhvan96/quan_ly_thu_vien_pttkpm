@@ -11,34 +11,51 @@ public class Book : Entity
 
     private BookType? _bookType;
 
-    private Book()
-    {
-        Name = string.Empty;
-        Code = string.Empty;
-    }
+    public string Code { get; }
+    public string Name { get; }
+    public Author? Author { get; }
+    public int Published { get; }
+    public DateTime CreateDate { get;  }
+    public Publisher? _publisher { get; }
+    public Guid PublisherId { get }
+    public string Code { get; }
+    public Guid TypeId { get; }
+    public Guid AuthorId { get; }
 
     public Book(Guid id,
         string name,
         string code,
         Guid typeId,
-        Guid authorId)
+        Guid authorId,
+        int published,
+        DateTime creationDate,
+        Guid publisherId)
         : base(id)
     {
         Code = code;
         TypeId = typeId;
         Name = name;
         AuthorId = authorId;
+        Published = published;
+        CreateDate= creationDate;
+        PublisherId = publisherId;
     }
 
     public Book(string name,
         string code,
         Guid typeId,
-        Guid authorId)
+        Guid authorId
+        int published,
+        DateTime creationDate,
+        Guid publisherId)
     {
         Code = code;
         TypeId = typeId;
         Name = name;
         AuthorId = authorId;
+        Published = published;
+        CreateDate= creationDate;
+        PublisherId = publisherId;
     }
 
     public BookType Type
@@ -48,9 +65,6 @@ public class Book : Entity
                ?? throw new InvalidOperationException("Uninitialized property: " + nameof(Type));
     }
 
-    public string Code { get; }
-    public string Name { get; }
-    public Guid TypeId { get; }
 
     public Author Author
     {
@@ -59,5 +73,10 @@ public class Book : Entity
                ?? throw new InvalidOperationException("Uninitialized property: " + nameof(Author));
     }
 
-    public Guid AuthorId { get; }
+    public Publisher Publisher
+    {
+        set => _publisher = value;
+        get => _author
+               ?? throw new InvalidOperationException("Uninitialized property: " + nameof(Publisher));
+    }
 }
