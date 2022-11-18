@@ -49,12 +49,12 @@ public class Book : Entity
         PublisherId = publisherId;
     }
 
-    public string Name { get; }
-    public int Published { get; }
-    public string Code { get; }
-    public Guid PublisherId { get; }
-    public Guid BookTypeId { get; }
-    public Guid AuthorId { get; }
+    public string Name { get; set; }
+    public int Published { get; set; }
+    public string Code { get; set; }
+    public Guid PublisherId { get; set; }
+    public Guid BookTypeId { get; set; }
+    public Guid AuthorId { get; set; }
 
     public BookType BookType
     {

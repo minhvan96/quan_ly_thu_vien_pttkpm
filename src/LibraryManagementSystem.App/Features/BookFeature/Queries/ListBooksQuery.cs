@@ -7,7 +7,7 @@ public class ListBooksQuery : ListQuery<BookDto>
 {
     public SearchBookOptions SearchOption { get; init; }
 
-    public string SearchCriteria { get; init; } = string.Empty;
+    public string SearchCriteria { get; init; } = string.Empty; // text
 }
 
 [Flags]

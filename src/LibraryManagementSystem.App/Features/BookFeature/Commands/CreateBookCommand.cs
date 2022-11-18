@@ -17,5 +17,6 @@ public record CreateBookResult : RequestResult
     /// <inheritdoc />
     public CreateBookResult(bool success) : base(success)
     {
+
     }
 }
