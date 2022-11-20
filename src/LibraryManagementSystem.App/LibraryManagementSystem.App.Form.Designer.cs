@@ -33,6 +33,16 @@
             this.txtTest = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.STC_BookTP = new System.Windows.Forms.TabPage();
+            this.BookPageContainer = new System.Windows.Forms.SplitContainer();
+            this.BookPageSearchGroup = new System.Windows.Forms.GroupBox();
+            this.BookPageSearchBooksButton = new System.Windows.Forms.Button();
+            this.BookPageDataGroup = new System.Windows.Forms.GroupBox();
+            this.BookPageDataGridView = new System.Windows.Forms.DataGridView();
+            this.BookPageDataIndexColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BookPageDataNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BookPageDataType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BookPageDataAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BookPageDataStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MakeBorrow = new System.Windows.Forms.TabPage();
             this.LibraryConfigurationTab = new System.Windows.Forms.TabPage();
             this.LibraryConfigurationTab_MainContainer = new System.Windows.Forms.SplitContainer();
@@ -43,19 +53,22 @@
             this.LibraryConfigurationCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LibraryConfigurationNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LibraryConfigurationValueeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BookPageContainer = new System.Windows.Forms.SplitContainer();
-            this.BookPageDataGroup = new System.Windows.Forms.GroupBox();
-            this.BookPageSearchGroup = new System.Windows.Forms.GroupBox();
-            this.BookPageDataGridView = new System.Windows.Forms.DataGridView();
-            this.BookPageDataIndexColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BookPageDataNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BookPageDataType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BookPageDataAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BookPageDataStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BookPageSearchBooksButton = new System.Windows.Forms.Button();
+            this.SearchBookSearchCriteriaTextBox = new System.Windows.Forms.TextBox();
+            this.SearchBookByNameCheckBox = new System.Windows.Forms.CheckBox();
+            this.SearchBookByTypeCheckBox = new System.Windows.Forms.CheckBox();
+            this.SearchBookByAuthorCheckBox = new System.Windows.Forms.CheckBox();
+            this.SearchBookByStatusCheckBox = new System.Windows.Forms.CheckBox();
+            this.SearchBookSearchCriteriaLabel = new System.Windows.Forms.Label();
             this.SystemMainTabControl.SuspendLayout();
             this.STC_HomeTP.SuspendLayout();
             this.STC_BookTP.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BookPageContainer)).BeginInit();
+            this.BookPageContainer.Panel1.SuspendLayout();
+            this.BookPageContainer.Panel2.SuspendLayout();
+            this.BookPageContainer.SuspendLayout();
+            this.BookPageSearchGroup.SuspendLayout();
+            this.BookPageDataGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BookPageDataGridView)).BeginInit();
             this.LibraryConfigurationTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LibraryConfigurationTab_MainContainer)).BeginInit();
             this.LibraryConfigurationTab_MainContainer.Panel1.SuspendLayout();
@@ -64,13 +77,6 @@
             this.SearchLibraryConfigurationGroupBox.SuspendLayout();
             this.LibraryConfigurationDataGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LibraryConfigurationDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BookPageContainer)).BeginInit();
-            this.BookPageContainer.Panel1.SuspendLayout();
-            this.BookPageContainer.Panel2.SuspendLayout();
-            this.BookPageContainer.SuspendLayout();
-            this.BookPageDataGroup.SuspendLayout();
-            this.BookPageSearchGroup.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BookPageDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // SystemMainTabControl
@@ -130,6 +136,125 @@
             this.STC_BookTP.TabIndex = 1;
             this.STC_BookTP.Text = "Tra cứu sách";
             this.STC_BookTP.UseVisualStyleBackColor = true;
+            // 
+            // BookPageContainer
+            // 
+            this.BookPageContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BookPageContainer.Location = new System.Drawing.Point(3, 4);
+            this.BookPageContainer.Name = "BookPageContainer";
+            this.BookPageContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // BookPageContainer.Panel1
+            // 
+            this.BookPageContainer.Panel1.Controls.Add(this.BookPageSearchGroup);
+            // 
+            // BookPageContainer.Panel2
+            // 
+            this.BookPageContainer.Panel2.Controls.Add(this.BookPageDataGroup);
+            this.BookPageContainer.Size = new System.Drawing.Size(1018, 582);
+            this.BookPageContainer.SplitterDistance = 100;
+            this.BookPageContainer.TabIndex = 0;
+            // 
+            // BookPageSearchGroup
+            // 
+            this.BookPageSearchGroup.Controls.Add(this.SearchBookSearchCriteriaLabel);
+            this.BookPageSearchGroup.Controls.Add(this.SearchBookByStatusCheckBox);
+            this.BookPageSearchGroup.Controls.Add(this.SearchBookByAuthorCheckBox);
+            this.BookPageSearchGroup.Controls.Add(this.SearchBookByTypeCheckBox);
+            this.BookPageSearchGroup.Controls.Add(this.SearchBookByNameCheckBox);
+            this.BookPageSearchGroup.Controls.Add(this.SearchBookSearchCriteriaTextBox);
+            this.BookPageSearchGroup.Controls.Add(this.BookPageSearchBooksButton);
+            this.BookPageSearchGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BookPageSearchGroup.Location = new System.Drawing.Point(0, 0);
+            this.BookPageSearchGroup.Name = "BookPageSearchGroup";
+            this.BookPageSearchGroup.Size = new System.Drawing.Size(1018, 100);
+            this.BookPageSearchGroup.TabIndex = 0;
+            this.BookPageSearchGroup.TabStop = false;
+            this.BookPageSearchGroup.Text = "Tìm kiếm";
+            // 
+            // BookPageSearchBooksButton
+            // 
+            this.BookPageSearchBooksButton.Location = new System.Drawing.Point(216, 53);
+            this.BookPageSearchBooksButton.Name = "BookPageSearchBooksButton";
+            this.BookPageSearchBooksButton.Size = new System.Drawing.Size(94, 29);
+            this.BookPageSearchBooksButton.TabIndex = 0;
+            this.BookPageSearchBooksButton.Text = "Tìm kiếm";
+            this.BookPageSearchBooksButton.UseVisualStyleBackColor = true;
+            this.BookPageSearchBooksButton.Click += new System.EventHandler(this.BookPageSearchBooksButton_Click);
+            // 
+            // BookPageDataGroup
+            // 
+            this.BookPageDataGroup.Controls.Add(this.BookPageDataGridView);
+            this.BookPageDataGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BookPageDataGroup.Location = new System.Drawing.Point(0, 0);
+            this.BookPageDataGroup.Name = "BookPageDataGroup";
+            this.BookPageDataGroup.Size = new System.Drawing.Size(1018, 478);
+            this.BookPageDataGroup.TabIndex = 0;
+            this.BookPageDataGroup.TabStop = false;
+            this.BookPageDataGroup.Text = "Thông tin sách";
+            // 
+            // BookPageDataGridView
+            // 
+            this.BookPageDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.BookPageDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.BookPageDataIndexColumn,
+            this.BookPageDataNameColumn,
+            this.BookPageDataType,
+            this.BookPageDataAuthor,
+            this.BookPageDataStatus});
+            this.BookPageDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BookPageDataGridView.Location = new System.Drawing.Point(3, 23);
+            this.BookPageDataGridView.Name = "BookPageDataGridView";
+            this.BookPageDataGridView.RowHeadersWidth = 51;
+            this.BookPageDataGridView.RowTemplate.Height = 29;
+            this.BookPageDataGridView.Size = new System.Drawing.Size(1012, 452);
+            this.BookPageDataGridView.TabIndex = 0;
+            // 
+            // BookPageDataIndexColumn
+            // 
+            this.BookPageDataIndexColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.BookPageDataIndexColumn.FillWeight = 200.5348F;
+            this.BookPageDataIndexColumn.HeaderText = "STT";
+            this.BookPageDataIndexColumn.MinimumWidth = 6;
+            this.BookPageDataIndexColumn.Name = "BookPageDataIndexColumn";
+            this.BookPageDataIndexColumn.ReadOnly = true;
+            this.BookPageDataIndexColumn.Width = 75;
+            // 
+            // BookPageDataNameColumn
+            // 
+            this.BookPageDataNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.BookPageDataNameColumn.FillWeight = 74.86631F;
+            this.BookPageDataNameColumn.HeaderText = "Tên sách";
+            this.BookPageDataNameColumn.MinimumWidth = 6;
+            this.BookPageDataNameColumn.Name = "BookPageDataNameColumn";
+            this.BookPageDataNameColumn.ReadOnly = true;
+            // 
+            // BookPageDataType
+            // 
+            this.BookPageDataType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.BookPageDataType.FillWeight = 74.86631F;
+            this.BookPageDataType.HeaderText = "Thể loại";
+            this.BookPageDataType.MinimumWidth = 6;
+            this.BookPageDataType.Name = "BookPageDataType";
+            this.BookPageDataType.ReadOnly = true;
+            // 
+            // BookPageDataAuthor
+            // 
+            this.BookPageDataAuthor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.BookPageDataAuthor.FillWeight = 74.86631F;
+            this.BookPageDataAuthor.HeaderText = "Tác giả";
+            this.BookPageDataAuthor.MinimumWidth = 6;
+            this.BookPageDataAuthor.Name = "BookPageDataAuthor";
+            this.BookPageDataAuthor.ReadOnly = true;
+            // 
+            // BookPageDataStatus
+            // 
+            this.BookPageDataStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.BookPageDataStatus.FillWeight = 74.86631F;
+            this.BookPageDataStatus.HeaderText = "Tình trạng";
+            this.BookPageDataStatus.MinimumWidth = 6;
+            this.BookPageDataStatus.Name = "BookPageDataStatus";
+            this.BookPageDataStatus.ReadOnly = true;
             // 
             // MakeBorrow
             // 
@@ -239,118 +364,61 @@
             this.LibraryConfigurationValueeColumn.MinimumWidth = 6;
             this.LibraryConfigurationValueeColumn.Name = "LibraryConfigurationValueeColumn";
             // 
-            // BookPageContainer
+            // SearchBookSearchCriteriaTextBox
             // 
-            this.BookPageContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BookPageContainer.Location = new System.Drawing.Point(3, 4);
-            this.BookPageContainer.Name = "BookPageContainer";
-            this.BookPageContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.SearchBookSearchCriteriaTextBox.Location = new System.Drawing.Point(85, 53);
+            this.SearchBookSearchCriteriaTextBox.Name = "SearchBookSearchCriteriaTextBox";
+            this.SearchBookSearchCriteriaTextBox.Size = new System.Drawing.Size(125, 27);
+            this.SearchBookSearchCriteriaTextBox.TabIndex = 1;
             // 
-            // BookPageContainer.Panel1
+            // SearchBookByNameCheckBox
             // 
-            this.BookPageContainer.Panel1.Controls.Add(this.BookPageSearchGroup);
+            this.SearchBookByNameCheckBox.AutoSize = true;
+            this.SearchBookByNameCheckBox.Location = new System.Drawing.Point(17, 22);
+            this.SearchBookByNameCheckBox.Name = "SearchBookByNameCheckBox";
+            this.SearchBookByNameCheckBox.Size = new System.Drawing.Size(87, 24);
+            this.SearchBookByNameCheckBox.TabIndex = 2;
+            this.SearchBookByNameCheckBox.Text = "Tên sách";
+            this.SearchBookByNameCheckBox.UseVisualStyleBackColor = true;
             // 
-            // BookPageContainer.Panel2
+            // SearchBookByTypeCheckBox
             // 
-            this.BookPageContainer.Panel2.Controls.Add(this.BookPageDataGroup);
-            this.BookPageContainer.Size = new System.Drawing.Size(1018, 582);
-            this.BookPageContainer.SplitterDistance = 100;
-            this.BookPageContainer.TabIndex = 0;
+            this.SearchBookByTypeCheckBox.AutoSize = true;
+            this.SearchBookByTypeCheckBox.Location = new System.Drawing.Point(124, 22);
+            this.SearchBookByTypeCheckBox.Name = "SearchBookByTypeCheckBox";
+            this.SearchBookByTypeCheckBox.Size = new System.Drawing.Size(84, 24);
+            this.SearchBookByTypeCheckBox.TabIndex = 3;
+            this.SearchBookByTypeCheckBox.Text = "Thể loại";
+            this.SearchBookByTypeCheckBox.UseVisualStyleBackColor = true;
             // 
-            // BookPageDataGroup
+            // SearchBookByAuthorCheckBox
             // 
-            this.BookPageDataGroup.Controls.Add(this.BookPageDataGridView);
-            this.BookPageDataGroup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BookPageDataGroup.Location = new System.Drawing.Point(0, 0);
-            this.BookPageDataGroup.Name = "BookPageDataGroup";
-            this.BookPageDataGroup.Size = new System.Drawing.Size(1018, 478);
-            this.BookPageDataGroup.TabIndex = 0;
-            this.BookPageDataGroup.TabStop = false;
-            this.BookPageDataGroup.Text = "Thông tin sách";
+            this.SearchBookByAuthorCheckBox.AutoSize = true;
+            this.SearchBookByAuthorCheckBox.Location = new System.Drawing.Point(231, 22);
+            this.SearchBookByAuthorCheckBox.Name = "SearchBookByAuthorCheckBox";
+            this.SearchBookByAuthorCheckBox.Size = new System.Drawing.Size(78, 24);
+            this.SearchBookByAuthorCheckBox.TabIndex = 4;
+            this.SearchBookByAuthorCheckBox.Text = "Tác Giả";
+            this.SearchBookByAuthorCheckBox.UseVisualStyleBackColor = true;
             // 
-            // BookPageSearchGroup
+            // SearchBookByStatusCheckBox
             // 
-            this.BookPageSearchGroup.Controls.Add(this.BookPageSearchBooksButton);
-            this.BookPageSearchGroup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BookPageSearchGroup.Location = new System.Drawing.Point(0, 0);
-            this.BookPageSearchGroup.Name = "BookPageSearchGroup";
-            this.BookPageSearchGroup.Size = new System.Drawing.Size(1018, 100);
-            this.BookPageSearchGroup.TabIndex = 0;
-            this.BookPageSearchGroup.TabStop = false;
-            this.BookPageSearchGroup.Text = "Tìm kiếm";
+            this.SearchBookByStatusCheckBox.AutoSize = true;
+            this.SearchBookByStatusCheckBox.Location = new System.Drawing.Point(338, 22);
+            this.SearchBookByStatusCheckBox.Name = "SearchBookByStatusCheckBox";
+            this.SearchBookByStatusCheckBox.Size = new System.Drawing.Size(98, 24);
+            this.SearchBookByStatusCheckBox.TabIndex = 5;
+            this.SearchBookByStatusCheckBox.Text = "Tình trạng";
+            this.SearchBookByStatusCheckBox.UseVisualStyleBackColor = true;
             // 
-            // BookPageDataGridView
+            // SearchBookSearchCriteriaLabel
             // 
-            this.BookPageDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.BookPageDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.BookPageDataIndexColumn,
-            this.BookPageDataNameColumn,
-            this.BookPageDataType,
-            this.BookPageDataAuthor,
-            this.BookPageDataStatus});
-            this.BookPageDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BookPageDataGridView.Location = new System.Drawing.Point(3, 23);
-            this.BookPageDataGridView.Name = "BookPageDataGridView";
-            this.BookPageDataGridView.RowHeadersWidth = 51;
-            this.BookPageDataGridView.RowTemplate.Height = 29;
-            this.BookPageDataGridView.Size = new System.Drawing.Size(1012, 452);
-            this.BookPageDataGridView.TabIndex = 0;
-            // 
-            // BookPageDataIndexColumn
-            // 
-            this.BookPageDataIndexColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.BookPageDataIndexColumn.FillWeight = 200.5348F;
-            this.BookPageDataIndexColumn.HeaderText = "STT";
-            this.BookPageDataIndexColumn.MinimumWidth = 6;
-            this.BookPageDataIndexColumn.Name = "BookPageDataIndexColumn";
-            this.BookPageDataIndexColumn.ReadOnly = true;
-            this.BookPageDataIndexColumn.Width = 75;
-            // 
-            // BookPageDataNameColumn
-            // 
-            this.BookPageDataNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.BookPageDataNameColumn.FillWeight = 74.86631F;
-            this.BookPageDataNameColumn.HeaderText = "Tên sách";
-            this.BookPageDataNameColumn.MinimumWidth = 6;
-            this.BookPageDataNameColumn.Name = "BookPageDataNameColumn";
-            this.BookPageDataNameColumn.ReadOnly = true;
-            // 
-            // BookPageDataType
-            // 
-            this.BookPageDataType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.BookPageDataType.FillWeight = 74.86631F;
-            this.BookPageDataType.HeaderText = "Thể loại";
-            this.BookPageDataType.MinimumWidth = 6;
-            this.BookPageDataType.Name = "BookPageDataType";
-            this.BookPageDataType.ReadOnly = true;
-            // 
-            // BookPageDataAuthor
-            // 
-            this.BookPageDataAuthor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.BookPageDataAuthor.FillWeight = 74.86631F;
-            this.BookPageDataAuthor.HeaderText = "Tác giả";
-            this.BookPageDataAuthor.MinimumWidth = 6;
-            this.BookPageDataAuthor.Name = "BookPageDataAuthor";
-            this.BookPageDataAuthor.ReadOnly = true;
-            // 
-            // BookPageDataStatus
-            // 
-            this.BookPageDataStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.BookPageDataStatus.FillWeight = 74.86631F;
-            this.BookPageDataStatus.HeaderText = "Tình trạng";
-            this.BookPageDataStatus.MinimumWidth = 6;
-            this.BookPageDataStatus.Name = "BookPageDataStatus";
-            this.BookPageDataStatus.ReadOnly = true;
-            // 
-            // BookPageSearchBooksButton
-            // 
-            this.BookPageSearchBooksButton.Location = new System.Drawing.Point(448, 52);
-            this.BookPageSearchBooksButton.Name = "BookPageSearchBooksButton";
-            this.BookPageSearchBooksButton.Size = new System.Drawing.Size(94, 29);
-            this.BookPageSearchBooksButton.TabIndex = 0;
-            this.BookPageSearchBooksButton.Text = "Tìm kiếm";
-            this.BookPageSearchBooksButton.UseVisualStyleBackColor = true;
-            this.BookPageSearchBooksButton.Click += new System.EventHandler(this.BookPageSearchBooksButton_Click);
+            this.SearchBookSearchCriteriaLabel.AutoSize = true;
+            this.SearchBookSearchCriteriaLabel.Location = new System.Drawing.Point(17, 56);
+            this.SearchBookSearchCriteriaLabel.Name = "SearchBookSearchCriteriaLabel";
+            this.SearchBookSearchCriteriaLabel.Size = new System.Drawing.Size(62, 20);
+            this.SearchBookSearchCriteriaLabel.TabIndex = 6;
+            this.SearchBookSearchCriteriaLabel.Text = "Từ khoá";
             // 
             // LibraryManagementSystemUI
             // 
@@ -366,6 +434,14 @@
             this.STC_HomeTP.ResumeLayout(false);
             this.STC_HomeTP.PerformLayout();
             this.STC_BookTP.ResumeLayout(false);
+            this.BookPageContainer.Panel1.ResumeLayout(false);
+            this.BookPageContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.BookPageContainer)).EndInit();
+            this.BookPageContainer.ResumeLayout(false);
+            this.BookPageSearchGroup.ResumeLayout(false);
+            this.BookPageSearchGroup.PerformLayout();
+            this.BookPageDataGroup.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.BookPageDataGridView)).EndInit();
             this.LibraryConfigurationTab.ResumeLayout(false);
             this.LibraryConfigurationTab_MainContainer.Panel1.ResumeLayout(false);
             this.LibraryConfigurationTab_MainContainer.Panel2.ResumeLayout(false);
@@ -374,13 +450,6 @@
             this.SearchLibraryConfigurationGroupBox.ResumeLayout(false);
             this.LibraryConfigurationDataGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.LibraryConfigurationDataGridView)).EndInit();
-            this.BookPageContainer.Panel1.ResumeLayout(false);
-            this.BookPageContainer.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.BookPageContainer)).EndInit();
-            this.BookPageContainer.ResumeLayout(false);
-            this.BookPageDataGroup.ResumeLayout(false);
-            this.BookPageSearchGroup.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.BookPageDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -412,5 +481,11 @@
         private DataGridViewTextBoxColumn BookPageDataAuthor;
         private DataGridViewTextBoxColumn BookPageDataStatus;
         private Button BookPageSearchBooksButton;
+        private Label SearchBookSearchCriteriaLabel;
+        private CheckBox SearchBookByStatusCheckBox;
+        private CheckBox SearchBookByAuthorCheckBox;
+        private CheckBox SearchBookByTypeCheckBox;
+        private CheckBox SearchBookByNameCheckBox;
+        private TextBox SearchBookSearchCriteriaTextBox;
     }
 }

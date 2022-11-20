@@ -6,6 +6,7 @@ using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Infrastructure.Data;
 using LibraryManagementSystem.Infrastructure.Database;
 using LinqKit;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagementSystem.App.Features.BookFeature.Queries;
 
@@ -49,7 +50,10 @@ public class ListBooksQueryHandler : IListQueryHandler<ListBooksQuery, BookDto>
             }
         }
 
-        var books = await _context.Books.Where(searchPredicate)
+        var books = await _context.Books
+            .Include(book => book.BookType)
+            .Include(book=>book.Author)
+            .Where(searchPredicate)
             .Select(x => new BookDto
             {
                 Id = x.Id,

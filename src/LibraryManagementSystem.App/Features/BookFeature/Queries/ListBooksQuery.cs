@@ -17,5 +17,6 @@ public enum SearchBookOptions
     BookName = 1,
     TypeName = 2,
     AuthorName = 4,
-    All = BookName | TypeName | AuthorName
+    StatusName = 8,
+    All = BookName | TypeName | AuthorName | StatusName
 }

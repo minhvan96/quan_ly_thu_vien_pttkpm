@@ -22,7 +22,7 @@ public static class QueryExtensions
 
         if (!searchPredicates.Any())
             return searchPredicate;
-        searchPredicate = searchPredicates.Dequeue();
+        //searchPredicate = searchPredicates.Dequeue();
         while (searchPredicates.Any())
             searchPredicate = searchPredicate.Or(searchPredicates.Dequeue());
         return searchPredicate;

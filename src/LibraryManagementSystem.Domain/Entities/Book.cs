@@ -55,6 +55,7 @@ public class Book : Entity
     public Guid PublisherId { get; set; }
     public Guid BookTypeId { get; set; }
     public Guid AuthorId { get; set; }
+    public int InStock { get; set; }
 
     public BookType BookType
     {
