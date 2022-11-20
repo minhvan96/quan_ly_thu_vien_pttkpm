@@ -43,8 +43,4 @@
       </None>
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Features\LibraryConfigurationFeature\Queries" />
-    </ItemGroup>
-
 </Project>
