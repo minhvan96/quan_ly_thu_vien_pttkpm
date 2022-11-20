@@ -30,9 +30,10 @@
         {
             this.SystemMainTabControl = new System.Windows.Forms.TabControl();
             this.STC_HomeTP = new System.Windows.Forms.TabPage();
+            this.txtTest = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.STC_BookTP = new System.Windows.Forms.TabPage();
-            this.txtTest = new System.Windows.Forms.TextBox();
+            this.MakeBorrow = new System.Windows.Forms.TabPage();
             this.SystemMainTabControl.SuspendLayout();
             this.STC_HomeTP.SuspendLayout();
             this.SuspendLayout();
@@ -41,13 +42,16 @@
             // 
             this.SystemMainTabControl.Controls.Add(this.STC_HomeTP);
             this.SystemMainTabControl.Controls.Add(this.STC_BookTP);
+            this.SystemMainTabControl.Controls.Add(this.MakeBorrow);
             this.SystemMainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SystemMainTabControl.Location = new System.Drawing.Point(0, 0);
             this.SystemMainTabControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.SystemMainTabControl.Name = "SystemMainTabControl";
             this.SystemMainTabControl.SelectedIndex = 0;
-            this.SystemMainTabControl.Size = new System.Drawing.Size(914, 600);
+            this.SystemMainTabControl.Size = new System.Drawing.Size(1032, 623);
             this.SystemMainTabControl.TabIndex = 0;
+            this.SystemMainTabControl.SelectedIndexChanged += new System.EventHandler(this.SystemMainTabControl_SelectedIndexChanged);
+            this.SystemMainTabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.SystemMainTabControl_Selected);
             // 
             // STC_HomeTP
             // 
@@ -57,10 +61,17 @@
             this.STC_HomeTP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.STC_HomeTP.Name = "STC_HomeTP";
             this.STC_HomeTP.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.STC_HomeTP.Size = new System.Drawing.Size(906, 567);
+            this.STC_HomeTP.Size = new System.Drawing.Size(1024, 590);
             this.STC_HomeTP.TabIndex = 0;
             this.STC_HomeTP.Text = "HOME";
             this.STC_HomeTP.UseVisualStyleBackColor = true;
+            // 
+            // txtTest
+            // 
+            this.txtTest.Location = new System.Drawing.Point(221, 318);
+            this.txtTest.Name = "txtTest";
+            this.txtTest.Size = new System.Drawing.Size(125, 27);
+            this.txtTest.TabIndex = 1;
             // 
             // button1
             // 
@@ -78,27 +89,31 @@
             this.STC_BookTP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.STC_BookTP.Name = "STC_BookTP";
             this.STC_BookTP.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.STC_BookTP.Size = new System.Drawing.Size(906, 567);
+            this.STC_BookTP.Size = new System.Drawing.Size(1024, 600);
             this.STC_BookTP.TabIndex = 1;
             this.STC_BookTP.Text = "Tra cứu sách";
             this.STC_BookTP.UseVisualStyleBackColor = true;
             // 
-            // txtTest
+            // MakeBorrow
             // 
-            this.txtTest.Location = new System.Drawing.Point(221, 318);
-            this.txtTest.Name = "txtTest";
-            this.txtTest.Size = new System.Drawing.Size(125, 27);
-            this.txtTest.TabIndex = 1;
+            this.MakeBorrow.Location = new System.Drawing.Point(4, 29);
+            this.MakeBorrow.Name = "MakeBorrow";
+            this.MakeBorrow.Padding = new System.Windows.Forms.Padding(3);
+            this.MakeBorrow.Size = new System.Drawing.Size(1024, 600);
+            this.MakeBorrow.TabIndex = 2;
+            this.MakeBorrow.Text = "Make Borrow Voucher";
+            this.MakeBorrow.UseVisualStyleBackColor = true;
             // 
             // LibraryManagementSystemUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 600);
+            this.ClientSize = new System.Drawing.Size(1032, 623);
             this.Controls.Add(this.SystemMainTabControl);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "LibraryManagementSystemUI";
             this.Text = "Library Management System";
+            this.Load += new System.EventHandler(this.LibraryManagementSystemUI_Load);
             this.SystemMainTabControl.ResumeLayout(false);
             this.STC_HomeTP.ResumeLayout(false);
             this.STC_HomeTP.PerformLayout();
@@ -113,5 +128,6 @@
         private TabPage STC_BookTP;
         private Button button1;
         private TextBox txtTest;
+        private TabPage MakeBorrow;
     }
 }

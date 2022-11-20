@@ -59,4 +59,28 @@ public partial class LibraryManagementSystemUI : Form
 
         //await _mediator.Send(cmdBook);
     }
+
+    private void SystemMainTabControl_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        //
+        //switch(tabPage)
+    }
+
+    private void SystemMainTabControl_Selected(object sender, TabControlEventArgs e)
+    {
+        var tabControl= (TabControl)sender;
+        var tabPage = tabControl.SelectedTab;
+        if(tabPage.Name == "MakeBorrow")
+        {
+            // show UI make borrow voucher
+            MakeBorrowVoucher myUserControl = new MakeBorrowVoucher();
+            //myUserControl.Dock = DockStyle.Fill;
+            MakeBorrow.Controls.Add(myUserControl);
+        }
+    }
+
+    private void LibraryManagementSystemUI_Load(object sender, EventArgs e)
+    {
+
+    }
 }
