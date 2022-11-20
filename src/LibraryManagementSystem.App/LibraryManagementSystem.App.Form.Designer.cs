@@ -34,8 +34,25 @@
             this.button1 = new System.Windows.Forms.Button();
             this.STC_BookTP = new System.Windows.Forms.TabPage();
             this.MakeBorrow = new System.Windows.Forms.TabPage();
+            this.LibraryConfigurationTab = new System.Windows.Forms.TabPage();
+            this.LibraryConfigurationTab_MainContainer = new System.Windows.Forms.SplitContainer();
+            this.SearchLibraryConfigurationGroupBox = new System.Windows.Forms.GroupBox();
+            this.LibraryConfigurationSearchButton = new System.Windows.Forms.Button();
+            this.LibraryConfigurationDataGroupBox = new System.Windows.Forms.GroupBox();
+            this.LibraryConfigurationDataGridView = new System.Windows.Forms.DataGridView();
+            this.LibraryConfigurationCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LibraryConfigurationNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LibraryConfigurationValueeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SystemMainTabControl.SuspendLayout();
             this.STC_HomeTP.SuspendLayout();
+            this.LibraryConfigurationTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LibraryConfigurationTab_MainContainer)).BeginInit();
+            this.LibraryConfigurationTab_MainContainer.Panel1.SuspendLayout();
+            this.LibraryConfigurationTab_MainContainer.Panel2.SuspendLayout();
+            this.LibraryConfigurationTab_MainContainer.SuspendLayout();
+            this.SearchLibraryConfigurationGroupBox.SuspendLayout();
+            this.LibraryConfigurationDataGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LibraryConfigurationDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // SystemMainTabControl
@@ -43,6 +60,7 @@
             this.SystemMainTabControl.Controls.Add(this.STC_HomeTP);
             this.SystemMainTabControl.Controls.Add(this.STC_BookTP);
             this.SystemMainTabControl.Controls.Add(this.MakeBorrow);
+            this.SystemMainTabControl.Controls.Add(this.LibraryConfigurationTab);
             this.SystemMainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SystemMainTabControl.Location = new System.Drawing.Point(0, 0);
             this.SystemMainTabControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -89,7 +107,7 @@
             this.STC_BookTP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.STC_BookTP.Name = "STC_BookTP";
             this.STC_BookTP.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.STC_BookTP.Size = new System.Drawing.Size(1024, 600);
+            this.STC_BookTP.Size = new System.Drawing.Size(1024, 590);
             this.STC_BookTP.TabIndex = 1;
             this.STC_BookTP.Text = "Tra cứu sách";
             this.STC_BookTP.UseVisualStyleBackColor = true;
@@ -99,10 +117,108 @@
             this.MakeBorrow.Location = new System.Drawing.Point(4, 29);
             this.MakeBorrow.Name = "MakeBorrow";
             this.MakeBorrow.Padding = new System.Windows.Forms.Padding(3);
-            this.MakeBorrow.Size = new System.Drawing.Size(1024, 600);
+            this.MakeBorrow.Size = new System.Drawing.Size(1024, 590);
             this.MakeBorrow.TabIndex = 2;
             this.MakeBorrow.Text = "Make Borrow Voucher";
             this.MakeBorrow.UseVisualStyleBackColor = true;
+            // 
+            // LibraryConfigurationTab
+            // 
+            this.LibraryConfigurationTab.Controls.Add(this.LibraryConfigurationTab_MainContainer);
+            this.LibraryConfigurationTab.Location = new System.Drawing.Point(4, 29);
+            this.LibraryConfigurationTab.Name = "LibraryConfigurationTab";
+            this.LibraryConfigurationTab.Padding = new System.Windows.Forms.Padding(3);
+            this.LibraryConfigurationTab.Size = new System.Drawing.Size(1024, 590);
+            this.LibraryConfigurationTab.TabIndex = 3;
+            this.LibraryConfigurationTab.Text = "Cấu hình";
+            this.LibraryConfigurationTab.UseVisualStyleBackColor = true;
+            // 
+            // LibraryConfigurationTab_MainContainer
+            // 
+            this.LibraryConfigurationTab_MainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LibraryConfigurationTab_MainContainer.Location = new System.Drawing.Point(3, 3);
+            this.LibraryConfigurationTab_MainContainer.Name = "LibraryConfigurationTab_MainContainer";
+            this.LibraryConfigurationTab_MainContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // LibraryConfigurationTab_MainContainer.Panel1
+            // 
+            this.LibraryConfigurationTab_MainContainer.Panel1.Controls.Add(this.SearchLibraryConfigurationGroupBox);
+            // 
+            // LibraryConfigurationTab_MainContainer.Panel2
+            // 
+            this.LibraryConfigurationTab_MainContainer.Panel2.Controls.Add(this.LibraryConfigurationDataGroupBox);
+            this.LibraryConfigurationTab_MainContainer.Size = new System.Drawing.Size(1018, 584);
+            this.LibraryConfigurationTab_MainContainer.SplitterDistance = 100;
+            this.LibraryConfigurationTab_MainContainer.TabIndex = 0;
+            // 
+            // SearchLibraryConfigurationGroupBox
+            // 
+            this.SearchLibraryConfigurationGroupBox.Controls.Add(this.LibraryConfigurationSearchButton);
+            this.SearchLibraryConfigurationGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SearchLibraryConfigurationGroupBox.Location = new System.Drawing.Point(0, 0);
+            this.SearchLibraryConfigurationGroupBox.Name = "SearchLibraryConfigurationGroupBox";
+            this.SearchLibraryConfigurationGroupBox.Size = new System.Drawing.Size(1018, 100);
+            this.SearchLibraryConfigurationGroupBox.TabIndex = 0;
+            this.SearchLibraryConfigurationGroupBox.TabStop = false;
+            this.SearchLibraryConfigurationGroupBox.Text = "Tìm kiếm";
+            // 
+            // LibraryConfigurationSearchButton
+            // 
+            this.LibraryConfigurationSearchButton.Location = new System.Drawing.Point(445, 42);
+            this.LibraryConfigurationSearchButton.Name = "LibraryConfigurationSearchButton";
+            this.LibraryConfigurationSearchButton.Size = new System.Drawing.Size(94, 29);
+            this.LibraryConfigurationSearchButton.TabIndex = 0;
+            this.LibraryConfigurationSearchButton.Text = "Tìm kiếm";
+            this.LibraryConfigurationSearchButton.UseVisualStyleBackColor = true;
+            this.LibraryConfigurationSearchButton.Click += new System.EventHandler(this.LibraryConfigurationSearchButton_Click);
+            // 
+            // LibraryConfigurationDataGroupBox
+            // 
+            this.LibraryConfigurationDataGroupBox.Controls.Add(this.LibraryConfigurationDataGridView);
+            this.LibraryConfigurationDataGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LibraryConfigurationDataGroupBox.Location = new System.Drawing.Point(0, 0);
+            this.LibraryConfigurationDataGroupBox.Name = "LibraryConfigurationDataGroupBox";
+            this.LibraryConfigurationDataGroupBox.Size = new System.Drawing.Size(1018, 480);
+            this.LibraryConfigurationDataGroupBox.TabIndex = 0;
+            this.LibraryConfigurationDataGroupBox.TabStop = false;
+            this.LibraryConfigurationDataGroupBox.Text = "Danh sách cấu hình";
+            // 
+            // LibraryConfigurationDataGridView
+            // 
+            this.LibraryConfigurationDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.LibraryConfigurationDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.LibraryConfigurationCodeColumn,
+            this.LibraryConfigurationNameColumn,
+            this.LibraryConfigurationValueeColumn});
+            this.LibraryConfigurationDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LibraryConfigurationDataGridView.Location = new System.Drawing.Point(3, 23);
+            this.LibraryConfigurationDataGridView.Name = "LibraryConfigurationDataGridView";
+            this.LibraryConfigurationDataGridView.RowHeadersWidth = 51;
+            this.LibraryConfigurationDataGridView.RowTemplate.Height = 29;
+            this.LibraryConfigurationDataGridView.Size = new System.Drawing.Size(1012, 454);
+            this.LibraryConfigurationDataGridView.TabIndex = 0;
+            // 
+            // LibraryConfigurationCodeColumn
+            // 
+            this.LibraryConfigurationCodeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LibraryConfigurationCodeColumn.HeaderText = "Mã cấu hình";
+            this.LibraryConfigurationCodeColumn.MinimumWidth = 6;
+            this.LibraryConfigurationCodeColumn.Name = "LibraryConfigurationCodeColumn";
+            this.LibraryConfigurationCodeColumn.ReadOnly = true;
+            // 
+            // LibraryConfigurationNameColumn
+            // 
+            this.LibraryConfigurationNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LibraryConfigurationNameColumn.HeaderText = "Tên cấu hình";
+            this.LibraryConfigurationNameColumn.MinimumWidth = 6;
+            this.LibraryConfigurationNameColumn.Name = "LibraryConfigurationNameColumn";
+            // 
+            // LibraryConfigurationValueeColumn
+            // 
+            this.LibraryConfigurationValueeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LibraryConfigurationValueeColumn.HeaderText = "Giá trị";
+            this.LibraryConfigurationValueeColumn.MinimumWidth = 6;
+            this.LibraryConfigurationValueeColumn.Name = "LibraryConfigurationValueeColumn";
             // 
             // LibraryManagementSystemUI
             // 
@@ -117,6 +233,14 @@
             this.SystemMainTabControl.ResumeLayout(false);
             this.STC_HomeTP.ResumeLayout(false);
             this.STC_HomeTP.PerformLayout();
+            this.LibraryConfigurationTab.ResumeLayout(false);
+            this.LibraryConfigurationTab_MainContainer.Panel1.ResumeLayout(false);
+            this.LibraryConfigurationTab_MainContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.LibraryConfigurationTab_MainContainer)).EndInit();
+            this.LibraryConfigurationTab_MainContainer.ResumeLayout(false);
+            this.SearchLibraryConfigurationGroupBox.ResumeLayout(false);
+            this.LibraryConfigurationDataGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.LibraryConfigurationDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -129,5 +253,14 @@
         private Button button1;
         private TextBox txtTest;
         private TabPage MakeBorrow;
+        private TabPage LibraryConfigurationTab;
+        private SplitContainer LibraryConfigurationTab_MainContainer;
+        private GroupBox SearchLibraryConfigurationGroupBox;
+        private Button LibraryConfigurationSearchButton;
+        private GroupBox LibraryConfigurationDataGroupBox;
+        private DataGridView LibraryConfigurationDataGridView;
+        private DataGridViewTextBoxColumn LibraryConfigurationCodeColumn;
+        private DataGridViewTextBoxColumn LibraryConfigurationNameColumn;
+        private DataGridViewTextBoxColumn LibraryConfigurationValueeColumn;
     }
 }

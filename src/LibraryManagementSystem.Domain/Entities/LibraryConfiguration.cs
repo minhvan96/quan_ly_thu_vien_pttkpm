@@ -15,8 +15,8 @@ public class LibraryConfiguration : Entity
     }
 
     public LibraryConfiguration(Guid id,
-        string name,
         string code,
+        string name,
         int value)
         : base(id)
     {

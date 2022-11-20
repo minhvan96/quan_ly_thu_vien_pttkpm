@@ -1,4 +1,5 @@
 using LibraryManagementSystem.App.Features.BookFeature.Commands;
+using LibraryManagementSystem.App.Features.LibraryConfigurationFeature.Queries;
 using MediatR;
 
 namespace LibraryManagementSystem.App;
@@ -82,5 +83,26 @@ public partial class LibraryManagementSystemUI : Form
 
     private void LibraryManagementSystemUI_Load(object sender, EventArgs e)
     {
+    }
+
+    private async void LibraryConfigurationSearchButton_Click(object sender, EventArgs e)
+    {
+        var listLibraryConfigurationsQuery = new ListLibraryConfigurationsQuery
+        {
+
+        };
+        var configurations = await _mediator.Send(listLibraryConfigurationsQuery);
+
+        LibraryConfigurationDataGridView.Rows.Clear();
+        foreach(var configuration in configurations.Items)
+        {
+
+            var configurationGridViewRow = new DataGridViewRow();
+            configurationGridViewRow.CreateCells(LibraryConfigurationDataGridView);
+            configurationGridViewRow.Cells[0].Value = configuration.Code;
+            configurationGridViewRow.Cells[1].Value = configuration.Name;
+            configurationGridViewRow.Cells[2].Value = configuration.Value;
+            LibraryConfigurationDataGridView.Rows.Add(configurationGridViewRow);
+        }
     }
 }

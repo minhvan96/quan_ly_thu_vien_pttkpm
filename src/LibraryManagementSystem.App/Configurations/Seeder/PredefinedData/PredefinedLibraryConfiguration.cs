@@ -22,11 +22,11 @@ public static class PredefinedLibraryConfiguration
         return configurations;
     }
 
-    private static LibraryConfiguration CreateBook(string id, string name, string code, string value)
+    private static LibraryConfiguration CreateBook(string id, string code, string name, string value)
     {
         return new LibraryConfiguration(new Guid(id),
-            name,
             code,
+            name,
             Convert.ToInt32(value));
     }
 }
