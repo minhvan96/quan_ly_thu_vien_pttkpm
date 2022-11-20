@@ -13,16 +13,18 @@ public class LibraryConfiguration : Entity
         Code = string.Empty;
         Value = 10;
     }
+
     public LibraryConfiguration(Guid id,
         string name,
         string code,
         int value)
-        :base(id)
+        : base(id)
     {
         Name = name;
         Code = code;
         Value = value;
     }
+
     public LibraryConfiguration(string name,
         string code,
         int value)
@@ -32,7 +34,7 @@ public class LibraryConfiguration : Entity
         Value = value;
     }
 
-    public string Code { get;  }
-    public string Name { get; }
-    public int Value { get; }
+    public string Code { get; }
+    public string Name { get; set; }
+    public int Value { get; set; }
 }

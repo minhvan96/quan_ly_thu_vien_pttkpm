@@ -16,7 +16,7 @@ public class Book : Entity
         Name = string.Empty;
         Code = string.Empty;
     }
-    
+
     public Book(Guid id,
         string name,
         string code,

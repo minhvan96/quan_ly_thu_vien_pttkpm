@@ -6,10 +6,11 @@ namespace LibraryManagementSystem.App;
 public partial class LibraryManagementSystemUI : Form
 {
     private readonly IMediator _mediator;
+
     public LibraryManagementSystemUI(IMediator mediator)
     {
         InitializeComponent();
-        this._mediator = mediator;
+        _mediator = mediator;
     }
 
     private async void button1_Click(object sender, EventArgs e)
@@ -32,9 +33,9 @@ public partial class LibraryManagementSystemUI : Form
         //var result = await _mediator.Send(cmd);
 
         // DELETE 
-        var cmd = new DeleteBookCommand()
+        var cmd = new DeleteBookCommand
         {
-            Id = new Guid("E9018D7A-21E1-4341-90AF-EC48360112E3"),
+            Id = new Guid("E9018D7A-21E1-4341-90AF-EC48360112E3")
         };
         var result = await _mediator.Send(cmd);
 
@@ -68,12 +69,12 @@ public partial class LibraryManagementSystemUI : Form
 
     private void SystemMainTabControl_Selected(object sender, TabControlEventArgs e)
     {
-        var tabControl= (TabControl)sender;
+        var tabControl = (TabControl)sender;
         var tabPage = tabControl.SelectedTab;
-        if(tabPage.Name == "MakeBorrow")
+        if (tabPage.Name == "MakeBorrow")
         {
             // show UI make borrow voucher
-            MakeBorrowVoucher myUserControl = new MakeBorrowVoucher();
+            var myUserControl = new MakeBorrowVoucher();
             //myUserControl.Dock = DockStyle.Fill;
             MakeBorrow.Controls.Add(myUserControl);
         }
@@ -81,6 +82,5 @@ public partial class LibraryManagementSystemUI : Form
 
     private void LibraryManagementSystemUI_Load(object sender, EventArgs e)
     {
-
     }
 }

@@ -30,7 +30,7 @@ public class LibraryContextSeed
                 var predefinedPublishers = PredefinedPublishers.GetPredefinedPublishers(executingFolder);
                 context.AddRange(predefinedPublishers);
             }
-            
+
             if (!await context.Authors.AnyAsync())
             {
                 var authors = PredefinedAuthors.GetPredefinedAuthors(executingFolder);
