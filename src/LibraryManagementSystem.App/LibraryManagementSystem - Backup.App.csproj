@@ -35,12 +35,13 @@
       <None Update="Setup\BookTypes.csv">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Setup\LibraryConfiguration.csv">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
       <None Update="Setup\Publishers.csv">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Features\ConfigurationFeature" />
     </ItemGroup>
 
 </Project>
