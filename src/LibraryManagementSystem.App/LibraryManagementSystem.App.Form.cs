@@ -3,8 +3,6 @@ using LibraryManagementSystem.App.Features.BookFeature.Queries;
 using LibraryManagementSystem.App.Features.LibraryConfigurationFeature.Commands;
 using LibraryManagementSystem.App.Features.LibraryConfigurationFeature.Queries;
 using MediatR;
-using System.Diagnostics.Metrics;
-using System.Windows.Forms;
 
 namespace LibraryManagementSystem.App;
 
@@ -176,15 +174,11 @@ public partial class LibraryManagementSystemUI : Form
                 Value = value
             };
             var result = await _mediator.Send(updateLibraryConfigurationCommand);
-            const string title = "UPDATE STATUS";  
-            var message = "Update Data Successfully"; 
-            if (!result.Success)
-            {
-                message = "Update data has failed";
-                
-            }
+            const string title = "UPDATE STATUS";
+            var message = "Update Data Successfully";
+            if (!result.Success) message = "Update data has failed";
 
-            MessageBox.Show(message, title);  
+            MessageBox.Show(message, title);
         }
         catch (Exception ex)
         {

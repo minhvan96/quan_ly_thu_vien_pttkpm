@@ -6,7 +6,6 @@ using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Infrastructure.Data;
 using LibraryManagementSystem.Infrastructure.Database;
 using LinqKit;
-using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagementSystem.App.Features.BookFeature.Queries;
 
