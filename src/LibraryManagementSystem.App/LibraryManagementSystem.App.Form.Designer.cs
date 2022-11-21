@@ -62,6 +62,7 @@
             this.LibraryConfigurationCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LibraryConfigurationNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LibraryConfigurationValueeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             this.SystemMainTabControl.SuspendLayout();
             this.STC_HomeTP.SuspendLayout();
             this.STC_BookTP.SuspendLayout();
@@ -178,7 +179,7 @@
             // SearchBookSearchCriteriaLabel
             // 
             this.SearchBookSearchCriteriaLabel.AutoSize = true;
-            this.SearchBookSearchCriteriaLabel.Location = new System.Drawing.Point(17, 56);
+            this.SearchBookSearchCriteriaLabel.Location = new System.Drawing.Point(20, 65);
             this.SearchBookSearchCriteriaLabel.Name = "SearchBookSearchCriteriaLabel";
             this.SearchBookSearchCriteriaLabel.Size = new System.Drawing.Size(62, 20);
             this.SearchBookSearchCriteriaLabel.TabIndex = 6;
@@ -187,7 +188,7 @@
             // SearchBookByStatusCheckBox
             // 
             this.SearchBookByStatusCheckBox.AutoSize = true;
-            this.SearchBookByStatusCheckBox.Location = new System.Drawing.Point(338, 22);
+            this.SearchBookByStatusCheckBox.Location = new System.Drawing.Point(287, 30);
             this.SearchBookByStatusCheckBox.Name = "SearchBookByStatusCheckBox";
             this.SearchBookByStatusCheckBox.Size = new System.Drawing.Size(98, 24);
             this.SearchBookByStatusCheckBox.TabIndex = 5;
@@ -197,7 +198,7 @@
             // SearchBookByAuthorCheckBox
             // 
             this.SearchBookByAuthorCheckBox.AutoSize = true;
-            this.SearchBookByAuthorCheckBox.Location = new System.Drawing.Point(231, 22);
+            this.SearchBookByAuthorCheckBox.Location = new System.Drawing.Point(203, 30);
             this.SearchBookByAuthorCheckBox.Name = "SearchBookByAuthorCheckBox";
             this.SearchBookByAuthorCheckBox.Size = new System.Drawing.Size(78, 24);
             this.SearchBookByAuthorCheckBox.TabIndex = 4;
@@ -207,7 +208,7 @@
             // SearchBookByTypeCheckBox
             // 
             this.SearchBookByTypeCheckBox.AutoSize = true;
-            this.SearchBookByTypeCheckBox.Location = new System.Drawing.Point(124, 22);
+            this.SearchBookByTypeCheckBox.Location = new System.Drawing.Point(113, 30);
             this.SearchBookByTypeCheckBox.Name = "SearchBookByTypeCheckBox";
             this.SearchBookByTypeCheckBox.Size = new System.Drawing.Size(84, 24);
             this.SearchBookByTypeCheckBox.TabIndex = 3;
@@ -217,7 +218,7 @@
             // SearchBookByNameCheckBox
             // 
             this.SearchBookByNameCheckBox.AutoSize = true;
-            this.SearchBookByNameCheckBox.Location = new System.Drawing.Point(17, 22);
+            this.SearchBookByNameCheckBox.Location = new System.Drawing.Point(20, 30);
             this.SearchBookByNameCheckBox.Name = "SearchBookByNameCheckBox";
             this.SearchBookByNameCheckBox.Size = new System.Drawing.Size(87, 24);
             this.SearchBookByNameCheckBox.TabIndex = 2;
@@ -226,16 +227,16 @@
             // 
             // SearchBookSearchCriteriaTextBox
             // 
-            this.SearchBookSearchCriteriaTextBox.Location = new System.Drawing.Point(85, 53);
+            this.SearchBookSearchCriteriaTextBox.Location = new System.Drawing.Point(88, 60);
             this.SearchBookSearchCriteriaTextBox.Name = "SearchBookSearchCriteriaTextBox";
-            this.SearchBookSearchCriteriaTextBox.Size = new System.Drawing.Size(125, 27);
+            this.SearchBookSearchCriteriaTextBox.Size = new System.Drawing.Size(181, 27);
             this.SearchBookSearchCriteriaTextBox.TabIndex = 1;
             // 
             // BookPageSearchBooksButton
             // 
-            this.BookPageSearchBooksButton.Location = new System.Drawing.Point(216, 53);
+            this.BookPageSearchBooksButton.Location = new System.Drawing.Point(287, 58);
             this.BookPageSearchBooksButton.Name = "BookPageSearchBooksButton";
-            this.BookPageSearchBooksButton.Size = new System.Drawing.Size(94, 29);
+            this.BookPageSearchBooksButton.Size = new System.Drawing.Size(94, 30);
             this.BookPageSearchBooksButton.TabIndex = 0;
             this.BookPageSearchBooksButton.Text = "Tìm kiếm";
             this.BookPageSearchBooksButton.UseVisualStyleBackColor = true;
@@ -356,6 +357,7 @@
             // 
             // SearchLibraryConfigurationGroupBox
             // 
+            this.SearchLibraryConfigurationGroupBox.Controls.Add(this.label1);
             this.SearchLibraryConfigurationGroupBox.Controls.Add(this.SearchConfigurationSearchCriteriaTextBox);
             this.SearchLibraryConfigurationGroupBox.Controls.Add(this.SearchConfigurationByCodeCheckBox);
             this.SearchLibraryConfigurationGroupBox.Controls.Add(this.SearchConfigurationByNameCheckBox);
@@ -370,7 +372,7 @@
             // 
             // SearchConfigurationSearchCriteriaTextBox
             // 
-            this.SearchConfigurationSearchCriteriaTextBox.Location = new System.Drawing.Point(20, 56);
+            this.SearchConfigurationSearchCriteriaTextBox.Location = new System.Drawing.Point(88, 61);
             this.SearchConfigurationSearchCriteriaTextBox.Name = "SearchConfigurationSearchCriteriaTextBox";
             this.SearchConfigurationSearchCriteriaTextBox.Size = new System.Drawing.Size(125, 27);
             this.SearchConfigurationSearchCriteriaTextBox.TabIndex = 6;
@@ -378,7 +380,7 @@
             // SearchConfigurationByCodeCheckBox
             // 
             this.SearchConfigurationByCodeCheckBox.AutoSize = true;
-            this.SearchConfigurationByCodeCheckBox.Location = new System.Drawing.Point(20, 26);
+            this.SearchConfigurationByCodeCheckBox.Location = new System.Drawing.Point(20, 30);
             this.SearchConfigurationByCodeCheckBox.Name = "SearchConfigurationByCodeCheckBox";
             this.SearchConfigurationByCodeCheckBox.Size = new System.Drawing.Size(111, 24);
             this.SearchConfigurationByCodeCheckBox.TabIndex = 5;
@@ -388,7 +390,7 @@
             // SearchConfigurationByNameCheckBox
             // 
             this.SearchConfigurationByNameCheckBox.AutoSize = true;
-            this.SearchConfigurationByNameCheckBox.Location = new System.Drawing.Point(137, 26);
+            this.SearchConfigurationByNameCheckBox.Location = new System.Drawing.Point(137, 30);
             this.SearchConfigurationByNameCheckBox.Name = "SearchConfigurationByNameCheckBox";
             this.SearchConfigurationByNameCheckBox.Size = new System.Drawing.Size(113, 24);
             this.SearchConfigurationByNameCheckBox.TabIndex = 4;
@@ -397,7 +399,7 @@
             // 
             // LibraryConfigurationSearchButton
             // 
-            this.LibraryConfigurationSearchButton.Location = new System.Drawing.Point(156, 56);
+            this.LibraryConfigurationSearchButton.Location = new System.Drawing.Point(219, 61);
             this.LibraryConfigurationSearchButton.Name = "LibraryConfigurationSearchButton";
             this.LibraryConfigurationSearchButton.Size = new System.Drawing.Size(94, 29);
             this.LibraryConfigurationSearchButton.TabIndex = 0;
@@ -453,6 +455,15 @@
             this.LibraryConfigurationValueeColumn.HeaderText = "Giá trị";
             this.LibraryConfigurationValueeColumn.MinimumWidth = 6;
             this.LibraryConfigurationValueeColumn.Name = "LibraryConfigurationValueeColumn";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(20, 65);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 20);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Từ khoá";
             // 
             // LibraryManagementSystemUI
             // 
@@ -525,5 +536,6 @@
         private TextBox SearchConfigurationSearchCriteriaTextBox;
         private CheckBox SearchConfigurationByCodeCheckBox;
         private CheckBox SearchConfigurationByNameCheckBox;
+        private Label label1;
     }
 }
