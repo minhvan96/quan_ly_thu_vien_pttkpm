@@ -22,9 +22,17 @@ public static class QueryExtensions
 
         if (!searchPredicates.Any())
             return searchPredicate;
-        //searchPredicate = searchPredicates.Dequeue();
+
+        if (IsConstantTrue(searchPredicate))
+            searchPredicate = searchPredicates.Dequeue();
         while (searchPredicates.Any())
             searchPredicate = searchPredicate.Or(searchPredicates.Dequeue());
         return searchPredicate;
+    }
+
+    private static bool IsConstantTrue(LambdaExpression lambda)
+    {
+        return lambda.Body.NodeType == ExpressionType.Constant
+               && true.Equals(((ConstantExpression)lambda.Body).Value);
     }
 }
