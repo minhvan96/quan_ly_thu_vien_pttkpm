@@ -11,7 +11,8 @@ internal class LibraryConfigurationEntityTypeConfiguration : DomainEntityTypeCon
         base.Configure(builder);
         builder.ToTable("LibraryConfigurations");
         builder.HasKey(x => x.Id);
-
+        builder.HasIndex(configuration => configuration.Code)
+            .IsUnique();
         builder.Property(configuration => configuration.Name)
             .IsRequired()
             .HasMaxLength(254);

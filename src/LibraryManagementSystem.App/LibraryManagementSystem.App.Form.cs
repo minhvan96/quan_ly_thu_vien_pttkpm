@@ -1,7 +1,10 @@
 using LibraryManagementSystem.App.Features.BookFeature.Commands;
 using LibraryManagementSystem.App.Features.BookFeature.Queries;
+using LibraryManagementSystem.App.Features.LibraryConfigurationFeature.Commands;
 using LibraryManagementSystem.App.Features.LibraryConfigurationFeature.Queries;
 using MediatR;
+using System.Diagnostics.Metrics;
+using System.Windows.Forms;
 
 namespace LibraryManagementSystem.App;
 
@@ -101,9 +104,8 @@ public partial class LibraryManagementSystemUI : Form
         var configurations = await _mediator.Send(listLibraryConfigurationsQuery);
 
         LibraryConfigurationDataGridView.Rows.Clear();
-        foreach(var configuration in configurations.Items)
+        foreach (var configuration in configurations.Items)
         {
-
             var configurationGridViewRow = new DataGridViewRow();
             configurationGridViewRow.CreateCells(LibraryConfigurationDataGridView);
             configurationGridViewRow.Cells[0].Value = configuration.Code;
@@ -145,6 +147,48 @@ public partial class LibraryManagementSystemUI : Form
             BookPageDataGridView.Rows.Add(configurationGridViewRow);
 
             index++;
+        }
+    }
+
+    private async void LibraryConfigurationDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+    {
+        try
+        {
+            if (e.RowIndex == -1)
+                return;
+            var name = string.Empty;
+            int? value = null;
+            switch (e.ColumnIndex)
+            {
+                case 1:
+                    name = LibraryConfigurationDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                    break;
+                case 2:
+                    value = int.Parse(LibraryConfigurationDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value
+                        .ToString() ?? string.Empty);
+                    break;
+            }
+
+            var updateLibraryConfigurationCommand = new UpdateLibraryConfigurationCommand
+            {
+                Code = (string)LibraryConfigurationDataGridView.Rows[e.RowIndex].Cells[0].Value,
+                Name = name,
+                Value = value
+            };
+            var result = await _mediator.Send(updateLibraryConfigurationCommand);
+            const string title = "UPDATE STATUS";  
+            var message = "Update Data Successfully"; 
+            if (!result.Success)
+            {
+                message = "Update data has failed";
+                
+            }
+
+            MessageBox.Show(message, title);  
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message, "Error");
         }
     }
 }

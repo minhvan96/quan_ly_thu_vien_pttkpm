@@ -53,15 +53,15 @@
             this.LibraryConfigurationTab = new System.Windows.Forms.TabPage();
             this.LibraryConfigurationTab_MainContainer = new System.Windows.Forms.SplitContainer();
             this.SearchLibraryConfigurationGroupBox = new System.Windows.Forms.GroupBox();
+            this.SearchConfigurationSearchCriteriaTextBox = new System.Windows.Forms.TextBox();
+            this.SearchConfigurationByCodeCheckBox = new System.Windows.Forms.CheckBox();
+            this.SearchConfigurationByNameCheckBox = new System.Windows.Forms.CheckBox();
             this.LibraryConfigurationSearchButton = new System.Windows.Forms.Button();
             this.LibraryConfigurationDataGroupBox = new System.Windows.Forms.GroupBox();
             this.LibraryConfigurationDataGridView = new System.Windows.Forms.DataGridView();
             this.LibraryConfigurationCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LibraryConfigurationNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LibraryConfigurationValueeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SearchConfigurationByCodeCheckBox = new System.Windows.Forms.CheckBox();
-            this.SearchConfigurationByNameCheckBox = new System.Windows.Forms.CheckBox();
-            this.SearchConfigurationSearchCriteriaTextBox = new System.Windows.Forms.TextBox();
             this.SystemMainTabControl.SuspendLayout();
             this.STC_HomeTP.SuspendLayout();
             this.STC_BookTP.SuspendLayout();
@@ -368,6 +368,33 @@
             this.SearchLibraryConfigurationGroupBox.TabStop = false;
             this.SearchLibraryConfigurationGroupBox.Text = "Tìm kiếm";
             // 
+            // SearchConfigurationSearchCriteriaTextBox
+            // 
+            this.SearchConfigurationSearchCriteriaTextBox.Location = new System.Drawing.Point(20, 56);
+            this.SearchConfigurationSearchCriteriaTextBox.Name = "SearchConfigurationSearchCriteriaTextBox";
+            this.SearchConfigurationSearchCriteriaTextBox.Size = new System.Drawing.Size(125, 27);
+            this.SearchConfigurationSearchCriteriaTextBox.TabIndex = 6;
+            // 
+            // SearchConfigurationByCodeCheckBox
+            // 
+            this.SearchConfigurationByCodeCheckBox.AutoSize = true;
+            this.SearchConfigurationByCodeCheckBox.Location = new System.Drawing.Point(20, 26);
+            this.SearchConfigurationByCodeCheckBox.Name = "SearchConfigurationByCodeCheckBox";
+            this.SearchConfigurationByCodeCheckBox.Size = new System.Drawing.Size(111, 24);
+            this.SearchConfigurationByCodeCheckBox.TabIndex = 5;
+            this.SearchConfigurationByCodeCheckBox.Text = "Mã cấu hình";
+            this.SearchConfigurationByCodeCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // SearchConfigurationByNameCheckBox
+            // 
+            this.SearchConfigurationByNameCheckBox.AutoSize = true;
+            this.SearchConfigurationByNameCheckBox.Location = new System.Drawing.Point(137, 26);
+            this.SearchConfigurationByNameCheckBox.Name = "SearchConfigurationByNameCheckBox";
+            this.SearchConfigurationByNameCheckBox.Size = new System.Drawing.Size(113, 24);
+            this.SearchConfigurationByNameCheckBox.TabIndex = 4;
+            this.SearchConfigurationByNameCheckBox.Text = "Tên cấu hình";
+            this.SearchConfigurationByNameCheckBox.UseVisualStyleBackColor = true;
+            // 
             // LibraryConfigurationSearchButton
             // 
             this.LibraryConfigurationSearchButton.Location = new System.Drawing.Point(156, 56);
@@ -403,6 +430,7 @@
             this.LibraryConfigurationDataGridView.RowTemplate.Height = 29;
             this.LibraryConfigurationDataGridView.Size = new System.Drawing.Size(1012, 454);
             this.LibraryConfigurationDataGridView.TabIndex = 0;
+            this.LibraryConfigurationDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.LibraryConfigurationDataGridView_CellValueChanged);
             // 
             // LibraryConfigurationCodeColumn
             // 
@@ -425,33 +453,6 @@
             this.LibraryConfigurationValueeColumn.HeaderText = "Giá trị";
             this.LibraryConfigurationValueeColumn.MinimumWidth = 6;
             this.LibraryConfigurationValueeColumn.Name = "LibraryConfigurationValueeColumn";
-            // 
-            // SearchConfigurationByCodeCheckBox
-            // 
-            this.SearchConfigurationByCodeCheckBox.AutoSize = true;
-            this.SearchConfigurationByCodeCheckBox.Location = new System.Drawing.Point(20, 26);
-            this.SearchConfigurationByCodeCheckBox.Name = "SearchConfigurationByCodeCheckBox";
-            this.SearchConfigurationByCodeCheckBox.Size = new System.Drawing.Size(111, 24);
-            this.SearchConfigurationByCodeCheckBox.TabIndex = 5;
-            this.SearchConfigurationByCodeCheckBox.Text = "Mã cấu hình";
-            this.SearchConfigurationByCodeCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // SearchConfigurationByNameCheckBox
-            // 
-            this.SearchConfigurationByNameCheckBox.AutoSize = true;
-            this.SearchConfigurationByNameCheckBox.Location = new System.Drawing.Point(137, 26);
-            this.SearchConfigurationByNameCheckBox.Name = "SearchConfigurationByNameCheckBox";
-            this.SearchConfigurationByNameCheckBox.Size = new System.Drawing.Size(113, 24);
-            this.SearchConfigurationByNameCheckBox.TabIndex = 4;
-            this.SearchConfigurationByNameCheckBox.Text = "Tên cấu hình";
-            this.SearchConfigurationByNameCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // SearchConfigurationSearchCriteriaTextBox
-            // 
-            this.SearchConfigurationSearchCriteriaTextBox.Location = new System.Drawing.Point(20, 56);
-            this.SearchConfigurationSearchCriteriaTextBox.Name = "SearchConfigurationSearchCriteriaTextBox";
-            this.SearchConfigurationSearchCriteriaTextBox.Size = new System.Drawing.Size(125, 27);
-            this.SearchConfigurationSearchCriteriaTextBox.TabIndex = 6;
             // 
             // LibraryManagementSystemUI
             // 

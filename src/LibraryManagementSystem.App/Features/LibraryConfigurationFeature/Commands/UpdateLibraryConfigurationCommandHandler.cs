@@ -1,5 +1,4 @@
-﻿using LibraryManagementSystem.App.Features.BookFeature.Commands;
-using LibraryManagementSystem.Infrastructure.Database;
+﻿using LibraryManagementSystem.Infrastructure.Database;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,7 +16,7 @@ public class UpdateLibraryConfigurationCommandHandler : IRequestHandler<UpdateLi
     public async Task<UpdateLibraryConfigurationRequest> Handle(UpdateLibraryConfigurationCommand request, CancellationToken cancellationToken)
     {
         var configuration = await _context.LibraryConfigurations
-            .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
+            .FirstOrDefaultAsync(x => x.Code == request.Code, cancellationToken);
 
         if (configuration is null)
             return new UpdateLibraryConfigurationRequest(false);
