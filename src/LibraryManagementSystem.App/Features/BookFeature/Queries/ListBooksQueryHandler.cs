@@ -51,8 +51,6 @@ public class ListBooksQueryHandler : IListQueryHandler<ListBooksQuery, BookDto>
         }
 
         var books = await _context.Books
-            .Include(book => book.BookType)
-            .Include(book=>book.Author)
             .Where(searchPredicate)
             .Select(x => new BookDto
             {

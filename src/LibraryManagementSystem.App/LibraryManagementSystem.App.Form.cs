@@ -88,9 +88,15 @@ public partial class LibraryManagementSystemUI : Form
 
     private async void LibraryConfigurationSearchButton_Click(object sender, EventArgs e)
     {
+        var searchOptions = SearchConfigurationOptions.None;
+        if (SearchConfigurationByCodeCheckBox.Checked)
+            searchOptions |= SearchConfigurationOptions.ConfigurationCode;
+        if (SearchConfigurationByNameCheckBox.Checked)
+            searchOptions |= SearchConfigurationOptions.ConfigurationName;
         var listLibraryConfigurationsQuery = new ListLibraryConfigurationsQuery
         {
-
+            SearchCriteria = SearchConfigurationSearchCriteriaTextBox.Text,
+            SearchOption = searchOptions
         };
         var configurations = await _mediator.Send(listLibraryConfigurationsQuery);
 
