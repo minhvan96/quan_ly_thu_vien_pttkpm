@@ -76,8 +76,8 @@ public partial class LibraryManagementSystemUI : Form
         if (tabPage.Name == "MakeBorrow")
         {
             // show UI make borrow voucher
-            var myUserControl = new MakeBorrowVoucher();
-            //myUserControl.Dock = DockStyle.Fill;
+            var myUserControl = new MakeBorrowVoucher(_mediator);
+            myUserControl.Dock = DockStyle.Fill;
             MakeBorrow.Controls.Add(myUserControl);
         }
     }
@@ -133,7 +133,7 @@ public partial class LibraryManagementSystemUI : Form
             configurationGridViewRow.CreateCells(BookPageDataGridView);
             configurationGridViewRow.Cells[0].Value = index;
             configurationGridViewRow.Cells[1].Value = book.Name;
-            configurationGridViewRow.Cells[2].Value = book.Type;
+            configurationGridViewRow.Cells[2].Value = book.TypeName;
             configurationGridViewRow.Cells[3].Value = book.Author;
             configurationGridViewRow.Cells[4].Value = "tinh trang";
             BookPageDataGridView.Rows.Add(configurationGridViewRow);

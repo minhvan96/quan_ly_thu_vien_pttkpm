@@ -43,4 +43,9 @@
       </None>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Features\MakeBorrowVoucherFeature\Dtos\" />
+      <Folder Include="Features\MakeBorrowVoucherFeature\Queries\" />
+    </ItemGroup>
+
 </Project>

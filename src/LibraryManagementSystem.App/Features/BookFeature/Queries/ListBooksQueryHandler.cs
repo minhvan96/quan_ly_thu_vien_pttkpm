@@ -60,7 +60,7 @@ public class ListBooksQueryHandler : IListQueryHandler<ListBooksQuery, BookDto>
                 Name = x.Name,
                 Code = x.Code,
                 Author = x.Author.Name,
-                Type = x.BookType.Name
+                TypeName = x.BookType.Name
             })
             .ToPagedListAsync(request.PageIndex, request.PageSize, cancellationToken: cancellationToken);
         return books;
