@@ -5,5 +5,16 @@ namespace LibraryManagementSystem.App.Features.LibraryConfigurationFeature.Queri
 
 public class ListLibraryConfigurationsQuery : ListQuery<LibraryConfigurationDto>
 {
-    
+    public SearchConfigurationOptions SearchOption { get; init; }
+
+    public string SearchCriteria { get; init; } = string.Empty; // text
+}
+
+[Flags]
+public enum SearchConfigurationOptions
+{
+    None = 0,
+    ConfigurationCode = 1,
+    ConfigurationName = 2,
+    All = ConfigurationCode | ConfigurationName
 }

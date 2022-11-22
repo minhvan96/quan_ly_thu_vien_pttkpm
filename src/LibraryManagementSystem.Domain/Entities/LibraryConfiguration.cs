@@ -15,8 +15,8 @@ public class LibraryConfiguration : Entity
     }
 
     public LibraryConfiguration(Guid id,
-        string code,
-        string name,
+        string? code,
+        string? name,
         int value)
         : base(id)
     {
@@ -25,8 +25,8 @@ public class LibraryConfiguration : Entity
         Value = value;
     }
 
-    public LibraryConfiguration(string name,
-        string code,
+    public LibraryConfiguration(string? name,
+        string? code,
         int value)
     {
         Name = name;
@@ -34,7 +34,7 @@ public class LibraryConfiguration : Entity
         Value = value;
     }
 
-    public string Code { get; }
-    public string Name { get; set; }
+    public string? Code { get; }
+    public string? Name { get; set; }
     public int Value { get; set; }
 }

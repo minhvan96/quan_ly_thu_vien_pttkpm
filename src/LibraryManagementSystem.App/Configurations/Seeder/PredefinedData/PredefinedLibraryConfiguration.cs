@@ -14,7 +14,7 @@ public static class PredefinedLibraryConfiguration
         while (!reader.EndOfStream)
         {
             var line = reader.ReadLine();
-            var values = line?.Split(',');
+            string?[]? values = line?.Split(',');
             var configuration = CreateBook(values[0], values[1], values[2], values[3]);
             configurations.Add(configuration);
         }
@@ -22,7 +22,7 @@ public static class PredefinedLibraryConfiguration
         return configurations;
     }
 
-    private static LibraryConfiguration CreateBook(string id, string code, string name, string value)
+    private static LibraryConfiguration CreateBook(string? id, string? code, string? name, string? value)
     {
         return new LibraryConfiguration(new Guid(id),
             code,
