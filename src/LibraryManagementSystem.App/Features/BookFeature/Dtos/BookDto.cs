@@ -7,4 +7,5 @@ public record BookDto
     public string Code { get; init; } = string.Empty;
     public string TypeName { get; init; } = string.Empty;
     public string Author { get; init; } = string.Empty;
+    public int InStock { get; set; }
 }

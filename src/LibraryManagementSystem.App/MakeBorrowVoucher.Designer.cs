@@ -32,10 +32,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.gb_selelcted = new System.Windows.Forms.GroupBox();
             this.dtg_bookListSelected = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BookName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BookId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AuthorSelected = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gb_books = new System.Windows.Forms.GroupBox();
             this.dtg_BookList = new System.Windows.Forms.DataGridView();
             this.pn_infoReader = new System.Windows.Forms.Panel();
@@ -46,6 +46,7 @@
             this.pn_header = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_submit = new System.Windows.Forms.Button();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -94,47 +95,61 @@
             // 
             // dtg_bookListSelected
             // 
+            this.dtg_bookListSelected.AllowUserToAddRows = false;
+            this.dtg_bookListSelected.AllowUserToDeleteRows = false;
             this.dtg_bookListSelected.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtg_bookListSelected.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.Type,
-            this.Column1});
+            this.BookName,
+            this.BookId,
+            this.AuthorSelected,
+            this.Type});
+            this.dtg_bookListSelected.Cursor = System.Windows.Forms.Cursors.VSplit;
             this.dtg_bookListSelected.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtg_bookListSelected.Location = new System.Drawing.Point(3, 23);
             this.dtg_bookListSelected.Name = "dtg_bookListSelected";
+            this.dtg_bookListSelected.ReadOnly = true;
             this.dtg_bookListSelected.RowHeadersWidth = 51;
             this.dtg_bookListSelected.RowTemplate.Height = 29;
+            this.dtg_bookListSelected.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtg_bookListSelected.Size = new System.Drawing.Size(488, 411);
             this.dtg_bookListSelected.TabIndex = 0;
             // 
-            // dataGridViewTextBoxColumn1
+            // BookName
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Tên Sách";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 125;
+            this.BookName.DataPropertyName = "BookName";
+            this.BookName.HeaderText = "Tên Sách";
+            this.BookName.MinimumWidth = 6;
+            this.BookName.Name = "BookName";
+            this.BookName.ReadOnly = true;
+            this.BookName.Width = 125;
             // 
-            // dataGridViewTextBoxColumn2
+            // BookId
             // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Tác Giả";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 125;
+            this.BookId.DataPropertyName = "BookId";
+            this.BookId.HeaderText = "Column1";
+            this.BookId.MinimumWidth = 6;
+            this.BookId.Name = "BookId";
+            this.BookId.ReadOnly = true;
+            this.BookId.Visible = false;
+            this.BookId.Width = 125;
+            // 
+            // AuthorSelected
+            // 
+            this.AuthorSelected.DataPropertyName = "Author";
+            this.AuthorSelected.HeaderText = "Tác Giả";
+            this.AuthorSelected.MinimumWidth = 6;
+            this.AuthorSelected.Name = "AuthorSelected";
+            this.AuthorSelected.ReadOnly = true;
+            this.AuthorSelected.Width = 125;
             // 
             // Type
             // 
+            this.Type.DataPropertyName = "BookType";
             this.Type.HeaderText = "Thể loại";
             this.Type.MinimumWidth = 6;
             this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
             this.Type.Width = 125;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 125;
             // 
             // gb_books
             // 
@@ -153,6 +168,7 @@
             this.dtg_BookList.AllowUserToDeleteRows = false;
             this.dtg_BookList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtg_BookList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
             this.Name,
             this.Author,
             this.TypeName,
@@ -164,8 +180,10 @@
             this.dtg_BookList.ReadOnly = true;
             this.dtg_BookList.RowHeadersWidth = 51;
             this.dtg_BookList.RowTemplate.Height = 29;
+            this.dtg_BookList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtg_BookList.Size = new System.Drawing.Size(524, 411);
             this.dtg_BookList.TabIndex = 0;
+            this.dtg_BookList.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_BookList_CellContentDoubleClick);
             // 
             // pn_infoReader
             // 
@@ -239,6 +257,16 @@
             this.btn_submit.Text = "Xác nhận";
             this.btn_submit.UseVisualStyleBackColor = true;
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Column1";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            this.Id.Width = 125;
+            // 
             // Name
             // 
             this.Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -269,7 +297,7 @@
             // 
             // Quantity
             // 
-            this.Quantity.DataPropertyName = "Quantity";
+            this.Quantity.DataPropertyName = "InStock";
             this.Quantity.HeaderText = "Số lượng";
             this.Quantity.MinimumWidth = 6;
             this.Quantity.Name = "Quantity";
@@ -283,6 +311,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.pn_header);
             this.Controls.Add(this.panel1);
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Size = new System.Drawing.Size(1024, 600);
             this.Load += new System.EventHandler(this.Loaded);
             this.panel1.ResumeLayout(false);
@@ -315,10 +344,11 @@
         private Label label2;
         private Button btn_submit;
         private ComboBox cbb_Reader;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn BookName;
+        private DataGridViewTextBoxColumn BookId;
+        private DataGridViewTextBoxColumn AuthorSelected;
         private DataGridViewTextBoxColumn Type;
-        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Name;
         private DataGridViewTextBoxColumn Author;
         private DataGridViewTextBoxColumn TypeName;
