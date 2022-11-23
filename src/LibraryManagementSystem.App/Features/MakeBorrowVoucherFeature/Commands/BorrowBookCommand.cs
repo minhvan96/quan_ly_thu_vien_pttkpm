@@ -13,7 +13,7 @@ public class BorrowBookCommand : IRequest<BorrowBookResult>
 
     public List<Guid> BookIds { get; init; }
     public Guid ReaderId { get; init; }
-    public DateTime BorrowDate { get; init; }
+    public DateTimeOffset BorrowDate { get; init; }
 }
 
 public record BorrowBookResult : RequestResult

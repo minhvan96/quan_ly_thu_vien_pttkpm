@@ -38,6 +38,11 @@
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gb_books = new System.Windows.Forms.GroupBox();
             this.dtg_BookList = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pn_infoReader = new System.Windows.Forms.Panel();
             this.cbb_Reader = new System.Windows.Forms.ComboBox();
             this.datepk_borrowDate = new System.Windows.Forms.DateTimePicker();
@@ -46,11 +51,6 @@
             this.pn_header = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_submit = new System.Windows.Forms.Button();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.gb_selelcted.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_bookListSelected)).BeginInit();
@@ -103,7 +103,6 @@
             this.BookId,
             this.AuthorSelected,
             this.Type});
-            this.dtg_bookListSelected.Cursor = System.Windows.Forms.Cursors.VSplit;
             this.dtg_bookListSelected.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtg_bookListSelected.Location = new System.Drawing.Point(3, 23);
             this.dtg_bookListSelected.Name = "dtg_bookListSelected";
@@ -113,6 +112,7 @@
             this.dtg_bookListSelected.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtg_bookListSelected.Size = new System.Drawing.Size(488, 411);
             this.dtg_bookListSelected.TabIndex = 0;
+            this.dtg_bookListSelected.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_bookListSelected_CellContentDoubleClick);
             // 
             // BookName
             // 
@@ -126,7 +126,7 @@
             // BookId
             // 
             this.BookId.DataPropertyName = "BookId";
-            this.BookId.HeaderText = "Column1";
+            this.BookId.HeaderText = "BookId";
             this.BookId.MinimumWidth = 6;
             this.BookId.Name = "BookId";
             this.BookId.ReadOnly = true;
@@ -172,7 +172,7 @@
             this.Name,
             this.Author,
             this.TypeName,
-            this.Quantity});
+            this.InStock});
             this.dtg_BookList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtg_BookList.Location = new System.Drawing.Point(3, 23);
             this.dtg_BookList.MultiSelect = false;
@@ -184,6 +184,53 @@
             this.dtg_BookList.Size = new System.Drawing.Size(524, 411);
             this.dtg_BookList.TabIndex = 0;
             this.dtg_BookList.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_BookList_CellContentDoubleClick);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Column1";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            this.Id.Width = 125;
+            // 
+            // Name
+            // 
+            this.Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Name.DataPropertyName = "Name";
+            this.Name.HeaderText = "Tên Sách";
+            this.Name.MinimumWidth = 6;
+            this.Name.Name = "Name";
+            this.Name.ReadOnly = true;
+            this.Name.Width = 125;
+            // 
+            // Author
+            // 
+            this.Author.DataPropertyName = "Author";
+            this.Author.HeaderText = "Tác Giả";
+            this.Author.MinimumWidth = 6;
+            this.Author.Name = "Author";
+            this.Author.ReadOnly = true;
+            this.Author.Width = 125;
+            // 
+            // TypeName
+            // 
+            this.TypeName.DataPropertyName = "TypeName";
+            this.TypeName.HeaderText = "Thể Loại";
+            this.TypeName.MinimumWidth = 6;
+            this.TypeName.Name = "TypeName";
+            this.TypeName.ReadOnly = true;
+            this.TypeName.Width = 125;
+            // 
+            // InStock
+            // 
+            this.InStock.DataPropertyName = "InStock";
+            this.InStock.HeaderText = "Số lượng";
+            this.InStock.MinimumWidth = 6;
+            this.InStock.Name = "InStock";
+            this.InStock.ReadOnly = true;
+            this.InStock.Width = 125;
             // 
             // pn_infoReader
             // 
@@ -256,53 +303,7 @@
             this.btn_submit.TabIndex = 0;
             this.btn_submit.Text = "Xác nhận";
             this.btn_submit.UseVisualStyleBackColor = true;
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Column1";
-            this.Id.MinimumWidth = 6;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            this.Id.Width = 125;
-            // 
-            // Name
-            // 
-            this.Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Name.DataPropertyName = "Name";
-            this.Name.HeaderText = "Tên Sách";
-            this.Name.MinimumWidth = 6;
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
-            this.Name.Width = 125;
-            // 
-            // Author
-            // 
-            this.Author.DataPropertyName = "Author";
-            this.Author.HeaderText = "Tác Giả";
-            this.Author.MinimumWidth = 6;
-            this.Author.Name = "Author";
-            this.Author.ReadOnly = true;
-            this.Author.Width = 125;
-            // 
-            // TypeName
-            // 
-            this.TypeName.DataPropertyName = "TypeName";
-            this.TypeName.HeaderText = "Thể Loại";
-            this.TypeName.MinimumWidth = 6;
-            this.TypeName.Name = "TypeName";
-            this.TypeName.ReadOnly = true;
-            this.TypeName.Width = 125;
-            // 
-            // Quantity
-            // 
-            this.Quantity.DataPropertyName = "InStock";
-            this.Quantity.HeaderText = "Số lượng";
-            this.Quantity.MinimumWidth = 6;
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
-            this.Quantity.Width = 125;
+            this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click);
             // 
             // MakeBorrowVoucher
             // 
@@ -311,7 +312,6 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.pn_header);
             this.Controls.Add(this.panel1);
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Size = new System.Drawing.Size(1024, 600);
             this.Load += new System.EventHandler(this.Loaded);
             this.panel1.ResumeLayout(false);
@@ -344,14 +344,14 @@
         private Label label2;
         private Button btn_submit;
         private ComboBox cbb_Reader;
-        private DataGridViewTextBoxColumn BookName;
-        private DataGridViewTextBoxColumn BookId;
-        private DataGridViewTextBoxColumn AuthorSelected;
-        private DataGridViewTextBoxColumn Type;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Name;
         private DataGridViewTextBoxColumn Author;
         private DataGridViewTextBoxColumn TypeName;
-        private DataGridViewTextBoxColumn Quantity;
+        private DataGridViewTextBoxColumn InStock;
+        private DataGridViewTextBoxColumn BookName;
+        private DataGridViewTextBoxColumn BookId;
+        private DataGridViewTextBoxColumn AuthorSelected;
+        private DataGridViewTextBoxColumn Type;
     }
 }

@@ -45,6 +45,7 @@
 
     <ItemGroup>
       <Folder Include="Features\MakeBorrowVoucherFeature\Queries\" />
+      <Folder Include="Features\ReaderFeature\Commands\" />
     </ItemGroup>
 
 </Project>
