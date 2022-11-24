@@ -123,7 +123,19 @@ public partial class MakeBorrowVoucher : UserControl
             BorrowDate = DateTimeOffset.Parse(borrowDate),
             ReaderId = new Guid(readerId),
         };
+        try
+        {
+            await _mediator.Send(bodyBorrowBook);
+            MessageBox.Show("Cho mượn sách thành công");
 
-        await _mediator.Send(bodyBorrowBook);
+            bookSelectedList.Clear();
+            dtg_bookListSelected.DataSource = new BindingSource(bookSelectedList, "");
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Có lỗi xảy ra, vui lòng thử lại!");
+        }
+
+
     }
 }
