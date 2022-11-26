@@ -26,16 +26,17 @@ public class BorrowVoucherListQueryHandler : IListQueryHandler<BorrowVoucherList
     {
         //var booksOfBorrow
         var borrowBooks = await _context.BorrowBooks
-            .Include(x=> x.Reader)
+            .Include(x => x.Reader)
             .Include(x => x.BorrowBookDetails)
-            //.Select(x => new BorrowBookListDto
-            //{
-            //    Id = x.Id,
-            //    Reader = x.Reader,
-            //    BorrowDate = x.BorrowDate,
-            //    BookCount = x.BorrowBookDetails.Count
-            //})
-            .ToListAsync();
-        return null;
+            .Select(x => new BorrowBookListDto
+            {
+                Id = x.Id,
+                ReaderName = x.Reader.Name,
+                BorrowDate = x.BorrowDate,
+                BookCount = x.BorrowBookDetails.Count,
+                Status = x.BorrowBookDetails.Any(b => b.IsReturnBook == false) ? "Chưa Trả Hết" : "Đã Trả Hết"
+            })
+            .ToPagedListAsync(request.PageIndex, request.PageSize, cancellationToken: cancellationToken);
+        return borrowBooks;
     }
 }

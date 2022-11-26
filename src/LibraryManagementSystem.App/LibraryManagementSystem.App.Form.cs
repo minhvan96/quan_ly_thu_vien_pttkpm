@@ -79,14 +79,16 @@ public partial class LibraryManagementSystemUI : Form
             // show UI make borrow voucher
             var myUserControl = new MakeBorrowVoucher(_mediator);
             myUserControl.Dock = DockStyle.Fill;
+            MakeBorrow.Controls.Clear();
             MakeBorrow.Controls.Add(myUserControl);
         }
         if (tabPage.Name == "BorrowBookList")
         {
             // show UI make borrow voucher
-            var myUserControl = new BorrowVoucherList(_mediator);
+            var myUserControl = new BorrowVoucherList(_mediator, BorrowBookList);
             myUserControl.Dock = DockStyle.Fill;
-            MakeBorrow.Controls.Add(myUserControl);
+            BorrowBookList.Controls.Clear();
+            BorrowBookList.Controls.Add(myUserControl);
         }
     }
 
