@@ -4,6 +4,7 @@ using LibraryManagementSystem.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryManagementSystem.Infrastructure.Migrations
 {
     [DbContext(typeof(LibraryDbContext))]
-    partial class LibraryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221126025931_AddBorrowBookDetailTableAndUpdateBorrowBookTable")]
+    partial class AddBorrowBookDetailTableAndUpdateBorrowBookTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -165,9 +168,6 @@ namespace LibraryManagementSystem.Infrastructure.Migrations
                     b.Property<Guid>("BookId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("BorrowBookId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("datetimeoffset");
 
@@ -183,8 +183,6 @@ namespace LibraryManagementSystem.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BookId");
-
-                    b.HasIndex("BorrowBookId");
 
                     b.ToTable("BorrowBookDetails", (string)null);
                 });
@@ -372,15 +370,7 @@ namespace LibraryManagementSystem.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("LibraryManagementSystem.Domain.Entities.BorrowBook", "BorrowBook")
-                        .WithMany()
-                        .HasForeignKey("BorrowBookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Book");
-
-                    b.Navigation("BorrowBook");
                 });
 
             modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.CallCard", b =>

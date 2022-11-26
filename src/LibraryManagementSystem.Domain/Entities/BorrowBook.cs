@@ -10,42 +10,28 @@ namespace LibraryManagementSystem.Domain.Entities
     public class BorrowBook : Entity
     {
         public Guid ReaderId { get; set; }
-        public Guid BookId { get; set; }
         public DateTimeOffset BorrowDate { get; set; }
-        public bool IsReturnBook { get; set; }
         public DateTimeOffset CreatedDate { get; set; }
         private BorrowBook()
         {
         }
 
-        public BorrowBook(Guid readerId, Guid bookId, DateTimeOffset borrowDate, DateTimeOffset createDate, bool isReturnBook)
+        public BorrowBook(Guid readerId, DateTimeOffset borrowDate, DateTimeOffset createDate)
         {
-            this.ReaderId = readerId;
-            this.BookId = bookId;
+            this.ReaderId = readerId; 
             this.BorrowDate = borrowDate;
-            this.CreatedDate = createDate;
-            this.IsReturnBook = isReturnBook;
+            this.CreatedDate = createDate; 
         }
 
-        public BorrowBook(Guid id, Guid readerId, Guid bookId, DateTimeOffset borrowDate, DateTimeOffset createDate, bool isReturnBook)
+        public BorrowBook(Guid id, Guid readerId, DateTimeOffset borrowDate, DateTimeOffset createDate)
             : base(id)
         {
-            this.ReaderId = readerId;
-            this.BookId = bookId;
+            this.ReaderId = readerId; 
             this.BorrowDate = borrowDate;
-            this.CreatedDate = createDate;
-            this.IsReturnBook = isReturnBook;
-        }
+            this.CreatedDate = createDate; 
+        } 
 
-        private Book? _book;
-        private Reader? _reader;
-
-        public Book Book
-        {
-            set => _book = value;
-            get => _book
-                   ?? throw new InvalidOperationException("Uninitialized property: " + nameof(Book));
-        }
+        private Reader? _reader; 
         
         public Reader Reader
         {

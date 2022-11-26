@@ -15,12 +15,7 @@ internal class BorrowBookEntityConfiguration : DomainEntityTypeConfiguration<Bor
     {
         base.Configure(builder);
         builder.ToTable("BorrowBooks");
-        builder.HasKey(x => x.Id);
-
-        builder.HasOne(x => x.Book)
-            .WithMany()
-            .HasForeignKey(book => book.BookId)
-            .OnDelete(DeleteBehavior.Cascade);
+        builder.HasKey(x => x.Id); 
 
         builder.HasOne(x => x.Reader)
           .WithMany()

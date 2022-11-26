@@ -33,13 +33,13 @@ public class BorrowBookCommandHandler : IRequestHandler<BorrowBookCommand, Borro
         // save borrow book table
         foreach (var bookId in request.BookIds)
         {
-            var borrowBook = new BorrowBook(
-                request.ReaderId,
-                bookId,
-                request.BorrowDate,
-                DateTimeOffset.Now,
-                false);
-            await _context.AddAsync(borrowBook, cancellationToken);
+            //var borrowBook = new BorrowBook(
+            //    request.ReaderId,
+            //    bookId,
+            //    request.BorrowDate,
+            //    DateTimeOffset.Now,
+            //    false);
+            //await _context.AddAsync(borrowBook, cancellationToken);
         }
 
         await _context.SaveChangesAsync(cancellationToken); 
