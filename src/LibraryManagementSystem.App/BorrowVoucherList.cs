@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LibraryManagementSystem.App.Features.BorrowBookListFeature.Queries;
+using MediatR;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,17 @@ namespace LibraryManagementSystem.App
 {
     public partial class BorrowVoucherList : UserControl
     {
-        public BorrowVoucherList()
+        private readonly IMediator _mediator;
+        public BorrowVoucherList(IMediator mediator)
         {
             InitializeComponent();
+            this._mediator = mediator;
+        }
+
+        private async void BorrowVoucherList_Load(object sender, EventArgs e)
+        {
+            var bookListCmd = new BorrowVoucherListQuery();
+            var books = await _mediator.Send(bookListCmd);
         }
     }
 }

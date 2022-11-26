@@ -21,10 +21,10 @@ public class BorrowBookDetailEntityConfiguration : DomainEntityTypeConfiguration
           .WithMany()
           .HasForeignKey(reader => reader.BookId)
           .OnDelete(DeleteBehavior.Cascade);
-        
-        builder.HasOne(x => x.BorrowBook)
-          .WithMany()
-          .HasForeignKey(reader => reader.BorrowBookId)
-          .OnDelete(DeleteBehavior.Cascade);
+
+        //builder.HasOne(x => x.BorrowBook)
+        //  .WithMany()
+        //  .HasForeignKey(br => br.BorrowBookId)
+        //  .OnDelete(DeleteBehavior.Cascade);
     }
 }

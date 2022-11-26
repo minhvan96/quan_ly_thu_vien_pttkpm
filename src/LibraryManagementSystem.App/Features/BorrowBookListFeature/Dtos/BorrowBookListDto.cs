@@ -11,7 +11,7 @@ namespace LibraryManagementSystem.App.Features.BorrowBookListFeature.Dtos
     {
         public Guid Id { get; set; }
         public Reader Reader { get; set; }
-        public List<Book> Books { get; set; }
+        public int BookCount { get; set; }
         public DateTimeOffset BorrowDate { get; set; }
         public string Status { get; set; }
     }

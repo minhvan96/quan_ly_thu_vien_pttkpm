@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ReaderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BookId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +55,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(342, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(365, 41);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "DANH SÁCH MƯỢN SÁCH";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button2);
@@ -67,26 +77,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thao tác";
             // 
-            // groupBox3
+            // button2
             // 
-            this.groupBox3.Controls.Add(this.dataGridView1);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(0, 102);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1024, 373);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Danh sách phiếu mượn";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(342, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(365, 41);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "DANH SÁCH MƯỢN SÁCH";
+            this.button2.Location = new System.Drawing.Point(538, 65);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(209, 33);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Xóa phiếu mượn";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -97,14 +95,16 @@
             this.button1.Text = "Xem chi tiết và cập nhật";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // groupBox3
             // 
-            this.button2.Location = new System.Drawing.Point(538, 65);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(209, 33);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Xóa phiếu mượn";
-            this.button2.UseVisualStyleBackColor = true;
+            this.groupBox3.Controls.Add(this.dataGridView1);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(0, 102);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(1024, 373);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Danh sách phiếu mượn";
             // 
             // dataGridView1
             // 
@@ -159,6 +159,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "BorrowVoucherList";
             this.Size = new System.Drawing.Size(1024, 600);
+            this.Load += new System.EventHandler(this.BorrowVoucherList_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

@@ -18,19 +18,21 @@ namespace LibraryManagementSystem.Domain.Entities
         {
         }
 
-        public BorrowBookDetail(Guid bookId, DateTimeOffset returnDate, bool isReturnBook)
+        public BorrowBookDetail(Guid bookId, DateTimeOffset? returnDate, bool isReturnBook, Guid borrowBookId)
         {
             this.BookId = bookId;
             this.ReturnDate = returnDate;
             this.IsReturnBook = isReturnBook;
+            this.BorrowBookId = borrowBookId;
         }
 
-        public BorrowBookDetail(Guid id, Guid bookId, DateTimeOffset returnDate, bool isReturnBook)
+        public BorrowBookDetail(Guid id, Guid bookId, DateTimeOffset? returnDate, bool isReturnBook, Guid borrowBookId)
             : base(id)
         {
             this.BookId = bookId;
             this.ReturnDate = returnDate;
             this.IsReturnBook = isReturnBook;
+            this.BorrowBookId = borrowBookId;
         }
 
         private Book? _book;

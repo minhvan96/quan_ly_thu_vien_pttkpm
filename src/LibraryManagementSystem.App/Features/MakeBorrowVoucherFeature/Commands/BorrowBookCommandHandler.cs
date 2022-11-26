@@ -30,19 +30,21 @@ public class BorrowBookCommandHandler : IRequestHandler<BorrowBookCommand, Borro
             foreach (var book in books)
                 book.InStock -= 1;
 
+       var borrowBook = new BorrowBook(
+                request.ReaderId,
+                request.BorrowDate,
+                DateTimeOffset.Now);
+        await _context.AddAsync(borrowBook, cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
+
         // save borrow book table
         foreach (var bookId in request.BookIds)
         {
-            //var borrowBook = new BorrowBook(
-            //    request.ReaderId,
-            //    bookId,
-            //    request.BorrowDate,
-            //    DateTimeOffset.Now,
-            //    false);
-            //await _context.AddAsync(borrowBook, cancellationToken);
+            var borrowBookDetail = new BorrowBookDetail(bookId, null, false, borrowBook.Id);
+            await _context.AddAsync(borrowBook, cancellationToken);
         }
+        await _context.SaveChangesAsync(cancellationToken);
 
-        await _context.SaveChangesAsync(cancellationToken); 
         return new BorrowBookResult(true);
     }
 }

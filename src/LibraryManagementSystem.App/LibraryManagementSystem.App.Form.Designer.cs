@@ -65,6 +65,15 @@
             this.LibraryConfigurationValueeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Reader = new System.Windows.Forms.TabPage();
             this.groupBoxReaderInfo = new System.Windows.Forms.GroupBox();
+            this.buttonReaderEdit = new System.Windows.Forms.Button();
+            this.buttonReaderDelete = new System.Windows.Forms.Button();
+            this.buttonReaderAdd = new System.Windows.Forms.Button();
+            this.dpkReaderCreateDate = new System.Windows.Forms.DateTimePicker();
+            this.labelReaderCreate = new System.Windows.Forms.Label();
+            this.dtpReaderBodInfo = new System.Windows.Forms.DateTimePicker();
+            this.labelReaderBodInfo = new System.Windows.Forms.Label();
+            this.textBoxReaderEmailInfo = new System.Windows.Forms.TextBox();
+            this.labelRaederEmailInfo = new System.Windows.Forms.Label();
             this.comboBoxReaderType = new System.Windows.Forms.ComboBox();
             this.labelReaderType = new System.Windows.Forms.Label();
             this.textBoxReaderAddressInfo = new System.Windows.Forms.TextBox();
@@ -83,15 +92,7 @@
             this.buttonReaderSearch = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.labelReaderSearch = new System.Windows.Forms.Label();
-            this.labelRaederEmailInfo = new System.Windows.Forms.Label();
-            this.textBoxReaderEmailInfo = new System.Windows.Forms.TextBox();
-            this.labelReaderBodInfo = new System.Windows.Forms.Label();
-            this.dtpReaderBodInfo = new System.Windows.Forms.DateTimePicker();
-            this.labelReaderCreate = new System.Windows.Forms.Label();
-            this.dpkReaderCreateDate = new System.Windows.Forms.DateTimePicker();
-            this.buttonReaderAdd = new System.Windows.Forms.Button();
-            this.buttonReaderDelete = new System.Windows.Forms.Button();
-            this.buttonReaderEdit = new System.Windows.Forms.Button();
+            this.BorrowBookList = new System.Windows.Forms.TabPage();
             this.SystemMainTabControl.SuspendLayout();
             this.STC_HomeTP.SuspendLayout();
             this.STC_BookTP.SuspendLayout();
@@ -124,6 +125,7 @@
             this.SystemMainTabControl.Controls.Add(this.MakeBorrow);
             this.SystemMainTabControl.Controls.Add(this.LibraryConfigurationTab);
             this.SystemMainTabControl.Controls.Add(this.Reader);
+            this.SystemMainTabControl.Controls.Add(this.BorrowBookList);
             this.SystemMainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SystemMainTabControl.Location = new System.Drawing.Point(0, 0);
             this.SystemMainTabControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -358,7 +360,7 @@
             this.MakeBorrow.Padding = new System.Windows.Forms.Padding(3);
             this.MakeBorrow.Size = new System.Drawing.Size(1024, 590);
             this.MakeBorrow.TabIndex = 2;
-            this.MakeBorrow.Text = "Make Borrow Voucher";
+            this.MakeBorrow.Text = "Lập phiếu mượn";
             this.MakeBorrow.UseVisualStyleBackColor = true;
             // 
             // LibraryConfigurationTab
@@ -537,6 +539,81 @@
             this.groupBoxReaderInfo.TabStop = false;
             this.groupBoxReaderInfo.Text = "Thông tin đọc giả";
             // 
+            // buttonReaderEdit
+            // 
+            this.buttonReaderEdit.Location = new System.Drawing.Point(50, 436);
+            this.buttonReaderEdit.Name = "buttonReaderEdit";
+            this.buttonReaderEdit.Size = new System.Drawing.Size(94, 29);
+            this.buttonReaderEdit.TabIndex = 15;
+            this.buttonReaderEdit.Text = "Sửa";
+            this.buttonReaderEdit.UseVisualStyleBackColor = true;
+            // 
+            // buttonReaderDelete
+            // 
+            this.buttonReaderDelete.Location = new System.Drawing.Point(50, 401);
+            this.buttonReaderDelete.Name = "buttonReaderDelete";
+            this.buttonReaderDelete.Size = new System.Drawing.Size(94, 29);
+            this.buttonReaderDelete.TabIndex = 14;
+            this.buttonReaderDelete.Text = "Xóa";
+            this.buttonReaderDelete.UseVisualStyleBackColor = true;
+            // 
+            // buttonReaderAdd
+            // 
+            this.buttonReaderAdd.Location = new System.Drawing.Point(50, 366);
+            this.buttonReaderAdd.Name = "buttonReaderAdd";
+            this.buttonReaderAdd.Size = new System.Drawing.Size(94, 29);
+            this.buttonReaderAdd.TabIndex = 13;
+            this.buttonReaderAdd.Text = "Thêm";
+            this.buttonReaderAdd.UseVisualStyleBackColor = true;
+            // 
+            // dpkReaderCreateDate
+            // 
+            this.dpkReaderCreateDate.Location = new System.Drawing.Point(6, 315);
+            this.dpkReaderCreateDate.Name = "dpkReaderCreateDate";
+            this.dpkReaderCreateDate.Size = new System.Drawing.Size(196, 27);
+            this.dpkReaderCreateDate.TabIndex = 12;
+            // 
+            // labelReaderCreate
+            // 
+            this.labelReaderCreate.AutoSize = true;
+            this.labelReaderCreate.Location = new System.Drawing.Point(6, 292);
+            this.labelReaderCreate.Name = "labelReaderCreate";
+            this.labelReaderCreate.Size = new System.Drawing.Size(97, 20);
+            this.labelReaderCreate.TabIndex = 11;
+            this.labelReaderCreate.Text = "Ngày lập thẻ:";
+            // 
+            // dtpReaderBodInfo
+            // 
+            this.dtpReaderBodInfo.Location = new System.Drawing.Point(6, 262);
+            this.dtpReaderBodInfo.Name = "dtpReaderBodInfo";
+            this.dtpReaderBodInfo.Size = new System.Drawing.Size(196, 27);
+            this.dtpReaderBodInfo.TabIndex = 10;
+            // 
+            // labelReaderBodInfo
+            // 
+            this.labelReaderBodInfo.AutoSize = true;
+            this.labelReaderBodInfo.Location = new System.Drawing.Point(6, 239);
+            this.labelReaderBodInfo.Name = "labelReaderBodInfo";
+            this.labelReaderBodInfo.Size = new System.Drawing.Size(77, 20);
+            this.labelReaderBodInfo.TabIndex = 9;
+            this.labelReaderBodInfo.Text = "Ngày sinh:";
+            // 
+            // textBoxReaderEmailInfo
+            // 
+            this.textBoxReaderEmailInfo.Location = new System.Drawing.Point(6, 209);
+            this.textBoxReaderEmailInfo.Name = "textBoxReaderEmailInfo";
+            this.textBoxReaderEmailInfo.Size = new System.Drawing.Size(196, 27);
+            this.textBoxReaderEmailInfo.TabIndex = 8;
+            // 
+            // labelRaederEmailInfo
+            // 
+            this.labelRaederEmailInfo.AutoSize = true;
+            this.labelRaederEmailInfo.Location = new System.Drawing.Point(6, 186);
+            this.labelRaederEmailInfo.Name = "labelRaederEmailInfo";
+            this.labelRaederEmailInfo.Size = new System.Drawing.Size(49, 20);
+            this.labelRaederEmailInfo.TabIndex = 7;
+            this.labelRaederEmailInfo.Text = "Email:";
+            // 
             // comboBoxReaderType
             // 
             this.comboBoxReaderType.FormattingEnabled = true;
@@ -696,80 +773,15 @@
             this.labelReaderSearch.TabIndex = 0;
             this.labelReaderSearch.Text = "Tên đọc giả:";
             // 
-            // labelRaederEmailInfo
+            // BorrowBookList
             // 
-            this.labelRaederEmailInfo.AutoSize = true;
-            this.labelRaederEmailInfo.Location = new System.Drawing.Point(6, 186);
-            this.labelRaederEmailInfo.Name = "labelRaederEmailInfo";
-            this.labelRaederEmailInfo.Size = new System.Drawing.Size(49, 20);
-            this.labelRaederEmailInfo.TabIndex = 7;
-            this.labelRaederEmailInfo.Text = "Email:";
-            // 
-            // textBoxReaderEmailInfo
-            // 
-            this.textBoxReaderEmailInfo.Location = new System.Drawing.Point(6, 209);
-            this.textBoxReaderEmailInfo.Name = "textBoxReaderEmailInfo";
-            this.textBoxReaderEmailInfo.Size = new System.Drawing.Size(196, 27);
-            this.textBoxReaderEmailInfo.TabIndex = 8;
-            // 
-            // labelReaderBodInfo
-            // 
-            this.labelReaderBodInfo.AutoSize = true;
-            this.labelReaderBodInfo.Location = new System.Drawing.Point(6, 239);
-            this.labelReaderBodInfo.Name = "labelReaderBodInfo";
-            this.labelReaderBodInfo.Size = new System.Drawing.Size(77, 20);
-            this.labelReaderBodInfo.TabIndex = 9;
-            this.labelReaderBodInfo.Text = "Ngày sinh:";
-            // 
-            // dtpReaderBodInfo
-            // 
-            this.dtpReaderBodInfo.Location = new System.Drawing.Point(6, 262);
-            this.dtpReaderBodInfo.Name = "dtpReaderBodInfo";
-            this.dtpReaderBodInfo.Size = new System.Drawing.Size(196, 27);
-            this.dtpReaderBodInfo.TabIndex = 10;
-            // 
-            // labelReaderCreate
-            // 
-            this.labelReaderCreate.AutoSize = true;
-            this.labelReaderCreate.Location = new System.Drawing.Point(6, 292);
-            this.labelReaderCreate.Name = "labelReaderCreate";
-            this.labelReaderCreate.Size = new System.Drawing.Size(97, 20);
-            this.labelReaderCreate.TabIndex = 11;
-            this.labelReaderCreate.Text = "Ngày lập thẻ:";
-            // 
-            // dpkReaderCreateDate
-            // 
-            this.dpkReaderCreateDate.Location = new System.Drawing.Point(6, 315);
-            this.dpkReaderCreateDate.Name = "dpkReaderCreateDate";
-            this.dpkReaderCreateDate.Size = new System.Drawing.Size(196, 27);
-            this.dpkReaderCreateDate.TabIndex = 12;
-            // 
-            // buttonReaderAdd
-            // 
-            this.buttonReaderAdd.Location = new System.Drawing.Point(50, 366);
-            this.buttonReaderAdd.Name = "buttonReaderAdd";
-            this.buttonReaderAdd.Size = new System.Drawing.Size(94, 29);
-            this.buttonReaderAdd.TabIndex = 13;
-            this.buttonReaderAdd.Text = "Thêm";
-            this.buttonReaderAdd.UseVisualStyleBackColor = true;
-            // 
-            // buttonReaderDelete
-            // 
-            this.buttonReaderDelete.Location = new System.Drawing.Point(50, 401);
-            this.buttonReaderDelete.Name = "buttonReaderDelete";
-            this.buttonReaderDelete.Size = new System.Drawing.Size(94, 29);
-            this.buttonReaderDelete.TabIndex = 14;
-            this.buttonReaderDelete.Text = "Xóa";
-            this.buttonReaderDelete.UseVisualStyleBackColor = true;
-            // 
-            // buttonReaderEdit
-            // 
-            this.buttonReaderEdit.Location = new System.Drawing.Point(50, 436);
-            this.buttonReaderEdit.Name = "buttonReaderEdit";
-            this.buttonReaderEdit.Size = new System.Drawing.Size(94, 29);
-            this.buttonReaderEdit.TabIndex = 15;
-            this.buttonReaderEdit.Text = "Sửa";
-            this.buttonReaderEdit.UseVisualStyleBackColor = true;
+            this.BorrowBookList.Location = new System.Drawing.Point(4, 29);
+            this.BorrowBookList.Name = "BorrowBookList";
+            this.BorrowBookList.Padding = new System.Windows.Forms.Padding(3);
+            this.BorrowBookList.Size = new System.Drawing.Size(1024, 590);
+            this.BorrowBookList.TabIndex = 5;
+            this.BorrowBookList.Text = "Danh sách mượn";
+            this.BorrowBookList.UseVisualStyleBackColor = true;
             // 
             // LibraryManagementSystemUI
             // 
@@ -879,5 +891,6 @@
         private DateTimePicker dpkReaderCreateDate;
         private Label labelReaderCreate;
         private DateTimePicker dtpReaderBodInfo;
+        private TabPage BorrowBookList;
     }
 }

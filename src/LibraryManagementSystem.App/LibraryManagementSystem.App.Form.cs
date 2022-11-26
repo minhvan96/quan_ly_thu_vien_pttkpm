@@ -81,6 +81,13 @@ public partial class LibraryManagementSystemUI : Form
             myUserControl.Dock = DockStyle.Fill;
             MakeBorrow.Controls.Add(myUserControl);
         }
+        if (tabPage.Name == "BorrowBookList")
+        {
+            // show UI make borrow voucher
+            var myUserControl = new BorrowVoucherList(_mediator);
+            myUserControl.Dock = DockStyle.Fill;
+            MakeBorrow.Controls.Add(myUserControl);
+        }
     }
 
     private void LibraryManagementSystemUI_Load(object sender, EventArgs e)

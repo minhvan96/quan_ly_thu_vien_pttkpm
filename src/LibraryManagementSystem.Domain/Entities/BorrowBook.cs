@@ -32,12 +32,13 @@ namespace LibraryManagementSystem.Domain.Entities
         } 
 
         private Reader? _reader; 
-        
         public Reader Reader
         {
             set => _reader = value;
             get => _reader
                    ?? throw new InvalidOperationException("Uninitialized property: " + nameof(Reader));
         }
+
+        public ICollection<BorrowBookDetail> BorrowBookDetails { get; set; }
     }
 }

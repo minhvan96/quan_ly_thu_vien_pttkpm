@@ -1,7 +1,9 @@
 ﻿using LibraryManagementSystem.App.Configurations.Mediator;
 using LibraryManagementSystem.App.Features.BorrowBookListFeature.Dtos;
 using LibraryManagementSystem.Domain.Common;
+using LibraryManagementSystem.Infrastructure.Data;
 using LibraryManagementSystem.Infrastructure.Database;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,16 +24,18 @@ public class BorrowVoucherListQueryHandler : IListQueryHandler<BorrowVoucherList
     /// <inheritdoc />
     public async Task<IPagedList<BorrowBookListDto>> Handle(BorrowVoucherListQuery request, CancellationToken cancellationToken)
     {
-        //var books = await _context.BorrowBooks
-        //    .GroupBy(x => new { Reader = x.Reader, BookFeature = x.Book, BorrowDate = x.BorrowDate})
-        //    .Select( x => x.Key.)
-        //    .Select(x => new Books
-        //    {
-        //        Id = x.Id,
-        //        Reader = x.Reader,
-        //        Books = 
-        //    })
-        //    .ToPagedListAsync(request.PageIndex, request.PageSize, cancellationToken: cancellationToken);
+        //var booksOfBorrow
+        var borrowBooks = await _context.BorrowBooks
+            .Include(x=> x.Reader)
+            .Include(x => x.BorrowBookDetails)
+            //.Select(x => new BorrowBookListDto
+            //{
+            //    Id = x.Id,
+            //    Reader = x.Reader,
+            //    BorrowDate = x.BorrowDate,
+            //    BookCount = x.BorrowBookDetails.Count
+            //})
+            .ToListAsync();
         return null;
     }
 }
