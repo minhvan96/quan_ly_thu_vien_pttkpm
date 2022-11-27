@@ -44,8 +44,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Features\BorrowBookListFeature\Commands\" />
-      <Folder Include="Features\MakeBorrowVoucherFeature\Queries\" />
       <Folder Include="Features\ReaderFeature\Commands\" />
     </ItemGroup>
 

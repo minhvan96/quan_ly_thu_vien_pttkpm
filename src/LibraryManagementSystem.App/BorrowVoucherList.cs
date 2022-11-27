@@ -1,5 +1,4 @@
-﻿using LibraryManagementSystem.App.Features.BorrowBookListFeature.Queries;
-using MediatR;
+﻿using MediatR;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,11 +24,11 @@ namespace LibraryManagementSystem.App
 
         private async void BorrowVoucherList_Load(object sender, EventArgs e)
         {
-            var bookListCmd = new BorrowVoucherListQuery();
-            var books = await _mediator.Send(bookListCmd);
+            //var bookListCmd = new BorrowVoucherQuery();
+            //var books = await _mediator.Send(bookListCmd);
 
-            dtg_BorrowBookList.AutoGenerateColumns = false;
-            dtg_BorrowBookList.DataSource = books.Items.ToList();
+            //dtg_BorrowBookList.AutoGenerateColumns = false;
+            //dtg_BorrowBookList.DataSource = books.Items.ToList();
         }
 
         private void btn_update_Click(object sender, EventArgs e)
