@@ -53,15 +53,17 @@
             this.LibraryConfigurationTab = new System.Windows.Forms.TabPage();
             this.LibraryConfigurationTab_MainContainer = new System.Windows.Forms.SplitContainer();
             this.SearchLibraryConfigurationGroupBox = new System.Windows.Forms.GroupBox();
+            this.SearchConfigurationSearchCriteriaTextBox = new System.Windows.Forms.TextBox();
+            this.SearchConfigurationByCodeCheckBox = new System.Windows.Forms.CheckBox();
+            this.SearchConfigurationByNameCheckBox = new System.Windows.Forms.CheckBox();
             this.LibraryConfigurationSearchButton = new System.Windows.Forms.Button();
             this.LibraryConfigurationDataGroupBox = new System.Windows.Forms.GroupBox();
             this.LibraryConfigurationDataGridView = new System.Windows.Forms.DataGridView();
             this.LibraryConfigurationCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LibraryConfigurationNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LibraryConfigurationValueeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SearchConfigurationByCodeCheckBox = new System.Windows.Forms.CheckBox();
-            this.SearchConfigurationByNameCheckBox = new System.Windows.Forms.CheckBox();
-            this.SearchConfigurationSearchCriteriaTextBox = new System.Windows.Forms.TextBox();
+            this.STC_AddBook = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.SystemMainTabControl.SuspendLayout();
             this.STC_HomeTP.SuspendLayout();
             this.STC_BookTP.SuspendLayout();
@@ -80,6 +82,7 @@
             this.SearchLibraryConfigurationGroupBox.SuspendLayout();
             this.LibraryConfigurationDataGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LibraryConfigurationDataGridView)).BeginInit();
+            this.STC_AddBook.SuspendLayout();
             this.SuspendLayout();
             // 
             // SystemMainTabControl
@@ -88,6 +91,7 @@
             this.SystemMainTabControl.Controls.Add(this.STC_BookTP);
             this.SystemMainTabControl.Controls.Add(this.MakeBorrow);
             this.SystemMainTabControl.Controls.Add(this.LibraryConfigurationTab);
+            this.SystemMainTabControl.Controls.Add(this.STC_AddBook);
             this.SystemMainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SystemMainTabControl.Location = new System.Drawing.Point(0, 0);
             this.SystemMainTabControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -368,6 +372,33 @@
             this.SearchLibraryConfigurationGroupBox.TabStop = false;
             this.SearchLibraryConfigurationGroupBox.Text = "Tìm kiếm";
             // 
+            // SearchConfigurationSearchCriteriaTextBox
+            // 
+            this.SearchConfigurationSearchCriteriaTextBox.Location = new System.Drawing.Point(20, 56);
+            this.SearchConfigurationSearchCriteriaTextBox.Name = "SearchConfigurationSearchCriteriaTextBox";
+            this.SearchConfigurationSearchCriteriaTextBox.Size = new System.Drawing.Size(125, 27);
+            this.SearchConfigurationSearchCriteriaTextBox.TabIndex = 6;
+            // 
+            // SearchConfigurationByCodeCheckBox
+            // 
+            this.SearchConfigurationByCodeCheckBox.AutoSize = true;
+            this.SearchConfigurationByCodeCheckBox.Location = new System.Drawing.Point(20, 26);
+            this.SearchConfigurationByCodeCheckBox.Name = "SearchConfigurationByCodeCheckBox";
+            this.SearchConfigurationByCodeCheckBox.Size = new System.Drawing.Size(111, 24);
+            this.SearchConfigurationByCodeCheckBox.TabIndex = 5;
+            this.SearchConfigurationByCodeCheckBox.Text = "Mã cấu hình";
+            this.SearchConfigurationByCodeCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // SearchConfigurationByNameCheckBox
+            // 
+            this.SearchConfigurationByNameCheckBox.AutoSize = true;
+            this.SearchConfigurationByNameCheckBox.Location = new System.Drawing.Point(137, 26);
+            this.SearchConfigurationByNameCheckBox.Name = "SearchConfigurationByNameCheckBox";
+            this.SearchConfigurationByNameCheckBox.Size = new System.Drawing.Size(113, 24);
+            this.SearchConfigurationByNameCheckBox.TabIndex = 4;
+            this.SearchConfigurationByNameCheckBox.Text = "Tên cấu hình";
+            this.SearchConfigurationByNameCheckBox.UseVisualStyleBackColor = true;
+            // 
             // LibraryConfigurationSearchButton
             // 
             this.LibraryConfigurationSearchButton.Location = new System.Drawing.Point(156, 56);
@@ -426,32 +457,24 @@
             this.LibraryConfigurationValueeColumn.MinimumWidth = 6;
             this.LibraryConfigurationValueeColumn.Name = "LibraryConfigurationValueeColumn";
             // 
-            // SearchConfigurationByCodeCheckBox
+            // STC_AddBook
             // 
-            this.SearchConfigurationByCodeCheckBox.AutoSize = true;
-            this.SearchConfigurationByCodeCheckBox.Location = new System.Drawing.Point(20, 26);
-            this.SearchConfigurationByCodeCheckBox.Name = "SearchConfigurationByCodeCheckBox";
-            this.SearchConfigurationByCodeCheckBox.Size = new System.Drawing.Size(111, 24);
-            this.SearchConfigurationByCodeCheckBox.TabIndex = 5;
-            this.SearchConfigurationByCodeCheckBox.Text = "Mã cấu hình";
-            this.SearchConfigurationByCodeCheckBox.UseVisualStyleBackColor = true;
+            this.STC_AddBook.Controls.Add(this.groupBox1);
+            this.STC_AddBook.Location = new System.Drawing.Point(4, 29);
+            this.STC_AddBook.Name = "STC_AddBook";
+            this.STC_AddBook.Size = new System.Drawing.Size(1024, 590);
+            this.STC_AddBook.TabIndex = 4;
+            this.STC_AddBook.Text = "Nhận sách mới";
+            this.STC_AddBook.UseVisualStyleBackColor = true;
             // 
-            // SearchConfigurationByNameCheckBox
+            // groupBox1
             // 
-            this.SearchConfigurationByNameCheckBox.AutoSize = true;
-            this.SearchConfigurationByNameCheckBox.Location = new System.Drawing.Point(137, 26);
-            this.SearchConfigurationByNameCheckBox.Name = "SearchConfigurationByNameCheckBox";
-            this.SearchConfigurationByNameCheckBox.Size = new System.Drawing.Size(113, 24);
-            this.SearchConfigurationByNameCheckBox.TabIndex = 4;
-            this.SearchConfigurationByNameCheckBox.Text = "Tên cấu hình";
-            this.SearchConfigurationByNameCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // SearchConfigurationSearchCriteriaTextBox
-            // 
-            this.SearchConfigurationSearchCriteriaTextBox.Location = new System.Drawing.Point(20, 56);
-            this.SearchConfigurationSearchCriteriaTextBox.Name = "SearchConfigurationSearchCriteriaTextBox";
-            this.SearchConfigurationSearchCriteriaTextBox.Size = new System.Drawing.Size(125, 27);
-            this.SearchConfigurationSearchCriteriaTextBox.TabIndex = 6;
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1021, 125);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Thêm / Chỉnh sửa thông tin sách";
             // 
             // LibraryManagementSystemUI
             // 
@@ -484,6 +507,7 @@
             this.SearchLibraryConfigurationGroupBox.PerformLayout();
             this.LibraryConfigurationDataGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.LibraryConfigurationDataGridView)).EndInit();
+            this.STC_AddBook.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -524,5 +548,7 @@
         private TextBox SearchConfigurationSearchCriteriaTextBox;
         private CheckBox SearchConfigurationByCodeCheckBox;
         private CheckBox SearchConfigurationByNameCheckBox;
+        private TabPage STC_AddBook;
+        private GroupBox groupBox1;
     }
 }
