@@ -4,6 +4,7 @@ using LibraryManagementSystem.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryManagementSystem.Infrastructure.Migrations
 {
     [DbContext(typeof(LibraryDbContext))]
-    partial class LibraryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221122143010_UpdateBook")]
+    partial class UpdateBook
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,64 +134,6 @@ namespace LibraryManagementSystem.Infrastructure.Migrations
                     b.ToTable("BookTypes", (string)null);
                 });
 
-            modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.BorrowBook", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTimeOffset>("BorrowDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<DateTimeOffset>("CreatedDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<Guid>("ReaderId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTimeOffset>("UpdatedDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ReaderId");
-
-                    b.ToTable("BorrowBooks", (string)null);
-                });
-
-            modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.BorrowBookDetail", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("BookId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("BorrowBookId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTimeOffset>("CreatedDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<bool>("IsReturnBook")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("ReturnDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<DateTimeOffset>("UpdatedDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BookId");
-
-                    b.HasIndex("BorrowBookId");
-
-                    b.ToTable("BorrowBookDetails", (string)null);
-                });
-
             modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.CallCard", b =>
                 {
                     b.Property<Guid>("Id")
@@ -283,49 +228,6 @@ namespace LibraryManagementSystem.Infrastructure.Migrations
                     b.ToTable("Publishers", (string)null);
                 });
 
-            modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.Reader", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<DateTimeOffset>("CreateDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<DateTimeOffset>("CreatedDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<DateTimeOffset>("Dob")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("ReaderType")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTimeOffset>("UpdatedDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Readers", (string)null);
-                });
-
             modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.Book", b =>
                 {
                     b.HasOne("LibraryManagementSystem.Domain.Entities.Author", "Author")
@@ -351,36 +253,6 @@ namespace LibraryManagementSystem.Infrastructure.Migrations
                     b.Navigation("BookType");
 
                     b.Navigation("Publisher");
-                });
-
-            modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.BorrowBook", b =>
-                {
-                    b.HasOne("LibraryManagementSystem.Domain.Entities.Reader", "Reader")
-                        .WithMany()
-                        .HasForeignKey("ReaderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Reader");
-                });
-
-            modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.BorrowBookDetail", b =>
-                {
-                    b.HasOne("LibraryManagementSystem.Domain.Entities.Book", "Book")
-                        .WithMany()
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LibraryManagementSystem.Domain.Entities.BorrowBook", "BorrowBook")
-                        .WithMany()
-                        .HasForeignKey("BorrowBookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-
-                    b.Navigation("BorrowBook");
                 });
 
             modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.CallCard", b =>

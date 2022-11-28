@@ -26,7 +26,7 @@ public class GetBookQueryHandler : IRequestHandler<GetBookQuery, BookDto?>
                 Name = x.Name,
                 Code = x.Code,
                 Author = x.Author.Name,
-                Type = x.BookType.Name
+                TypeName = x.BookType.Name
             })
             .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
 

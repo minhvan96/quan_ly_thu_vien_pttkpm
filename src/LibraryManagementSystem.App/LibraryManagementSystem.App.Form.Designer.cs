@@ -53,6 +53,7 @@
             this.LibraryConfigurationTab = new System.Windows.Forms.TabPage();
             this.LibraryConfigurationTab_MainContainer = new System.Windows.Forms.SplitContainer();
             this.SearchLibraryConfigurationGroupBox = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SearchConfigurationSearchCriteriaTextBox = new System.Windows.Forms.TextBox();
             this.SearchConfigurationByCodeCheckBox = new System.Windows.Forms.CheckBox();
             this.SearchConfigurationByNameCheckBox = new System.Windows.Forms.CheckBox();
@@ -62,8 +63,36 @@
             this.LibraryConfigurationCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LibraryConfigurationNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LibraryConfigurationValueeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.STC_AddBook = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Reader = new System.Windows.Forms.TabPage();
+            this.groupBoxReaderInfo = new System.Windows.Forms.GroupBox();
+            this.buttonReaderEdit = new System.Windows.Forms.Button();
+            this.buttonReaderDelete = new System.Windows.Forms.Button();
+            this.buttonReaderAdd = new System.Windows.Forms.Button();
+            this.dpkReaderCreateDate = new System.Windows.Forms.DateTimePicker();
+            this.labelReaderCreate = new System.Windows.Forms.Label();
+            this.dtpReaderBodInfo = new System.Windows.Forms.DateTimePicker();
+            this.labelReaderBodInfo = new System.Windows.Forms.Label();
+            this.textBoxReaderEmailInfo = new System.Windows.Forms.TextBox();
+            this.labelRaederEmailInfo = new System.Windows.Forms.Label();
+            this.comboBoxReaderType = new System.Windows.Forms.ComboBox();
+            this.labelReaderType = new System.Windows.Forms.Label();
+            this.textBoxReaderAddressInfo = new System.Windows.Forms.TextBox();
+            this.labelReaderAddressInfo = new System.Windows.Forms.Label();
+            this.textBoxReaderNameInfo = new System.Windows.Forms.TextBox();
+            this.labelReaderNameInfo = new System.Windows.Forms.Label();
+            this.groupBoxDataReader = new System.Windows.Forms.GroupBox();
+            this.dataGridViewReader = new System.Windows.Forms.DataGridView();
+            this.dgv_Reader_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_Reader_Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_Reader_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_Reader_Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_Reader_Bod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_Reader_Create_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBoxReaderSearch = new System.Windows.Forms.GroupBox();
+            this.buttonReaderSearch = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.labelReaderSearch = new System.Windows.Forms.Label();
+            this.BorrowBookList = new System.Windows.Forms.TabPage();
             this.SystemMainTabControl.SuspendLayout();
             this.STC_HomeTP.SuspendLayout();
             this.STC_BookTP.SuspendLayout();
@@ -83,6 +112,11 @@
             this.LibraryConfigurationDataGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LibraryConfigurationDataGridView)).BeginInit();
             this.STC_AddBook.SuspendLayout();
+            this.Reader.SuspendLayout();
+            this.groupBoxReaderInfo.SuspendLayout();
+            this.groupBoxDataReader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReader)).BeginInit();
+            this.groupBoxReaderSearch.SuspendLayout();
             this.SuspendLayout();
             // 
             // SystemMainTabControl
@@ -92,6 +126,8 @@
             this.SystemMainTabControl.Controls.Add(this.MakeBorrow);
             this.SystemMainTabControl.Controls.Add(this.LibraryConfigurationTab);
             this.SystemMainTabControl.Controls.Add(this.STC_AddBook);
+            this.SystemMainTabControl.Controls.Add(this.Reader);
+            this.SystemMainTabControl.Controls.Add(this.BorrowBookList);
             this.SystemMainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SystemMainTabControl.Location = new System.Drawing.Point(0, 0);
             this.SystemMainTabControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -182,7 +218,7 @@
             // SearchBookSearchCriteriaLabel
             // 
             this.SearchBookSearchCriteriaLabel.AutoSize = true;
-            this.SearchBookSearchCriteriaLabel.Location = new System.Drawing.Point(17, 56);
+            this.SearchBookSearchCriteriaLabel.Location = new System.Drawing.Point(20, 65);
             this.SearchBookSearchCriteriaLabel.Name = "SearchBookSearchCriteriaLabel";
             this.SearchBookSearchCriteriaLabel.Size = new System.Drawing.Size(62, 20);
             this.SearchBookSearchCriteriaLabel.TabIndex = 6;
@@ -191,7 +227,7 @@
             // SearchBookByStatusCheckBox
             // 
             this.SearchBookByStatusCheckBox.AutoSize = true;
-            this.SearchBookByStatusCheckBox.Location = new System.Drawing.Point(338, 22);
+            this.SearchBookByStatusCheckBox.Location = new System.Drawing.Point(287, 30);
             this.SearchBookByStatusCheckBox.Name = "SearchBookByStatusCheckBox";
             this.SearchBookByStatusCheckBox.Size = new System.Drawing.Size(98, 24);
             this.SearchBookByStatusCheckBox.TabIndex = 5;
@@ -201,7 +237,7 @@
             // SearchBookByAuthorCheckBox
             // 
             this.SearchBookByAuthorCheckBox.AutoSize = true;
-            this.SearchBookByAuthorCheckBox.Location = new System.Drawing.Point(231, 22);
+            this.SearchBookByAuthorCheckBox.Location = new System.Drawing.Point(203, 30);
             this.SearchBookByAuthorCheckBox.Name = "SearchBookByAuthorCheckBox";
             this.SearchBookByAuthorCheckBox.Size = new System.Drawing.Size(78, 24);
             this.SearchBookByAuthorCheckBox.TabIndex = 4;
@@ -211,7 +247,7 @@
             // SearchBookByTypeCheckBox
             // 
             this.SearchBookByTypeCheckBox.AutoSize = true;
-            this.SearchBookByTypeCheckBox.Location = new System.Drawing.Point(124, 22);
+            this.SearchBookByTypeCheckBox.Location = new System.Drawing.Point(113, 30);
             this.SearchBookByTypeCheckBox.Name = "SearchBookByTypeCheckBox";
             this.SearchBookByTypeCheckBox.Size = new System.Drawing.Size(84, 24);
             this.SearchBookByTypeCheckBox.TabIndex = 3;
@@ -221,7 +257,7 @@
             // SearchBookByNameCheckBox
             // 
             this.SearchBookByNameCheckBox.AutoSize = true;
-            this.SearchBookByNameCheckBox.Location = new System.Drawing.Point(17, 22);
+            this.SearchBookByNameCheckBox.Location = new System.Drawing.Point(20, 30);
             this.SearchBookByNameCheckBox.Name = "SearchBookByNameCheckBox";
             this.SearchBookByNameCheckBox.Size = new System.Drawing.Size(87, 24);
             this.SearchBookByNameCheckBox.TabIndex = 2;
@@ -230,16 +266,16 @@
             // 
             // SearchBookSearchCriteriaTextBox
             // 
-            this.SearchBookSearchCriteriaTextBox.Location = new System.Drawing.Point(85, 53);
+            this.SearchBookSearchCriteriaTextBox.Location = new System.Drawing.Point(88, 60);
             this.SearchBookSearchCriteriaTextBox.Name = "SearchBookSearchCriteriaTextBox";
-            this.SearchBookSearchCriteriaTextBox.Size = new System.Drawing.Size(125, 27);
+            this.SearchBookSearchCriteriaTextBox.Size = new System.Drawing.Size(181, 27);
             this.SearchBookSearchCriteriaTextBox.TabIndex = 1;
             // 
             // BookPageSearchBooksButton
             // 
-            this.BookPageSearchBooksButton.Location = new System.Drawing.Point(216, 53);
+            this.BookPageSearchBooksButton.Location = new System.Drawing.Point(287, 58);
             this.BookPageSearchBooksButton.Name = "BookPageSearchBooksButton";
-            this.BookPageSearchBooksButton.Size = new System.Drawing.Size(94, 29);
+            this.BookPageSearchBooksButton.Size = new System.Drawing.Size(94, 30);
             this.BookPageSearchBooksButton.TabIndex = 0;
             this.BookPageSearchBooksButton.Text = "Tìm kiếm";
             this.BookPageSearchBooksButton.UseVisualStyleBackColor = true;
@@ -326,7 +362,7 @@
             this.MakeBorrow.Padding = new System.Windows.Forms.Padding(3);
             this.MakeBorrow.Size = new System.Drawing.Size(1024, 590);
             this.MakeBorrow.TabIndex = 2;
-            this.MakeBorrow.Text = "Make Borrow Voucher";
+            this.MakeBorrow.Text = "Lập phiếu mượn";
             this.MakeBorrow.UseVisualStyleBackColor = true;
             // 
             // LibraryConfigurationTab
@@ -360,6 +396,7 @@
             // 
             // SearchLibraryConfigurationGroupBox
             // 
+            this.SearchLibraryConfigurationGroupBox.Controls.Add(this.label1);
             this.SearchLibraryConfigurationGroupBox.Controls.Add(this.SearchConfigurationSearchCriteriaTextBox);
             this.SearchLibraryConfigurationGroupBox.Controls.Add(this.SearchConfigurationByCodeCheckBox);
             this.SearchLibraryConfigurationGroupBox.Controls.Add(this.SearchConfigurationByNameCheckBox);
@@ -372,9 +409,18 @@
             this.SearchLibraryConfigurationGroupBox.TabStop = false;
             this.SearchLibraryConfigurationGroupBox.Text = "Tìm kiếm";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(20, 65);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 20);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Từ khoá";
+            // 
             // SearchConfigurationSearchCriteriaTextBox
             // 
-            this.SearchConfigurationSearchCriteriaTextBox.Location = new System.Drawing.Point(20, 56);
+            this.SearchConfigurationSearchCriteriaTextBox.Location = new System.Drawing.Point(88, 61);
             this.SearchConfigurationSearchCriteriaTextBox.Name = "SearchConfigurationSearchCriteriaTextBox";
             this.SearchConfigurationSearchCriteriaTextBox.Size = new System.Drawing.Size(125, 27);
             this.SearchConfigurationSearchCriteriaTextBox.TabIndex = 6;
@@ -382,7 +428,7 @@
             // SearchConfigurationByCodeCheckBox
             // 
             this.SearchConfigurationByCodeCheckBox.AutoSize = true;
-            this.SearchConfigurationByCodeCheckBox.Location = new System.Drawing.Point(20, 26);
+            this.SearchConfigurationByCodeCheckBox.Location = new System.Drawing.Point(20, 30);
             this.SearchConfigurationByCodeCheckBox.Name = "SearchConfigurationByCodeCheckBox";
             this.SearchConfigurationByCodeCheckBox.Size = new System.Drawing.Size(111, 24);
             this.SearchConfigurationByCodeCheckBox.TabIndex = 5;
@@ -392,7 +438,7 @@
             // SearchConfigurationByNameCheckBox
             // 
             this.SearchConfigurationByNameCheckBox.AutoSize = true;
-            this.SearchConfigurationByNameCheckBox.Location = new System.Drawing.Point(137, 26);
+            this.SearchConfigurationByNameCheckBox.Location = new System.Drawing.Point(137, 30);
             this.SearchConfigurationByNameCheckBox.Name = "SearchConfigurationByNameCheckBox";
             this.SearchConfigurationByNameCheckBox.Size = new System.Drawing.Size(113, 24);
             this.SearchConfigurationByNameCheckBox.TabIndex = 4;
@@ -401,7 +447,7 @@
             // 
             // LibraryConfigurationSearchButton
             // 
-            this.LibraryConfigurationSearchButton.Location = new System.Drawing.Point(156, 56);
+            this.LibraryConfigurationSearchButton.Location = new System.Drawing.Point(219, 61);
             this.LibraryConfigurationSearchButton.Name = "LibraryConfigurationSearchButton";
             this.LibraryConfigurationSearchButton.Size = new System.Drawing.Size(94, 29);
             this.LibraryConfigurationSearchButton.TabIndex = 0;
@@ -434,6 +480,7 @@
             this.LibraryConfigurationDataGridView.RowTemplate.Height = 29;
             this.LibraryConfigurationDataGridView.Size = new System.Drawing.Size(1012, 454);
             this.LibraryConfigurationDataGridView.TabIndex = 0;
+            this.LibraryConfigurationDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.LibraryConfigurationDataGridView_CellValueChanged);
             // 
             // LibraryConfigurationCodeColumn
             // 
@@ -457,7 +504,232 @@
             this.LibraryConfigurationValueeColumn.MinimumWidth = 6;
             this.LibraryConfigurationValueeColumn.Name = "LibraryConfigurationValueeColumn";
             // 
-            // STC_AddBook
+            // Reader
+            // 
+            this.Reader.Controls.Add(this.groupBoxReaderInfo);
+            this.Reader.Controls.Add(this.groupBoxDataReader);
+            this.Reader.Controls.Add(this.groupBoxReaderSearch);
+            this.Reader.Location = new System.Drawing.Point(4, 29);
+            this.Reader.Name = "Reader";
+            this.Reader.Padding = new System.Windows.Forms.Padding(3);
+            this.Reader.Size = new System.Drawing.Size(1024, 590);
+            this.Reader.TabIndex = 4;
+            this.Reader.Text = "Đọc giả";
+            this.Reader.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxReaderInfo
+            // 
+            this.groupBoxReaderInfo.Controls.Add(this.buttonReaderEdit);
+            this.groupBoxReaderInfo.Controls.Add(this.buttonReaderDelete);
+            this.groupBoxReaderInfo.Controls.Add(this.buttonReaderAdd);
+            this.groupBoxReaderInfo.Controls.Add(this.dpkReaderCreateDate);
+            this.groupBoxReaderInfo.Controls.Add(this.labelReaderCreate);
+            this.groupBoxReaderInfo.Controls.Add(this.dtpReaderBodInfo);
+            this.groupBoxReaderInfo.Controls.Add(this.labelReaderBodInfo);
+            this.groupBoxReaderInfo.Controls.Add(this.textBoxReaderEmailInfo);
+            this.groupBoxReaderInfo.Controls.Add(this.labelRaederEmailInfo);
+            this.groupBoxReaderInfo.Controls.Add(this.comboBoxReaderType);
+            this.groupBoxReaderInfo.Controls.Add(this.labelReaderType);
+            this.groupBoxReaderInfo.Controls.Add(this.textBoxReaderAddressInfo);
+            this.groupBoxReaderInfo.Controls.Add(this.labelReaderAddressInfo);
+            this.groupBoxReaderInfo.Controls.Add(this.textBoxReaderNameInfo);
+            this.groupBoxReaderInfo.Controls.Add(this.labelReaderNameInfo);
+            this.groupBoxReaderInfo.Location = new System.Drawing.Point(813, 93);
+            this.groupBoxReaderInfo.Name = "groupBoxReaderInfo";
+            this.groupBoxReaderInfo.Size = new System.Drawing.Size(208, 494);
+            this.groupBoxReaderInfo.TabIndex = 2;
+            this.groupBoxReaderInfo.TabStop = false;
+            this.groupBoxReaderInfo.Text = "Thông tin đọc giả";
+            // 
+            // buttonReaderEdit
+            // 
+            this.buttonReaderEdit.Location = new System.Drawing.Point(50, 436);
+            this.buttonReaderEdit.Name = "buttonReaderEdit";
+            this.buttonReaderEdit.Size = new System.Drawing.Size(94, 29);
+            this.buttonReaderEdit.TabIndex = 15;
+            this.buttonReaderEdit.Text = "Sửa";
+            this.buttonReaderEdit.UseVisualStyleBackColor = true;
+            // 
+            // buttonReaderDelete
+            // 
+            this.buttonReaderDelete.Location = new System.Drawing.Point(50, 401);
+            this.buttonReaderDelete.Name = "buttonReaderDelete";
+            this.buttonReaderDelete.Size = new System.Drawing.Size(94, 29);
+            this.buttonReaderDelete.TabIndex = 14;
+            this.buttonReaderDelete.Text = "Xóa";
+            this.buttonReaderDelete.UseVisualStyleBackColor = true;
+            // 
+            // buttonReaderAdd
+            // 
+            this.buttonReaderAdd.Location = new System.Drawing.Point(50, 366);
+            this.buttonReaderAdd.Name = "buttonReaderAdd";
+            this.buttonReaderAdd.Size = new System.Drawing.Size(94, 29);
+            this.buttonReaderAdd.TabIndex = 13;
+            this.buttonReaderAdd.Text = "Thêm";
+            this.buttonReaderAdd.UseVisualStyleBackColor = true;
+            // 
+            // dpkReaderCreateDate
+            // 
+            this.dpkReaderCreateDate.Location = new System.Drawing.Point(6, 315);
+            this.dpkReaderCreateDate.Name = "dpkReaderCreateDate";
+            this.dpkReaderCreateDate.Size = new System.Drawing.Size(196, 27);
+            this.dpkReaderCreateDate.TabIndex = 12;
+            // 
+            // labelReaderCreate
+            // 
+            this.labelReaderCreate.AutoSize = true;
+            this.labelReaderCreate.Location = new System.Drawing.Point(6, 292);
+            this.labelReaderCreate.Name = "labelReaderCreate";
+            this.labelReaderCreate.Size = new System.Drawing.Size(97, 20);
+            this.labelReaderCreate.TabIndex = 11;
+            this.labelReaderCreate.Text = "Ngày lập thẻ:";
+            // 
+            // dtpReaderBodInfo
+            // 
+            this.dtpReaderBodInfo.Location = new System.Drawing.Point(6, 262);
+            this.dtpReaderBodInfo.Name = "dtpReaderBodInfo";
+            this.dtpReaderBodInfo.Size = new System.Drawing.Size(196, 27);
+            this.dtpReaderBodInfo.TabIndex = 10;
+            // 
+            // labelReaderBodInfo
+            // 
+            this.labelReaderBodInfo.AutoSize = true;
+            this.labelReaderBodInfo.Location = new System.Drawing.Point(6, 239);
+            this.labelReaderBodInfo.Name = "labelReaderBodInfo";
+            this.labelReaderBodInfo.Size = new System.Drawing.Size(77, 20);
+            this.labelReaderBodInfo.TabIndex = 9;
+            this.labelReaderBodInfo.Text = "Ngày sinh:";
+            // 
+            // textBoxReaderEmailInfo
+            // 
+            this.textBoxReaderEmailInfo.Location = new System.Drawing.Point(6, 209);
+            this.textBoxReaderEmailInfo.Name = "textBoxReaderEmailInfo";
+            this.textBoxReaderEmailInfo.Size = new System.Drawing.Size(196, 27);
+            this.textBoxReaderEmailInfo.TabIndex = 8;
+            // 
+            // labelRaederEmailInfo
+            // 
+            this.labelRaederEmailInfo.AutoSize = true;
+            this.labelRaederEmailInfo.Location = new System.Drawing.Point(6, 186);
+            this.labelRaederEmailInfo.Name = "labelRaederEmailInfo";
+            this.labelRaederEmailInfo.Size = new System.Drawing.Size(49, 20);
+            this.labelRaederEmailInfo.TabIndex = 7;
+            this.labelRaederEmailInfo.Text = "Email:";
+            // 
+            // comboBoxReaderType
+            // 
+            this.comboBoxReaderType.FormattingEnabled = true;
+            this.comboBoxReaderType.Items.AddRange(new object[] {
+            "X",
+            "Y"});
+            this.comboBoxReaderType.Location = new System.Drawing.Point(6, 155);
+            this.comboBoxReaderType.Name = "comboBoxReaderType";
+            this.comboBoxReaderType.Size = new System.Drawing.Size(196, 28);
+            this.comboBoxReaderType.TabIndex = 6;
+            // 
+            // labelReaderType
+            // 
+            this.labelReaderType.AutoSize = true;
+            this.labelReaderType.Location = new System.Drawing.Point(6, 132);
+            this.labelReaderType.Name = "labelReaderType";
+            this.labelReaderType.Size = new System.Drawing.Size(94, 20);
+            this.labelReaderType.TabIndex = 5;
+            this.labelReaderType.Text = "Loại đọc giả:";
+            // 
+            // textBoxReaderAddressInfo
+            // 
+            this.textBoxReaderAddressInfo.Location = new System.Drawing.Point(6, 102);
+            this.textBoxReaderAddressInfo.Name = "textBoxReaderAddressInfo";
+            this.textBoxReaderAddressInfo.Size = new System.Drawing.Size(196, 27);
+            this.textBoxReaderAddressInfo.TabIndex = 4;
+            // 
+            // labelReaderAddressInfo
+            // 
+            this.labelReaderAddressInfo.AutoSize = true;
+            this.labelReaderAddressInfo.Location = new System.Drawing.Point(6, 79);
+            this.labelReaderAddressInfo.Name = "labelReaderAddressInfo";
+            this.labelReaderAddressInfo.Size = new System.Drawing.Size(58, 20);
+            this.labelReaderAddressInfo.TabIndex = 3;
+            this.labelReaderAddressInfo.Text = "Địa chỉ:";
+            // 
+            // textBoxReaderNameInfo
+            // 
+            this.textBoxReaderNameInfo.Location = new System.Drawing.Point(6, 49);
+            this.textBoxReaderNameInfo.Name = "textBoxReaderNameInfo";
+            this.textBoxReaderNameInfo.Size = new System.Drawing.Size(196, 27);
+            this.textBoxReaderNameInfo.TabIndex = 2;
+            // 
+            // labelReaderNameInfo
+            // 
+            this.labelReaderNameInfo.AutoSize = true;
+            this.labelReaderNameInfo.Location = new System.Drawing.Point(6, 26);
+            this.labelReaderNameInfo.Name = "labelReaderNameInfo";
+            this.labelReaderNameInfo.Size = new System.Drawing.Size(89, 20);
+            this.labelReaderNameInfo.TabIndex = 1;
+            this.labelReaderNameInfo.Text = "Tên đọc giả:";
+            // 
+            // groupBoxDataReader
+            // 
+            this.groupBoxDataReader.Controls.Add(this.dataGridViewReader);
+            this.groupBoxDataReader.Location = new System.Drawing.Point(3, 93);
+            this.groupBoxDataReader.Name = "groupBoxDataReader";
+            this.groupBoxDataReader.Size = new System.Drawing.Size(804, 497);
+            this.groupBoxDataReader.TabIndex = 1;
+            this.groupBoxDataReader.TabStop = false;
+            this.groupBoxDataReader.Text = "Danh sách đọc giả";
+            // 
+            // dataGridViewReader
+            // 
+            this.dataGridViewReader.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewReader.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_Reader_Name,
+            this.dgv_Reader_Address,
+            this.dgv_Reader_Type,
+            this.dgv_Reader_Email,
+            this.dgv_Reader_Bod,
+            this.dgv_Reader_Create_Date});
+            this.dataGridViewReader.Location = new System.Drawing.Point(3, 26);
+            this.dataGridViewReader.Name = "dataGridViewReader";
+            this.dataGridViewReader.RowHeadersWidth = 51;
+            this.dataGridViewReader.RowTemplate.Height = 29;
+            this.dataGridViewReader.Size = new System.Drawing.Size(797, 463);
+            this.dataGridViewReader.TabIndex = 0;
+            // 
+            // dgv_Reader_Name
+            // 
+            this.dgv_Reader_Name.HeaderText = "Họ và tên";
+            this.dgv_Reader_Name.MinimumWidth = 6;
+            this.dgv_Reader_Name.Name = "dgv_Reader_Name";
+            this.dgv_Reader_Name.Width = 125;
+            // 
+            // dgv_Reader_Address
+            // 
+            this.dgv_Reader_Address.HeaderText = "Địa chỉ";
+            this.dgv_Reader_Address.MinimumWidth = 6;
+            this.dgv_Reader_Address.Name = "dgv_Reader_Address";
+            this.dgv_Reader_Address.Width = 125;
+            // 
+            // dgv_Reader_Type
+            // 
+            this.dgv_Reader_Type.HeaderText = "Loại đọc giả";
+            this.dgv_Reader_Type.MinimumWidth = 6;
+            this.dgv_Reader_Type.Name = "dgv_Reader_Type";
+            this.dgv_Reader_Type.Width = 125;
+            // 
+            // dgv_Reader_Email
+            // 
+            this.dgv_Reader_Email.HeaderText = "Email";
+            this.dgv_Reader_Email.MinimumWidth = 6;
+            this.dgv_Reader_Email.Name = "dgv_Reader_Email";
+            this.dgv_Reader_Email.ReadOnly = true;
+            this.dgv_Reader_Email.Width = 125;
+            // 
+            // dgv_Reader_Bod
+            // 
+            this.dgv_Reader_Bod.HeaderText = "Ngày sinh";
+            this.dgv_Reader_Bod.MinimumWidth = 6;
+            this.dgv_Reader_Bod.Name = "dgv_Reader_Bod";
+            this.dgv_Reader_Bod.Width = 125;
             // 
             this.STC_AddBook.Controls.Add(this.groupBox1);
             this.STC_AddBook.Location = new System.Drawing.Point(4, 29);
@@ -467,14 +739,57 @@
             this.STC_AddBook.Text = "Nhận sách mới";
             this.STC_AddBook.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            this.dgv_Reader_Create_Date.HeaderText = "Ngày lập thẻ";
+            this.dgv_Reader_Create_Date.MinimumWidth = 6;
+            this.dgv_Reader_Create_Date.Name = "dgv_Reader_Create_Date";
+            this.dgv_Reader_Create_Date.Width = 125;
             // 
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1021, 125);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Thêm / Chỉnh sửa thông tin sách";
+            // groupBoxReaderSearch
+            // 
+            this.groupBoxReaderSearch.Controls.Add(this.buttonReaderSearch);
+            this.groupBoxReaderSearch.Controls.Add(this.textBox1);
+            this.groupBoxReaderSearch.Controls.Add(this.labelReaderSearch);
+            this.groupBoxReaderSearch.Location = new System.Drawing.Point(3, 6);
+            this.groupBoxReaderSearch.Name = "groupBoxReaderSearch";
+            this.groupBoxReaderSearch.Size = new System.Drawing.Size(1018, 81);
+            this.groupBoxReaderSearch.TabIndex = 0;
+            this.groupBoxReaderSearch.TabStop = false;
+            this.groupBoxReaderSearch.Text = "Tìm kiếm";
+            // 
+            // buttonReaderSearch
+            // 
+            this.buttonReaderSearch.Location = new System.Drawing.Point(355, 33);
+            this.buttonReaderSearch.Name = "buttonReaderSearch";
+            this.buttonReaderSearch.Size = new System.Drawing.Size(94, 29);
+            this.buttonReaderSearch.TabIndex = 2;
+            this.buttonReaderSearch.Text = "Tìm kiếm";
+            this.buttonReaderSearch.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(124, 33);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(216, 27);
+            this.textBox1.TabIndex = 1;
+            // 
+            // labelReaderSearch
+            // 
+            this.labelReaderSearch.AutoSize = true;
+            this.labelReaderSearch.Location = new System.Drawing.Point(29, 37);
+            this.labelReaderSearch.Name = "labelReaderSearch";
+            this.labelReaderSearch.Size = new System.Drawing.Size(89, 20);
+            this.labelReaderSearch.TabIndex = 0;
+            this.labelReaderSearch.Text = "Tên đọc giả:";
+            // 
+            // BorrowBookList
+            // 
+            this.BorrowBookList.Location = new System.Drawing.Point(4, 29);
+            this.BorrowBookList.Name = "BorrowBookList";
+            this.BorrowBookList.Padding = new System.Windows.Forms.Padding(3);
+            this.BorrowBookList.Size = new System.Drawing.Size(1024, 590);
+            this.BorrowBookList.TabIndex = 5;
+            this.BorrowBookList.Text = "Danh sách mượn";
+            this.BorrowBookList.UseVisualStyleBackColor = true;
             // 
             // LibraryManagementSystemUI
             // 
@@ -508,6 +823,13 @@
             this.LibraryConfigurationDataGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.LibraryConfigurationDataGridView)).EndInit();
             this.STC_AddBook.ResumeLayout(false);
+            this.Reader.ResumeLayout(false);
+            this.groupBoxReaderInfo.ResumeLayout(false);
+            this.groupBoxReaderInfo.PerformLayout();
+            this.groupBoxDataReader.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReader)).EndInit();
+            this.groupBoxReaderSearch.ResumeLayout(false);
+            this.groupBoxReaderSearch.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -548,7 +870,36 @@
         private TextBox SearchConfigurationSearchCriteriaTextBox;
         private CheckBox SearchConfigurationByCodeCheckBox;
         private CheckBox SearchConfigurationByNameCheckBox;
-        private TabPage STC_AddBook;
-        private GroupBox groupBox1;
+        private Label label1;
+        private TabPage Reader;
+        private GroupBox groupBoxReaderSearch;
+        private Button buttonReaderSearch;
+        private TextBox textBox1;
+        private Label labelReaderSearch;
+        private GroupBox groupBoxDataReader;
+        private DataGridView dataGridViewReader;
+        private DataGridViewTextBoxColumn dgv_Reader_Name;
+        private DataGridViewTextBoxColumn dgv_Reader_Address;
+        private DataGridViewTextBoxColumn dgv_Reader_Type;
+        private DataGridViewTextBoxColumn dgv_Reader_Email;
+        private DataGridViewTextBoxColumn dgv_Reader_Bod;
+        private DataGridViewTextBoxColumn dgv_Reader_Create_Date;
+        private GroupBox groupBoxReaderInfo;
+        private ComboBox comboBoxReaderType;
+        private Label labelReaderType;
+        private TextBox textBoxReaderAddressInfo;
+        private Label labelReaderAddressInfo;
+        private TextBox textBoxReaderNameInfo;
+        private Label labelReaderNameInfo;
+        private TextBox textBoxReaderEmailInfo;
+        private Label labelRaederEmailInfo;
+        private Label labelReaderBodInfo;
+        private Button buttonReaderEdit;
+        private Button buttonReaderDelete;
+        private Button buttonReaderAdd;
+        private DateTimePicker dpkReaderCreateDate;
+        private Label labelReaderCreate;
+        private DateTimePicker dtpReaderBodInfo;
+        private TabPage BorrowBookList;
     }
 }
