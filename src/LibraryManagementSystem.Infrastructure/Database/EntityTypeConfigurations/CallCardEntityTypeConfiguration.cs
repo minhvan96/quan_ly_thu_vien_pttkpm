@@ -11,5 +11,10 @@ internal class CallCardEntityTypeConfiguration : DomainEntityTypeConfiguration<C
         base.Configure(builder);
         builder.ToTable("CallCards");
         builder.HasKey(x => x.Id);
+
+        //builder.HasOne(x => x.LibraryCard)
+        // .WithMany()
+        // .HasForeignKey(l => l.LibraryCardId)
+        // .OnDelete(DeleteBehavior.Cascade);
     }
 }
