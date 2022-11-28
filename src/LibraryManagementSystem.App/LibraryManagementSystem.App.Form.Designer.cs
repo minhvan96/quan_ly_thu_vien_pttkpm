@@ -93,6 +93,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.labelReaderSearch = new System.Windows.Forms.Label();
             this.BorrowBookList = new System.Windows.Forms.TabPage();
+            this.STC_BookNew = new System.Windows.Forms.TabPage();
             this.SystemMainTabControl.SuspendLayout();
             this.STC_HomeTP.SuspendLayout();
             this.STC_BookTP.SuspendLayout();
@@ -111,7 +112,6 @@
             this.SearchLibraryConfigurationGroupBox.SuspendLayout();
             this.LibraryConfigurationDataGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LibraryConfigurationDataGridView)).BeginInit();
-            this.STC_AddBook.SuspendLayout();
             this.Reader.SuspendLayout();
             this.groupBoxReaderInfo.SuspendLayout();
             this.groupBoxDataReader.SuspendLayout();
@@ -125,9 +125,9 @@
             this.SystemMainTabControl.Controls.Add(this.STC_BookTP);
             this.SystemMainTabControl.Controls.Add(this.MakeBorrow);
             this.SystemMainTabControl.Controls.Add(this.LibraryConfigurationTab);
-            this.SystemMainTabControl.Controls.Add(this.STC_AddBook);
             this.SystemMainTabControl.Controls.Add(this.Reader);
             this.SystemMainTabControl.Controls.Add(this.BorrowBookList);
+            this.SystemMainTabControl.Controls.Add(this.STC_BookNew);
             this.SystemMainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SystemMainTabControl.Location = new System.Drawing.Point(0, 0);
             this.SystemMainTabControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -731,13 +731,7 @@
             this.dgv_Reader_Bod.Name = "dgv_Reader_Bod";
             this.dgv_Reader_Bod.Width = 125;
             // 
-            this.STC_AddBook.Controls.Add(this.groupBox1);
-            this.STC_AddBook.Location = new System.Drawing.Point(4, 29);
-            this.STC_AddBook.Name = "STC_AddBook";
-            this.STC_AddBook.Size = new System.Drawing.Size(1024, 590);
-            this.STC_AddBook.TabIndex = 4;
-            this.STC_AddBook.Text = "Nhận sách mới";
-            this.STC_AddBook.UseVisualStyleBackColor = true;
+            // dgv_Reader_Create_Date
             // 
             this.dgv_Reader_Create_Date.HeaderText = "Ngày lập thẻ";
             this.dgv_Reader_Create_Date.MinimumWidth = 6;
@@ -791,6 +785,15 @@
             this.BorrowBookList.Text = "Danh sách mượn";
             this.BorrowBookList.UseVisualStyleBackColor = true;
             // 
+            // STC_BookNew
+            // 
+            this.STC_BookNew.Location = new System.Drawing.Point(4, 29);
+            this.STC_BookNew.Name = "STC_BookNew";
+            this.STC_BookNew.Size = new System.Drawing.Size(1024, 590);
+            this.STC_BookNew.TabIndex = 6;
+            this.STC_BookNew.Text = "Thêm Sách";
+            this.STC_BookNew.UseVisualStyleBackColor = true;
+            // 
             // LibraryManagementSystemUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -822,7 +825,6 @@
             this.SearchLibraryConfigurationGroupBox.PerformLayout();
             this.LibraryConfigurationDataGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.LibraryConfigurationDataGridView)).EndInit();
-            this.STC_AddBook.ResumeLayout(false);
             this.Reader.ResumeLayout(false);
             this.groupBoxReaderInfo.ResumeLayout(false);
             this.groupBoxReaderInfo.PerformLayout();
@@ -901,5 +903,6 @@
         private Label labelReaderCreate;
         private DateTimePicker dtpReaderBodInfo;
         private TabPage BorrowBookList;
+        private TabPage STC_BookNew;
     }
 }
