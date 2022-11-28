@@ -18,6 +18,17 @@ public class LibraryCard : Entity
         CreationDate = creationDate;
     }
 
+    public LibraryCard(Guid id, string name, DateTime birthDay, string address, string email, string typeOfReader,
+        DateTime creationDate) : base(id)
+    {
+        Name = name;
+        BirthDay = birthDay;
+        Address = address;
+        Email = email;
+        TypeOfReader = typeOfReader;
+        CreationDate = creationDate;
+    }
+
     private LibraryCard()
     {
         Name = string.Empty;

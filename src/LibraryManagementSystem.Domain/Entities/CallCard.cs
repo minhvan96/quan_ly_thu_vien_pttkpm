@@ -8,18 +8,25 @@ namespace LibraryManagementSystem.Domain.Entities;
 /// </summary>
 public class CallCard : Entity
 {
+    public LibraryCard? LibraryCard { get; set; }
+    public ICollection<CallCardDetail> CallCardDetails { get; set; }
+    public Guid LibraryCardId { get; set; }
+    public DateTime BorrowDate { get; set; }
+
     public CallCard()
     {
         BorrowDate = DateTime.Now;
     }
 
-    public CallCard(Guid libraryCardId)
+    public CallCard(Guid id, Guid libraryCardId, DateTime borrowDate) : base(id)
     {
-        LibraryCardId = libraryCardId;
+        this.LibraryCardId = libraryCardId;
+        this.BorrowDate = borrowDate;   
     }
 
-    public LibraryCard? LibraryCard { get; private set; }
-    public Guid LibraryCardId { get; }
-
-    public DateTime BorrowDate { get; }
+    public CallCard(string name, Guid libraryCardId, DateTime borrowDate)
+    {
+        this.LibraryCardId = libraryCardId;
+        this.BorrowDate = borrowDate;
+    }
 }
