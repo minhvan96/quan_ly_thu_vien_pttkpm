@@ -24,7 +24,7 @@ public class CallCard : Entity
         this.BorrowDate = borrowDate;   
     }
 
-    public CallCard(string name, Guid libraryCardId, DateTime borrowDate)
+    public CallCard(Guid libraryCardId, DateTime borrowDate)
     {
         this.LibraryCardId = libraryCardId;
         this.BorrowDate = borrowDate;
