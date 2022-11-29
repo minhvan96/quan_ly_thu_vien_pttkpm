@@ -1,13 +1,4 @@
 ﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace LibraryManagementSystem.App
 {
@@ -33,7 +24,7 @@ namespace LibraryManagementSystem.App
 
         private void btn_update_Click(object sender, EventArgs e)
         {
-            if(dtg_BorrowBookList.SelectedRows.Count < 1)
+            if (dtg_BorrowBookList.SelectedRows.Count < 1)
             {
                 MessageBox.Show("Vui lòng chọn phiếu mượn!.");
                 return;

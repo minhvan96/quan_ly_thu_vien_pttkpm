@@ -2,6 +2,7 @@ using LibraryManagementSystem.App.Features.BookFeature.Commands;
 using LibraryManagementSystem.App.Features.BookFeature.Queries;
 using LibraryManagementSystem.App.Features.LibraryConfigurationFeature.Commands;
 using LibraryManagementSystem.App.Features.LibraryConfigurationFeature.Queries;
+using LibraryManagementSystem.App.UI.Book;
 using MediatR;
 
 namespace LibraryManagementSystem.App;
@@ -82,13 +83,21 @@ public partial class LibraryManagementSystemUI : Form
             MakeBorrow.Controls.Clear();
             MakeBorrow.Controls.Add(myUserControl);
         }
-        if (tabPage.Name == "BorrowBookList")
+        else if (tabPage.Name == "BorrowBookList")
         {
             // show UI make borrow voucher
             var myUserControl = new BorrowVoucherList(_mediator, BorrowBookList);
             myUserControl.Dock = DockStyle.Fill;
             BorrowBookList.Controls.Clear();
             BorrowBookList.Controls.Add(myUserControl);
+        }
+        else if (tabPage.Name == "STC_BookTP")
+        {
+            // show UI make borrow voucher
+            var myUserControl = new BookUI(_mediator, BorrowBookList);
+            myUserControl.Dock = DockStyle.Fill;
+            STC_BookTP.Controls.Clear();
+            STC_BookTP.Controls.Add(myUserControl);
         }
     }
 

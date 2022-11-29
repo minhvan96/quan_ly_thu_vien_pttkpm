@@ -3,7 +3,6 @@ using LibraryManagementSystem.App.Features.BookFeature.Queries;
 using LibraryManagementSystem.App.Features.CallCardFeature.Commands;
 using LibraryManagementSystem.App.Features.CallCardFeature.Dtos;
 using LibraryManagementSystem.App.Features.CallCardFeature.Queries;
-using LibraryManagementSystem.App.Features.ReaderFeature.Queries;
 using MediatR;
 
 namespace LibraryManagementSystem.App;
