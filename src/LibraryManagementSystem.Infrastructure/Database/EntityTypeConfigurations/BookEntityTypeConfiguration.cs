@@ -35,6 +35,6 @@ internal class BookEntityTypeConfiguration : DomainEntityTypeConfiguration<Book>
             .IsRequired();
 
         builder.Property(book => book.Published)
-            .IsRequired();
+            .IsRequired(false);
     }
 }

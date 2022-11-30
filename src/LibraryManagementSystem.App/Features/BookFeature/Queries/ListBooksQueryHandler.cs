@@ -58,7 +58,7 @@ public class ListBooksQueryHandler : IListQueryHandler<ListBooksQuery, BookDto>
                 Code = book.Code,
                 Author = book.Author.Name,
                 Publisher = book.Publisher.Name,
-                PublishedDate = new DateTimeOffset(),
+                PublishedDate = book.Published,
                 TypeName = book.BookType.Name,
                 InStock = book.InStock
             })

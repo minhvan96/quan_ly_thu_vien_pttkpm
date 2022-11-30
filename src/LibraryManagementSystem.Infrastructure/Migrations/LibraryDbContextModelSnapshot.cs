@@ -72,8 +72,8 @@ namespace LibraryManagementSystem.Infrastructure.Migrations
                         .HasMaxLength(512)
                         .HasColumnType("nvarchar(512)");
 
-                    b.Property<int>("Published")
-                        .HasColumnType("int");
+                    b.Property<DateTimeOffset?>("Published")
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<Guid>("PublisherId")
                         .HasColumnType("uniqueidentifier");

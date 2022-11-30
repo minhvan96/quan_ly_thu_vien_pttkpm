@@ -50,21 +50,22 @@
             this.BookManager_MainSplitContainer = new System.Windows.Forms.SplitContainer();
             this.BookManager_AddBookGroup = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txbId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.BookManager_AddBookButton = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.dtpPushlsh = new System.Windows.Forms.DateTimePicker();
+            this.txbPublisher = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txbName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.BookManager_BookTypeCbb = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txbAuthor = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.BookManager_BookViewGroup = new System.Windows.Forms.GroupBox();
             this.BM_ManageBookDGV = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BM_ManageBookDGV_BookNameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BM_ManageBookDGV_AuthorCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BM_ManageBookDGV_PublisherCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -320,18 +321,18 @@
             // BookManager_AddBookGroup
             // 
             this.BookManager_AddBookGroup.Controls.Add(this.button2);
-            this.BookManager_AddBookGroup.Controls.Add(this.textBox1);
+            this.BookManager_AddBookGroup.Controls.Add(this.txbId);
             this.BookManager_AddBookGroup.Controls.Add(this.label1);
             this.BookManager_AddBookGroup.Controls.Add(this.BookManager_AddBookButton);
-            this.BookManager_AddBookGroup.Controls.Add(this.dateTimePicker1);
-            this.BookManager_AddBookGroup.Controls.Add(this.textBox4);
+            this.BookManager_AddBookGroup.Controls.Add(this.dtpPushlsh);
+            this.BookManager_AddBookGroup.Controls.Add(this.txbPublisher);
             this.BookManager_AddBookGroup.Controls.Add(this.label5);
             this.BookManager_AddBookGroup.Controls.Add(this.label6);
-            this.BookManager_AddBookGroup.Controls.Add(this.textBox2);
+            this.BookManager_AddBookGroup.Controls.Add(this.txbName);
             this.BookManager_AddBookGroup.Controls.Add(this.label2);
             this.BookManager_AddBookGroup.Controls.Add(this.BookManager_BookTypeCbb);
             this.BookManager_AddBookGroup.Controls.Add(this.label3);
-            this.BookManager_AddBookGroup.Controls.Add(this.textBox3);
+            this.BookManager_AddBookGroup.Controls.Add(this.txbAuthor);
             this.BookManager_AddBookGroup.Controls.Add(this.label4);
             this.BookManager_AddBookGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BookManager_AddBookGroup.Location = new System.Drawing.Point(0, 0);
@@ -350,13 +351,14 @@
             this.button2.Text = "Cập nhật";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txbId
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 50);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(241, 27);
-            this.textBox1.TabIndex = 14;
+            this.txbId.Enabled = false;
+            this.txbId.Location = new System.Drawing.Point(6, 50);
+            this.txbId.Name = "txbId";
+            this.txbId.ReadOnly = true;
+            this.txbId.Size = new System.Drawing.Size(241, 27);
+            this.txbId.TabIndex = 14;
             // 
             // label1
             // 
@@ -377,19 +379,19 @@
             this.BookManager_AddBookButton.UseVisualStyleBackColor = true;
             this.BookManager_AddBookButton.Click += new System.EventHandler(this.BookManager_AddBookButton_Click);
             // 
-            // dateTimePicker1
+            // dtpPushlsh
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(547, 108);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(241, 27);
-            this.dateTimePicker1.TabIndex = 9;
+            this.dtpPushlsh.Location = new System.Drawing.Point(547, 108);
+            this.dtpPushlsh.Name = "dtpPushlsh";
+            this.dtpPushlsh.Size = new System.Drawing.Size(241, 27);
+            this.dtpPushlsh.TabIndex = 9;
             // 
-            // textBox4
+            // txbPublisher
             // 
-            this.textBox4.Location = new System.Drawing.Point(279, 108);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(241, 27);
-            this.textBox4.TabIndex = 11;
+            this.txbPublisher.Location = new System.Drawing.Point(279, 108);
+            this.txbPublisher.Name = "txbPublisher";
+            this.txbPublisher.Size = new System.Drawing.Size(241, 27);
+            this.txbPublisher.TabIndex = 11;
             // 
             // label5
             // 
@@ -409,12 +411,12 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "Nhà xuất bản";
             // 
-            // textBox2
+            // txbName
             // 
-            this.textBox2.Location = new System.Drawing.Point(279, 50);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(241, 27);
-            this.textBox2.TabIndex = 3;
+            this.txbName.Location = new System.Drawing.Point(279, 50);
+            this.txbName.Name = "txbName";
+            this.txbName.Size = new System.Drawing.Size(462, 27);
+            this.txbName.TabIndex = 3;
             // 
             // label2
             // 
@@ -442,17 +444,17 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Thể loại";
             // 
-            // textBox3
+            // txbAuthor
             // 
-            this.textBox3.Location = new System.Drawing.Point(547, 50);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(241, 27);
-            this.textBox3.TabIndex = 5;
+            this.txbAuthor.Location = new System.Drawing.Point(763, 50);
+            this.txbAuthor.Name = "txbAuthor";
+            this.txbAuthor.Size = new System.Drawing.Size(241, 27);
+            this.txbAuthor.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(547, 27);
+            this.label4.Location = new System.Drawing.Point(763, 27);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 20);
             this.label4.TabIndex = 7;
@@ -471,8 +473,11 @@
             // 
             // BM_ManageBookDGV
             // 
+            this.BM_ManageBookDGV.AllowUserToAddRows = false;
+            this.BM_ManageBookDGV.AllowUserToDeleteRows = false;
             this.BM_ManageBookDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.BM_ManageBookDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
             this.BM_ManageBookDGV_BookNameCol,
             this.BM_ManageBookDGV_AuthorCol,
             this.BM_ManageBookDGV_PublisherCol,
@@ -481,11 +486,24 @@
             this.BM_ManageBookDGV_DeleteCol});
             this.BM_ManageBookDGV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BM_ManageBookDGV.Location = new System.Drawing.Point(3, 23);
+            this.BM_ManageBookDGV.MultiSelect = false;
             this.BM_ManageBookDGV.Name = "BM_ManageBookDGV";
+            this.BM_ManageBookDGV.ReadOnly = true;
             this.BM_ManageBookDGV.RowHeadersWidth = 51;
             this.BM_ManageBookDGV.RowTemplate.Height = 29;
+            this.BM_ManageBookDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.BM_ManageBookDGV.Size = new System.Drawing.Size(1004, 377);
             this.BM_ManageBookDGV.TabIndex = 0;
+            this.BM_ManageBookDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BM_ManageBookDGV_CellClick);
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            this.Id.Width = 125;
             // 
             // BM_ManageBookDGV_BookNameCol
             // 
@@ -538,6 +556,7 @@
             this.BM_ManageBookDGV_DeleteCol.HeaderText = "Xoá";
             this.BM_ManageBookDGV_DeleteCol.MinimumWidth = 6;
             this.BM_ManageBookDGV_DeleteCol.Name = "BM_ManageBookDGV_DeleteCol";
+            this.BM_ManageBookDGV_DeleteCol.ReadOnly = true;
             this.BM_ManageBookDGV_DeleteCol.Width = 50;
             // 
             // BookUI
@@ -592,23 +611,24 @@
         private DataGridViewTextBoxColumn BookPageDataStatus;
         private TabPage BookMenu_ManageBookPage;
         private Button BookManager_AddBookButton;
-        private TextBox textBox4;
+        private TextBox txbPublisher;
         private Label label6;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dtpPushlsh;
         private Label label5;
         private Label label4;
         private ComboBox BookManager_BookTypeCbb;
-        private TextBox textBox3;
+        private TextBox txbAuthor;
         private Label label3;
-        private TextBox textBox2;
+        private TextBox txbName;
         private Label label2;
         private SplitContainer BookManager_MainSplitContainer;
         private GroupBox BookManager_AddBookGroup;
         private Button button2;
-        private TextBox textBox1;
+        private TextBox txbId;
         private Label label1;
         private GroupBox BookManager_BookViewGroup;
         private DataGridView BM_ManageBookDGV;
+        private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn BM_ManageBookDGV_BookNameCol;
         private DataGridViewTextBoxColumn BM_ManageBookDGV_AuthorCol;
         private DataGridViewTextBoxColumn BM_ManageBookDGV_PublisherCol;

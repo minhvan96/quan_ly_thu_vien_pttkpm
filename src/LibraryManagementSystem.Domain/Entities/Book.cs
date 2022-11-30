@@ -23,7 +23,7 @@ public class Book : Entity
         Guid bookTypeId,
         Guid authorId,
         Guid publisherId,
-        int published)
+        DateTimeOffset? published = null)
         : base(id)
     {
         Code = code;
@@ -39,7 +39,7 @@ public class Book : Entity
         Guid bookTypeId,
         Guid authorId,
         Guid publisherId,
-        int published)
+        DateTimeOffset? published = null)
     {
         Code = code;
         BookTypeId = bookTypeId;
@@ -50,7 +50,7 @@ public class Book : Entity
     }
 
     public string Name { get; set; }
-    public int Published { get; set; }
+    public DateTimeOffset? Published { get; set; }
     public string Code { get; set; }
     public Guid PublisherId { get; set; }
     public Guid BookTypeId { get; set; }
