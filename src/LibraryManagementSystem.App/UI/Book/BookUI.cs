@@ -1,5 +1,7 @@
 ﻿using LibraryManagementSystem.App.Features.BookFeature.Queries;
+using LibraryManagementSystem.App.Features.BookTypeFeature.Queries;
 using MediatR;
+using System.Data;
 
 namespace LibraryManagementSystem.App.UI.Book
 {
@@ -48,6 +50,35 @@ namespace LibraryManagementSystem.App.UI.Book
 
                 index++;
             }
+        }
+
+        private async void BookMenu_ManageBookPage_Enter(object sender, EventArgs e)
+        {
+            #region LOAD BOOK TYPES
+
+            var bookTypes = await _mediator.Send(new ListBookTypesQuery());
+            var bookTypesDataTable = new DataTable();
+            var bookTypeIdColumn = new DataColumn("Id", typeof(Guid));
+            var bookTypeNameColumn = new DataColumn("Name", typeof(string));
+            var bookTypesDataTableAllTypes = bookTypesDataTable;
+
+            bookTypesDataTable.Columns.Add(bookTypeIdColumn);
+            bookTypesDataTable.Columns.Add(bookTypeNameColumn);
+            bookTypesDataTableAllTypes.Rows.Add(Guid.Empty, "Tất cả thể loại");
+            foreach (var bookType in bookTypes.Items)
+            {
+                bookTypesDataTable.Rows.Add(bookType.Id, bookType.Name);
+            }
+            BookManager_BookTypeCbb.DataSource = bookTypesDataTableAllTypes;
+            BookManager_BookTypeCbb.DisplayMember = "Name";
+            BookManager_BookTypeCbb.ValueMember = "Id";
+
+            #endregion LOAD BOOK TYPES
+        }
+
+        private void BookManager_AddBookButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
