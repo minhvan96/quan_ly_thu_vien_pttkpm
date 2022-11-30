@@ -75,29 +75,35 @@ public partial class LibraryManagementSystemUI : Form
     {
         var tabControl = (TabControl)sender;
         var tabPage = tabControl.SelectedTab;
-        if (tabPage.Name == "MakeBorrow")
+        switch (tabPage.Name)
         {
-            // show UI make borrow voucher
-            var myUserControl = new MakeBorrowVoucher(_mediator);
-            myUserControl.Dock = DockStyle.Fill;
-            MakeBorrow.Controls.Clear();
-            MakeBorrow.Controls.Add(myUserControl);
-        }
-        else if (tabPage.Name == "BorrowBookList")
-        {
-            // show UI make borrow voucher
-            var myUserControl = new BorrowVoucherList(_mediator, BorrowBookList);
-            myUserControl.Dock = DockStyle.Fill;
-            BorrowBookList.Controls.Clear();
-            BorrowBookList.Controls.Add(myUserControl);
-        }
-        else if (tabPage.Name == "STC_BookTP")
-        {
-            // show UI make borrow voucher
-            var myUserControl = new BookUI(_mediator, BorrowBookList);
-            myUserControl.Dock = DockStyle.Fill;
-            STC_BookTP.Controls.Clear();
-            STC_BookTP.Controls.Add(myUserControl);
+            case "MakeBorrow":
+            {
+                // show UI make borrow voucher
+                var myUserControl = new MakeBorrowVoucher(_mediator);
+                myUserControl.Dock = DockStyle.Fill;
+                MakeBorrow.Controls.Clear();
+                MakeBorrow.Controls.Add(myUserControl);
+                break;
+            }
+            case "BorrowBookList":
+            {
+                // show UI borrow book list
+                var myUserControl = new BorrowVoucherList(_mediator, BorrowBookList);
+                myUserControl.Dock = DockStyle.Fill;
+                BorrowBookList.Controls.Clear();
+                BorrowBookList.Controls.Add(myUserControl);
+                break;
+            }
+            case "STC_BookTP":
+            {
+                // show UI book management page
+                var myUserControl = new BookUI(_mediator, BorrowBookList);
+                myUserControl.Dock = DockStyle.Fill;
+                STC_BookTP.Controls.Clear();
+                STC_BookTP.Controls.Add(myUserControl);
+                break;
+            }
         }
     }
 

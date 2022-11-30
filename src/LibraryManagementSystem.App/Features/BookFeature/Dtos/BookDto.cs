@@ -7,5 +7,7 @@ public record BookDto
     public string Code { get; init; } = string.Empty;
     public string TypeName { get; init; } = string.Empty;
     public string Author { get; init; } = string.Empty;
+    public string Publisher { get; set; } = string.Empty;
+    public DateTimeOffset PublishedDate { get; set; }
     public int InStock { get; set; }
 }

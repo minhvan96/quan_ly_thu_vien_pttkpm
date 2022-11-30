@@ -51,14 +51,16 @@ public class ListBooksQueryHandler : IListQueryHandler<ListBooksQuery, BookDto>
 
         var books = await _context.Books
             .Where(searchPredicate)
-            .Select(x => new BookDto
+            .Select(book => new BookDto
             {
-                Id = x.Id,
-                Name = x.Name,
-                Code = x.Code,
-                Author = x.Author.Name,
-                TypeName = x.BookType.Name,
-                InStock = x.InStock
+                Id = book.Id,
+                Name = book.Name,
+                Code = book.Code,
+                Author = book.Author.Name,
+                Publisher = book.Publisher.Name,
+                PublishedDate = new DateTimeOffset(),
+                TypeName = book.BookType.Name,
+                InStock = book.InStock
             })
             .ToPagedListAsync(request.PageIndex, request.PageSize, cancellationToken: cancellationToken);
         return books;
