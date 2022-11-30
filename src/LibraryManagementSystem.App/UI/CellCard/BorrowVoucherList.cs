@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using LibraryManagementSystem.App.Features.CallCardFeature.Queries;
+using MediatR;
 
 namespace LibraryManagementSystem.App
 {
@@ -15,11 +16,11 @@ namespace LibraryManagementSystem.App
 
         private async void BorrowVoucherList_Load(object sender, EventArgs e)
         {
-            //var bookListCmd = new BorrowVoucherQuery();
-            //var books = await _mediator.Send(bookListCmd);
+            var callCardListCmd = new CallCardListQuery();
+            var callCards = await _mediator.Send(callCardListCmd);
 
-            //dtg_BorrowBookList.AutoGenerateColumns = false;
-            //dtg_BorrowBookList.DataSource = books.Items.ToList();
+            dtg_BorrowBookList.AutoGenerateColumns = false;
+            dtg_BorrowBookList.DataSource = callCards.Items.ToList();
         }
 
         private void btn_update_Click(object sender, EventArgs e)

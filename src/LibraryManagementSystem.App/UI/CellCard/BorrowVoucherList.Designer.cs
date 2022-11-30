@@ -36,7 +36,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dtg_BorrowBookList = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReaderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LibraryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BorrowDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BookCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -114,7 +114,7 @@
             this.dtg_BorrowBookList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtg_BorrowBookList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
-            this.ReaderName,
+            this.LibraryName,
             this.BorrowDate,
             this.Status,
             this.BookCount});
@@ -137,12 +137,12 @@
             this.Id.Name = "Id";
             this.Id.Visible = false;
             // 
-            // ReaderName
+            // LibraryName
             // 
-            this.ReaderName.DataPropertyName = "ReaderName";
-            this.ReaderName.HeaderText = "Đọc giả";
-            this.ReaderName.MinimumWidth = 6;
-            this.ReaderName.Name = "ReaderName";
+            this.LibraryName.DataPropertyName = "LibraryName";
+            this.LibraryName.HeaderText = "Đọc giả";
+            this.LibraryName.MinimumWidth = 6;
+            this.LibraryName.Name = "LibraryName";
             // 
             // BorrowDate
             // 
@@ -194,7 +194,7 @@
         private Button btn_update;
         private DataGridView dtg_BorrowBookList;
         private DataGridViewTextBoxColumn Id;
-        private DataGridViewTextBoxColumn ReaderName;
+        private DataGridViewTextBoxColumn LibraryName;
         private DataGridViewTextBoxColumn BorrowDate;
         private DataGridViewTextBoxColumn Status;
         private DataGridViewTextBoxColumn BookCount;

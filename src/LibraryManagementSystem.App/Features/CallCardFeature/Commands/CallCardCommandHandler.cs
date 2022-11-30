@@ -23,7 +23,7 @@ public class CallCardCommandHandler : IRequestHandler<CallCardCommand, CallCardR
             foreach (var book in books)
                 book.InStock -= 1;
 
-        var callCard = new CallCard(request.LibraryCardId, request.BorrowDate);
+        var callCard = new CallCard(request.LibraryCardId, request.BorrowDate, false);
         await _context.AddAsync(callCard, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
 
