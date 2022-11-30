@@ -1,4 +1,6 @@
-﻿using LibraryManagementSystem.App.Features.CallCardFeature.Queries;
+﻿using LibraryManagementSystem.App.Features.CallCardFeature.Commands;
+using LibraryManagementSystem.App.Features.CallCardFeature.Dtos;
+using LibraryManagementSystem.App.Features.CallCardFeature.Queries;
 using MediatR;
 
 namespace LibraryManagementSystem.App
@@ -7,6 +9,8 @@ namespace LibraryManagementSystem.App
     {
         private readonly IMediator _mediator;
         private readonly TabPage _pageMain;
+        private List<CallCardDto> _callCardList;
+
         public BorrowVoucherList(IMediator mediator, TabPage pageMain)
         {
             InitializeComponent();
@@ -20,7 +24,8 @@ namespace LibraryManagementSystem.App
             var callCards = await _mediator.Send(callCardListCmd);
 
             dtg_BorrowBookList.AutoGenerateColumns = false;
-            dtg_BorrowBookList.DataSource = callCards.Items.ToList();
+            _callCardList = callCards.Items.ToList();
+            dtg_BorrowBookList.DataSource = _callCardList;
         }
 
         private void btn_update_Click(object sender, EventArgs e)
@@ -37,6 +42,38 @@ namespace LibraryManagementSystem.App
             myUserControl.Dock = DockStyle.Fill;
             _pageMain.Controls.Clear();
             _pageMain.Controls.Add(myUserControl);
+        }
+
+        private async void btn_Delete_Click(object sender, EventArgs e)
+        {
+            var confirmDelete = MessageBox.Show("Bạn có chắc chắn muốn xóa phiếu mượn này không!", "Xác nhận xóa", MessageBoxButtons.YesNo);
+            var bookSelectedRow = dtg_BorrowBookList.SelectedRows[0];
+            var borrowBookId = new Guid(bookSelectedRow.Cells["Id"].Value.ToString());
+
+            if (confirmDelete == DialogResult.Yes)
+            {
+                var callCard = new CallCardDeleteCommand()
+                {
+                    CallCardId = borrowBookId
+                };
+                try
+                {
+                    await _mediator.Send(callCard);
+                    MessageBox.Show("Xóa thành công!");
+
+                    var callCardDeletedInd = _callCardList.FindIndex(x => x.Id == borrowBookId);
+                    _callCardList.RemoveAt(callCardDeletedInd);
+                    dtg_BorrowBookList.DataSource = new BindingSource(_callCardList, "");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Có lỗi xảy ra, vui lòng thử lại!");
+                }
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

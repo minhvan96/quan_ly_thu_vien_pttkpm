@@ -14,7 +14,7 @@ public class CallCardCommand : IRequest<CallCardResult>
 public record CallCardResult : RequestResult
 {
     /// <inheritdoc />
-    public CallCardResult(bool success) : base(success)
+    public CallCardResult(bool success, string message) : base(success, message)
     {
     }
 }

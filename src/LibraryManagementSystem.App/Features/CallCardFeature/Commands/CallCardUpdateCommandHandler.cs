@@ -38,7 +38,14 @@ public class CallCardUpdateCommandHandler : IRequestHandler<CallCardUpdateComman
                 foreach (var book in request.booksNeedDelete)
                 {
                     var callCardDetail = _context.CallCardDetails.Where(x => x.CalLCardId == request.CallCardId && x.BookId == book.BookId).FirstOrDefault();
+                    if (callCardDetail == null) continue;
                     _context.CallCardDetails.Remove(callCardDetail);
+
+                    // increase instock book
+                    var bookquery = _context.Books.Where(x => x.Id == callCardDetail.BookId).FirstOrDefault();
+                    if (bookquery == null) continue;
+                    bookquery.InStock += 1;
+
                     await _context.SaveChangesAsync(cancellationToken);
                 }
             }
@@ -49,6 +56,11 @@ public class CallCardUpdateCommandHandler : IRequestHandler<CallCardUpdateComman
                 {
                     var callCardDetail = new CallCardDetail(callCard.Id, book.BookId);
                     await _context.AddAsync(callCardDetail, cancellationToken);
+
+                    // discrease instock book
+                    var bookquery = _context.Books.Where(x => x.Id == callCardDetail.BookId).FirstOrDefault();
+                    if (bookquery == null) continue;
+                    bookquery.InStock -= 1;
                 }
                 await _context.SaveChangesAsync(cancellationToken);
             }
