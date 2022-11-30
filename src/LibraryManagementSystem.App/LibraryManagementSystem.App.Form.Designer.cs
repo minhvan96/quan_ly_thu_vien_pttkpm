@@ -279,7 +279,6 @@
             this.BookPageSearchBooksButton.TabIndex = 0;
             this.BookPageSearchBooksButton.Text = "Tìm kiếm";
             this.BookPageSearchBooksButton.UseVisualStyleBackColor = true;
-            this.BookPageSearchBooksButton.Click += new System.EventHandler(this.BookPageSearchBooksButton_Click);
             // 
             // BookPageDataGroup
             // 
