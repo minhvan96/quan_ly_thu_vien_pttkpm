@@ -132,7 +132,7 @@ namespace LibraryManagementSystem.App
 
         private void btn_Close_Click(object sender, EventArgs e)
         {
-
+            ReturnCallCardListView();
         }
 
         private async void btn_Submit_Click(object sender, EventArgs e)
@@ -153,15 +153,23 @@ namespace LibraryManagementSystem.App
             try
             {
                 await _mediator.Send(callCard);
-                MessageBox.Show("Cho mượn sách thành công");
+                MessageBox.Show("Cập nhật thành công!");
 
-                bookSelectedList.Clear();
-                dtg_bookListSelected.DataSource = new BindingSource(bookSelectedList, "");
+                // return call card list view
+                ReturnCallCardListView();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Có lỗi xảy ra, vui lòng thử lại!");
             }
+        }
+
+        private void ReturnCallCardListView()
+        {
+            var myUserControl = new BorrowVoucherList(_mediator, _page);
+            myUserControl.Dock = DockStyle.Fill;
+            _page.Controls.Clear();
+            _page.Controls.Add(myUserControl);
         }
     }
 }

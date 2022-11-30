@@ -86,6 +86,7 @@
             this.btn_Delete.TabIndex = 1;
             this.btn_Delete.Text = "Xóa phiếu mượn";
             this.btn_Delete.UseVisualStyleBackColor = true;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // btn_update
             // 
@@ -110,6 +111,7 @@
             // 
             // dtg_BorrowBookList
             // 
+            this.dtg_BorrowBookList.AllowUserToAddRows = false;
             this.dtg_BorrowBookList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtg_BorrowBookList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtg_BorrowBookList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -121,6 +123,7 @@
             this.dtg_BorrowBookList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtg_BorrowBookList.Location = new System.Drawing.Point(3, 23);
             this.dtg_BorrowBookList.Name = "dtg_BorrowBookList";
+            this.dtg_BorrowBookList.ReadOnly = true;
             this.dtg_BorrowBookList.RowHeadersWidth = 51;
             this.dtg_BorrowBookList.RowTemplate.Height = 29;
             this.dtg_BorrowBookList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -135,6 +138,7 @@
             this.Id.HeaderText = "Id";
             this.Id.MinimumWidth = 6;
             this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
             this.Id.Visible = false;
             // 
             // LibraryName
@@ -143,6 +147,7 @@
             this.LibraryName.HeaderText = "Đọc giả";
             this.LibraryName.MinimumWidth = 6;
             this.LibraryName.Name = "LibraryName";
+            this.LibraryName.ReadOnly = true;
             // 
             // BorrowDate
             // 
@@ -150,6 +155,7 @@
             this.BorrowDate.HeaderText = "Ngày mượn";
             this.BorrowDate.MinimumWidth = 6;
             this.BorrowDate.Name = "BorrowDate";
+            this.BorrowDate.ReadOnly = true;
             // 
             // Status
             // 
@@ -157,6 +163,7 @@
             this.Status.HeaderText = "Tình trạng";
             this.Status.MinimumWidth = 6;
             this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
             // 
             // BookCount
             // 
@@ -164,6 +171,7 @@
             this.BookCount.HeaderText = "Số lượng";
             this.BookCount.MinimumWidth = 6;
             this.BookCount.Name = "BookCount";
+            this.BookCount.ReadOnly = true;
             // 
             // BorrowVoucherList
             // 
