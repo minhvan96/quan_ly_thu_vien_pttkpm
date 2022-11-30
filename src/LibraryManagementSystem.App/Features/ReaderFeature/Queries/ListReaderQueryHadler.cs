@@ -3,11 +3,6 @@ using LibraryManagementSystem.App.Features.ReaderFeature.Dtos;
 using LibraryManagementSystem.Domain.Common;
 using LibraryManagementSystem.Infrastructure.Data;
 using LibraryManagementSystem.Infrastructure.Database;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryManagementSystem.App.Features.ReaderFeature.Queries;
 

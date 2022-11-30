@@ -1,10 +1,5 @@
 ﻿using LibraryManagementSystem.App.Configurations.Mediator;
 using LibraryManagementSystem.App.Features.ReaderFeature.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryManagementSystem.App.Features.ReaderFeature.Queries;
 public class ListReaderQuery : ListQuery<ReaderDto>
