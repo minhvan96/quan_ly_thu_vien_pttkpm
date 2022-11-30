@@ -15,4 +15,5 @@ public class CallCardDto
     public LibraryCard LibraryCard { get; set; }
     public string Status { get; set; }
     public int BookCount{ get; set; }
+    public string LibraryName { get; set; }
 }

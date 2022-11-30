@@ -30,11 +30,12 @@ public class CallCardListQueryHandler : IListQueryHandler<CallCardListQuery, Cal
             .Select(x => new CallCardDto
             {
                 Id = x.Id,
-                BorrowDate = x.BorrowDate,
+                BorrowDate = x.BorrowDateTime,
                 LibraryCard = x.LibraryCard,
+                LibraryName = x.LibraryCard.Name,
                 CallCardDetails = x.CallCardDetails.ToList(),
                 BookCount = x.CallCardDetails.Count,
-                //Status = x.CallCardDetails.Count > 0? "
+                Status = x.IsReturnBook ? "Đã trả" : "Chưa trả"
             })
             .ToPagedListAsync(request.PageIndex, request.PageSize, cancellationToken: cancellationToken);
         return result;

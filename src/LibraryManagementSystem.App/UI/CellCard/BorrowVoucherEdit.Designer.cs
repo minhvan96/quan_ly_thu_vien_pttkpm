@@ -31,8 +31,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_Close = new System.Windows.Forms.Button();
+            this.btn_Submit = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cbb_Reader = new System.Windows.Forms.ComboBox();
             this.datepk_borrowDate = new System.Windows.Forms.DateTimePicker();
@@ -40,6 +40,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.dtg_bookListSelected = new System.Windows.Forms.DataGridView();
+            this.BookName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BookId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AuthorSelected = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dtg_BookList = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,19 +52,14 @@
             this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtg_bookListSelected = new System.Windows.Forms.DataGridView();
-            this.BookName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BookId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AuthorSelected = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_bookListSelected)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_BookList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtg_bookListSelected)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -84,8 +84,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.btn_Close);
+            this.groupBox2.Controls.Add(this.btn_Submit);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox2.Location = new System.Drawing.Point(0, 517);
             this.groupBox2.Name = "groupBox2";
@@ -93,23 +93,26 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
-            // button2
+            // btn_Close
             // 
-            this.button2.Location = new System.Drawing.Point(553, 26);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(130, 35);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Đóng";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_Close.CausesValidation = false;
+            this.btn_Close.Location = new System.Drawing.Point(553, 26);
+            this.btn_Close.Name = "btn_Close";
+            this.btn_Close.Size = new System.Drawing.Size(130, 35);
+            this.btn_Close.TabIndex = 1;
+            this.btn_Close.Text = "Đóng";
+            this.btn_Close.UseVisualStyleBackColor = true;
+            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
             // 
-            // button1
+            // btn_Submit
             // 
-            this.button1.Location = new System.Drawing.Point(353, 26);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 35);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Cập nhật";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_Submit.Location = new System.Drawing.Point(353, 26);
+            this.btn_Submit.Name = "btn_Submit";
+            this.btn_Submit.Size = new System.Drawing.Size(130, 35);
+            this.btn_Submit.TabIndex = 0;
+            this.btn_Submit.Text = "Cập nhật";
+            this.btn_Submit.UseVisualStyleBackColor = true;
+            this.btn_Submit.Click += new System.EventHandler(this.btn_Submit_Click);
             // 
             // groupBox3
             // 
@@ -178,6 +181,64 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Sách đã chọn";
             // 
+            // dtg_bookListSelected
+            // 
+            this.dtg_bookListSelected.AllowUserToAddRows = false;
+            this.dtg_bookListSelected.AllowUserToDeleteRows = false;
+            this.dtg_bookListSelected.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtg_bookListSelected.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.BookName,
+            this.BookId,
+            this.AuthorSelected,
+            this.Type});
+            this.dtg_bookListSelected.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtg_bookListSelected.Location = new System.Drawing.Point(3, 23);
+            this.dtg_bookListSelected.Name = "dtg_bookListSelected";
+            this.dtg_bookListSelected.ReadOnly = true;
+            this.dtg_bookListSelected.RowHeadersWidth = 51;
+            this.dtg_bookListSelected.RowTemplate.Height = 29;
+            this.dtg_bookListSelected.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtg_bookListSelected.Size = new System.Drawing.Size(493, 311);
+            this.dtg_bookListSelected.TabIndex = 1;
+            this.dtg_bookListSelected.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_bookListSelected_CellContentDoubleClick);
+            // 
+            // BookName
+            // 
+            this.BookName.DataPropertyName = "BookName";
+            this.BookName.HeaderText = "Tên Sách";
+            this.BookName.MinimumWidth = 6;
+            this.BookName.Name = "BookName";
+            this.BookName.ReadOnly = true;
+            this.BookName.Width = 125;
+            // 
+            // BookId
+            // 
+            this.BookId.DataPropertyName = "BookId";
+            this.BookId.HeaderText = "BookId";
+            this.BookId.MinimumWidth = 6;
+            this.BookId.Name = "BookId";
+            this.BookId.ReadOnly = true;
+            this.BookId.Visible = false;
+            this.BookId.Width = 125;
+            // 
+            // AuthorSelected
+            // 
+            this.AuthorSelected.DataPropertyName = "Author";
+            this.AuthorSelected.HeaderText = "Tác Giả";
+            this.AuthorSelected.MinimumWidth = 6;
+            this.AuthorSelected.Name = "AuthorSelected";
+            this.AuthorSelected.ReadOnly = true;
+            this.AuthorSelected.Width = 125;
+            // 
+            // Type
+            // 
+            this.Type.DataPropertyName = "BookType";
+            this.Type.HeaderText = "Thể loại";
+            this.Type.MinimumWidth = 6;
+            this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
+            this.Type.Width = 125;
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.dtg_BookList);
@@ -210,7 +271,7 @@
             this.dtg_BookList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtg_BookList.Size = new System.Drawing.Size(519, 311);
             this.dtg_BookList.TabIndex = 1;
-            this.dtg_BookList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_BookList_CellContentClick);
+            this.dtg_BookList.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_BookList_CellContentDoubleClick);
             // 
             // Id
             // 
@@ -259,64 +320,6 @@
             this.InStock.ReadOnly = true;
             this.InStock.Width = 125;
             // 
-            // dtg_bookListSelected
-            // 
-            this.dtg_bookListSelected.AllowUserToAddRows = false;
-            this.dtg_bookListSelected.AllowUserToDeleteRows = false;
-            this.dtg_bookListSelected.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtg_bookListSelected.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.BookName,
-            this.BookId,
-            this.AuthorSelected,
-            this.Type});
-            this.dtg_bookListSelected.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtg_bookListSelected.Location = new System.Drawing.Point(3, 23);
-            this.dtg_bookListSelected.Name = "dtg_bookListSelected";
-            this.dtg_bookListSelected.ReadOnly = true;
-            this.dtg_bookListSelected.RowHeadersWidth = 51;
-            this.dtg_bookListSelected.RowTemplate.Height = 29;
-            this.dtg_bookListSelected.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtg_bookListSelected.Size = new System.Drawing.Size(493, 311);
-            this.dtg_bookListSelected.TabIndex = 1;
-            this.dtg_bookListSelected.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_bookListSelected_CellContentClick);
-            // 
-            // BookName
-            // 
-            this.BookName.DataPropertyName = "BookName";
-            this.BookName.HeaderText = "Tên Sách";
-            this.BookName.MinimumWidth = 6;
-            this.BookName.Name = "BookName";
-            this.BookName.ReadOnly = true;
-            this.BookName.Width = 125;
-            // 
-            // BookId
-            // 
-            this.BookId.DataPropertyName = "BookId";
-            this.BookId.HeaderText = "BookId";
-            this.BookId.MinimumWidth = 6;
-            this.BookId.Name = "BookId";
-            this.BookId.ReadOnly = true;
-            this.BookId.Visible = false;
-            this.BookId.Width = 125;
-            // 
-            // AuthorSelected
-            // 
-            this.AuthorSelected.DataPropertyName = "Author";
-            this.AuthorSelected.HeaderText = "Tác Giả";
-            this.AuthorSelected.MinimumWidth = 6;
-            this.AuthorSelected.Name = "AuthorSelected";
-            this.AuthorSelected.ReadOnly = true;
-            this.AuthorSelected.Width = 125;
-            // 
-            // Type
-            // 
-            this.Type.DataPropertyName = "BookType";
-            this.Type.HeaderText = "Thể loại";
-            this.Type.MinimumWidth = 6;
-            this.Type.Name = "Type";
-            this.Type.ReadOnly = true;
-            this.Type.Width = 125;
-            // 
             // BorrowVoucherEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -334,9 +337,9 @@
             this.groupBox3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_bookListSelected)).EndInit();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtg_BookList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtg_bookListSelected)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -351,8 +354,8 @@
         private DateTimePicker datepk_borrowDate;
         private Label label2;
         private Label label3;
-        private Button button2;
-        private Button button1;
+        private Button btn_Close;
+        private Button btn_Submit;
         private Panel panel1;
         private GroupBox groupBox5;
         private GroupBox groupBox4;
