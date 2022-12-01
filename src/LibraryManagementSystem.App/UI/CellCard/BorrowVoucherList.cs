@@ -75,5 +75,38 @@ namespace LibraryManagementSystem.App
                 return;
             }
         }
+
+        private async void btn_returnBook_Click(object sender, EventArgs e)
+        {
+            var confirmReturn = MessageBox.Show("Xác nhận trả sách!", "Xác nhận", MessageBoxButtons.YesNo);
+            var bookSelectedRow = dtg_BorrowBookList.SelectedRows[0];
+            var borrowBookId = new Guid(bookSelectedRow.Cells["Id"].Value.ToString());
+
+            if (confirmReturn == DialogResult.Yes)
+            {
+                var callCard = new ReturnBookCommand()
+                {
+                    CallCardId = borrowBookId
+                };
+                try
+                {
+                    await _mediator.Send(callCard);
+                    MessageBox.Show("Trả sách thành công!");
+
+                    var callCardDeletedInd = _callCardList.Where(x => x.Id == borrowBookId).FirstOrDefault();
+                    callCardDeletedInd.Status = "Đã trả";
+
+                    dtg_BorrowBookList.DataSource = new BindingSource(_callCardList, "");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Có lỗi xảy ra, vui lòng thử lại!");
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
     }
 }

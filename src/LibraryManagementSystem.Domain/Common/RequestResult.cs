@@ -10,9 +10,9 @@ public record RequestResult
     public RequestResult(bool success, string message)
     {
         Success = success;
-        message = message;
+        Message = message;
     }
 
-    public bool Success { get; }
-    public string message{ get; }
+    public bool Success { get; set; }
+    public string Message{ get; set; }
 }

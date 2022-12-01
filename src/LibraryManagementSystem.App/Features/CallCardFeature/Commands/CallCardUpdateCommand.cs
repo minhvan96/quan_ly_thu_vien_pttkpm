@@ -22,7 +22,7 @@ public class CallCardUpdateCommand : IRequest<CallCardUpdateResult>
 public record CallCardUpdateResult : RequestResult
 {
     /// <inheritdoc />
-    public CallCardUpdateResult(bool success) : base(success)
+    public CallCardUpdateResult(bool success, string message) : base(success, message)
     {
     }
 }

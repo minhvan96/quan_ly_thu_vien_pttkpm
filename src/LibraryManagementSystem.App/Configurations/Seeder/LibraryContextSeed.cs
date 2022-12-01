@@ -49,6 +49,12 @@ public class LibraryContextSeed
                 context.AddRange(books);
             }
 
+            //if (!await context.LibraryCards.AnyAsync())
+            //{
+            //    var library = PredefinedLibraryCards.GetPredefinedBooks(executingFolder);
+            //    context.AddRange(library);
+            //}
+
             if (!await context.LibraryConfigurations.AnyAsync())
             {
                 var configurations = PredefinedLibraryConfiguration.GetPredefinedLibraryConfigurations(executingFolder);

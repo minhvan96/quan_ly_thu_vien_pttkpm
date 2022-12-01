@@ -125,7 +125,12 @@ public partial class MakeBorrowVoucher : UserControl
         };
         try
         {
-            await _mediator.Send(callCard);
+            var borrow = await _mediator.Send(callCard);
+            if(!borrow.Success)
+            {
+                MessageBox.Show(borrow.Message);
+                return;
+            }
             MessageBox.Show("Cho mượn sách thành công");
 
             bookSelectedList.Clear();

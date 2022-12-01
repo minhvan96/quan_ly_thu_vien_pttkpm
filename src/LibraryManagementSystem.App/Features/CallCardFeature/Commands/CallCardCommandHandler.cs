@@ -22,24 +22,30 @@ public class CallCardCommandHandler : IRequestHandler<CallCardCommand, CallCardR
         // check library card expiration
         var today = DateTime.Now;
         var configuation = await _context.LibraryConfigurations
-            .Where(x => x.Code == LibraryConfigurationConstants.THGTT && x.Code == LibraryConfigurationConstants.SLNMTD
-            && x.Code == LibraryConfigurationConstants.SLSMTD)
+            .Where(x => x.Code == LibraryConfigurationConstants.THGTT || x.Code == LibraryConfigurationConstants.SLNMTD
+            || x.Code == LibraryConfigurationConstants.SLSMTD)
             .ToListAsync();
 
+        var configTHGTT = configuation.FirstOrDefault(x => x.Code == LibraryConfigurationConstants.THGTT).Value;
         var checkExpirationCard = await _context.LibraryCards
-            .Where(x => x.Id == request.LibraryCardId && x.CreatedDate.AddDays(configuation.FirstOrDefault(x => x.Code == LibraryConfigurationConstants.THGTT).Value) >= today)
+            .Where(x => x.Id == request.LibraryCardId && x.CreatedDate.AddDays(configTHGTT) >= today)
             .FirstOrDefaultAsync();
-        if (checkExpirationCard != null) return new CallCardResult(true, "Thẻ đã hết hạn!");
+        if (checkExpirationCard == null) return new CallCardResult(false, "Thẻ đã hết hạn!");
 
         // check library how many library card (reader) borrowed books in 4 days?
         var configSLNMTD = configuation.FirstOrDefault(x => x.Code == LibraryConfigurationConstants.SLNMTD).Value;
         var configSLSMTD = configuation.FirstOrDefault(x => x.Code == LibraryConfigurationConstants.SLSMTD).Value;
 
-        var checkBookCanBorrow = await _context.CallCards
-            .Where(x => x.LibraryCardId == request.LibraryCardId && !x.IsReturnBook && x.CreatedDate.AddDays(configSLNMTD) <= today)
-            .SumAsync(x => x.CallCardDetails.Count);
-        if (checkBookCanBorrow >= configSLSMTD || checkBookCanBorrow >= configSLSMTD + (request.BookIds.Count))
-            return new CallCardResult(true, $"Trong {configSLNMTD} ngày chỉ được mượn {configSLSMTD} quyển sách. Đọc giả này đã đến giới hạn mượn sách!");
+        var bookBorrowed = await _context.CallCards
+            .Include(x => x.CallCardDetails)
+            .Where(x => x.LibraryCardId == request.LibraryCardId && !x.IsReturnBook 
+                && x.BorrowDateTime <= today
+                && x.BorrowDateTime.AddDays(configSLNMTD) >= today)
+            .ToListAsync();
+
+        var checkBookCanBorrow = bookBorrowed.Sum(x => x.CallCardDetails.Count());
+        if (checkBookCanBorrow >= configSLSMTD || checkBookCanBorrow + request.BookIds.Count > configSLSMTD)
+            return new CallCardResult(false, $"Trong {configSLNMTD} ngày chỉ được mượn {configSLSMTD} quyển sách. Đọc giả này đã đến giới hạn mượn sách!");
 
         // in stock -1
         var books = await _context.Books.Where(x => request.BookIds.Any(b => b.Equals(x.Id))).ToListAsync(cancellationToken);

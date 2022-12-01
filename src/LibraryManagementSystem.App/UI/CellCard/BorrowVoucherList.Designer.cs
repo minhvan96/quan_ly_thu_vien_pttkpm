@@ -40,6 +40,7 @@
             this.BorrowDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BookCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_returnBook = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -68,6 +69,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btn_returnBook);
             this.groupBox2.Controls.Add(this.btn_Delete);
             this.groupBox2.Controls.Add(this.btn_update);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -80,7 +82,7 @@
             // 
             // btn_Delete
             // 
-            this.btn_Delete.Location = new System.Drawing.Point(527, 35);
+            this.btn_Delete.Location = new System.Drawing.Point(412, 35);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(209, 33);
             this.btn_Delete.TabIndex = 1;
@@ -90,7 +92,7 @@
             // 
             // btn_update
             // 
-            this.btn_update.Location = new System.Drawing.Point(291, 35);
+            this.btn_update.Location = new System.Drawing.Point(176, 35);
             this.btn_update.Name = "btn_update";
             this.btn_update.Size = new System.Drawing.Size(209, 33);
             this.btn_update.TabIndex = 0;
@@ -173,6 +175,16 @@
             this.BookCount.Name = "BookCount";
             this.BookCount.ReadOnly = true;
             // 
+            // btn_returnBook
+            // 
+            this.btn_returnBook.Location = new System.Drawing.Point(648, 35);
+            this.btn_returnBook.Name = "btn_returnBook";
+            this.btn_returnBook.Size = new System.Drawing.Size(209, 33);
+            this.btn_returnBook.TabIndex = 2;
+            this.btn_returnBook.Text = "Trả sách";
+            this.btn_returnBook.UseVisualStyleBackColor = true;
+            this.btn_returnBook.Click += new System.EventHandler(this.btn_returnBook_Click);
+            // 
             // BorrowVoucherList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -206,5 +218,6 @@
         private DataGridViewTextBoxColumn BorrowDate;
         private DataGridViewTextBoxColumn Status;
         private DataGridViewTextBoxColumn BookCount;
+        private Button btn_returnBook;
     }
 }

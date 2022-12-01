@@ -1,6 +1,8 @@
-﻿using LibraryManagementSystem.Domain.Entities;
+﻿using LibraryManagementSystem.Domain.Constants;
+using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Infrastructure.Database;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +25,31 @@ public class CallCardUpdateCommandHandler : IRequestHandler<CallCardUpdateComman
     {
         // find callcard need update
         var callCard = _context.CallCards.FirstOrDefault(x => x.Id == request.CallCardId);
-        if (callCard == null) return new CallCardUpdateResult(false);
+        if (callCard == null) return new CallCardUpdateResult(false, "Phiếu mượn không tồn tại!");
+        //var borrowCount = callCard.CallCardDetails.Count + request.booksNeedAdd.Count - request.booksNeedDelete.Count;
+
+        // validate 
+        // check library card expiration
+        var today = DateTime.Now;
+        var configuation = await _context.LibraryConfigurations
+            .Where(x => x.Code == LibraryConfigurationConstants.SLNMTD
+            || x.Code == LibraryConfigurationConstants.SLSMTD)
+            .ToListAsync();
+
+        // check library how many library card (reader) borrowed books in 4 days?
+        var configSLNMTD = configuation.FirstOrDefault(x => x.Code == LibraryConfigurationConstants.SLNMTD).Value;
+        var configSLSMTD = configuation.FirstOrDefault(x => x.Code == LibraryConfigurationConstants.SLSMTD).Value;
+
+        var bookBorrowed = await _context.CallCards
+            .Include(x => x.CallCardDetails)
+            .Where(x => x.LibraryCardId == request.LibraryCardId && !x.IsReturnBook
+                && x.BorrowDateTime <= today
+                && x.BorrowDateTime.AddDays(configSLNMTD) >= today)
+            .ToListAsync();
+
+        var checkBookCanBorrow = bookBorrowed.Sum(x => x.CallCardDetails.Count()) + request.booksNeedAdd.Count - request.booksNeedDelete.Count;
+        if (checkBookCanBorrow > configSLSMTD)
+            return new CallCardUpdateResult(false, $"Trong {configSLNMTD} ngày chỉ được mượn {configSLSMTD} quyển sách. Đọc giả này đã đến giới hạn mượn sách!");
 
         // update libraryId and borrowDate
         callCard.BorrowDateTime = request.BorrowDate;
@@ -66,6 +92,6 @@ public class CallCardUpdateCommandHandler : IRequestHandler<CallCardUpdateComman
             }
         }
 
-        return new CallCardUpdateResult(true);
+        return new CallCardUpdateResult(true, "");
     }
 }

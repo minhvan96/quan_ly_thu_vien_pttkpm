@@ -38,6 +38,9 @@
         <None Update="Setup\LibraryConfiguration.csv">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
+        <None Update="Setup\LibraryCard.csv">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
         <None Update="Setup\Publishers.csv">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>

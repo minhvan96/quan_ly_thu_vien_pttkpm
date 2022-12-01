@@ -23,6 +23,7 @@ public class Book : Entity
         Guid bookTypeId,
         Guid authorId,
         Guid publisherId,
+        int inStock,
         DateTimeOffset? published = null)
         : base(id)
     {
@@ -32,6 +33,7 @@ public class Book : Entity
         AuthorId = authorId;
         Published = published;
         PublisherId = publisherId;
+        InStock = inStock;
     }
 
     public Book(string name,
