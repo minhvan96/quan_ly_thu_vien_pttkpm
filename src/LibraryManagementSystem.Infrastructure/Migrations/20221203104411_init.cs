@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace LibraryManagementSystem.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -99,25 +99,6 @@ namespace LibraryManagementSystem.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Publishers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Readers",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
-                    Dob = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    CreateDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    ReaderType = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    CreatedDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    UpdatedDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Readers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -255,9 +236,6 @@ namespace LibraryManagementSystem.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "LibraryConfigurations");
-
-            migrationBuilder.DropTable(
-                name: "Readers");
 
             migrationBuilder.DropTable(
                 name: "Books");

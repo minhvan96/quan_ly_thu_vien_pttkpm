@@ -75,6 +75,28 @@ public partial class LibraryManagementSystemUI : Form
         //
         //switch(tabPage)
     }
+    private async void loadTableReader()
+    {
+        var readers = await _mediator.Send(new LibraryCardQuery());
+
+        dataGridViewReader.Rows.Clear();
+        dataGridViewReader.Refresh();
+        dataGridViewReader.DataSource = null;
+        foreach (var reader in readers.Items)
+        {
+            var configurationGridViewRow = new DataGridViewRow();
+            configurationGridViewRow.CreateCells(dataGridViewReader);
+            configurationGridViewRow.Cells[0].Value = reader.Id;
+            configurationGridViewRow.Cells[1].Value = reader.Name;
+            configurationGridViewRow.Cells[2].Value = reader.Address;
+            configurationGridViewRow.Cells[3].Value = reader.TypeOfReader;
+            configurationGridViewRow.Cells[4].Value = reader.Email;
+            configurationGridViewRow.Cells[5].Value = reader.BirthDay;
+            configurationGridViewRow.Cells[6].Value = reader.CreationDate;
+      
+            dataGridViewReader.Rows.Add(configurationGridViewRow);
+        }
+    }
 
     private async void SystemMainTabControl_Selected(object sender, TabControlEventArgs e)
     {
@@ -111,11 +133,8 @@ public partial class LibraryManagementSystemUI : Form
             }
             case "Reader":
             {
-                    var list_reader = new LibraryCardQuery();
-                    var readers = _mediator.Send(list_reader);
-                    listReaders = readers.Items.Cast<LibraryCardQuery>().ToList();
-                    dataGridViewReader.DataSource = listReader.ToList();
-                    break;
+                 loadTableReader();
+                 break;
             }
         }
     }
