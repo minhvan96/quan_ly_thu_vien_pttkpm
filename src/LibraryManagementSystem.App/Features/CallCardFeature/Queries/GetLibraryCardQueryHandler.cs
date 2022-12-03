@@ -23,8 +23,9 @@ public class GetLibraryCardQueryHandler : IRequestHandler<GetLibraryCardQuery, L
                 Id = x.Id,
                 Name = x.Name,
                 Address = x.Address,
-                BirthDay = x.BirthDay,
                 Email = x.Email,
+                BirthDay = x.BirthDay,
+                CreationDate = x.CreationDate,
                 TypeOfReader = x.TypeOfReader,
             })
             .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);

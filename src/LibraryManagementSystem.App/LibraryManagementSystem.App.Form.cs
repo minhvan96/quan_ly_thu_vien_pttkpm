@@ -1,12 +1,16 @@
+﻿using LibraryManagementSystem.App.Features.AuthorFeature.Dtos;
 using LibraryManagementSystem.App.Features.BookFeature.Commands;
 using LibraryManagementSystem.App.Features.BookFeature.Dtos;
 using LibraryManagementSystem.App.Features.BookFeature.Queries;
 using LibraryManagementSystem.App.Features.CallCardFeature.Dtos;
+using LibraryManagementSystem.App.Features.LibraryCardFeature.Commands;
 using LibraryManagementSystem.App.Features.LibraryCardFeature.Queries;
 using LibraryManagementSystem.App.Features.LibraryConfigurationFeature.Commands;
 using LibraryManagementSystem.App.Features.LibraryConfigurationFeature.Queries;
+using LibraryManagementSystem.App.Features.PubblisherFeature.Dtos;
 using LibraryManagementSystem.App.UI.Book;
 using MediatR;
+using System.Xml.Linq;
 
 namespace LibraryManagementSystem.App;
 
@@ -14,11 +18,14 @@ public partial class LibraryManagementSystemUI : Form
 {
     private readonly IMediator _mediator;
     private List<LibraryCardDto> listReaders;
+    private TabPage? pageMain;
+    private readonly TabPage _pageMain;
 
     public LibraryManagementSystemUI(IMediator mediator)
     {
         InitializeComponent();
         _mediator = mediator;
+        this._pageMain = pageMain;
         listReaders = new List<LibraryCardDto>();
     }
 
@@ -77,7 +84,11 @@ public partial class LibraryManagementSystemUI : Form
     }
     private async void loadTableReader()
     {
-        var readers = await _mediator.Send(new LibraryCardQuery());
+        var listReadersQuery = new LibraryCardQuery
+        {
+            SearchOption = SearchLibaryCardOptions.None
+        };
+        var readers = await _mediator.Send(listReadersQuery);
 
         dataGridViewReader.Rows.Clear();
         dataGridViewReader.Refresh();
@@ -86,14 +97,13 @@ public partial class LibraryManagementSystemUI : Form
         {
             var configurationGridViewRow = new DataGridViewRow();
             configurationGridViewRow.CreateCells(dataGridViewReader);
-            configurationGridViewRow.Cells[0].Value = reader.Id;
-            configurationGridViewRow.Cells[1].Value = reader.Name;
-            configurationGridViewRow.Cells[2].Value = reader.Address;
-            configurationGridViewRow.Cells[3].Value = reader.TypeOfReader;
-            configurationGridViewRow.Cells[4].Value = reader.Email;
-            configurationGridViewRow.Cells[5].Value = reader.BirthDay;
-            configurationGridViewRow.Cells[6].Value = reader.CreationDate;
-      
+            configurationGridViewRow.Cells[0].Value = reader.Name;
+            configurationGridViewRow.Cells[1].Value = reader.Address;
+            configurationGridViewRow.Cells[2].Value = reader.TypeOfReader;
+            configurationGridViewRow.Cells[3].Value = reader.Email;
+            configurationGridViewRow.Cells[4].Value = reader.BirthDay;
+            configurationGridViewRow.Cells[5].Value = reader.CreationDate;
+
             dataGridViewReader.Rows.Add(configurationGridViewRow);
         }
     }
@@ -205,5 +215,68 @@ public partial class LibraryManagementSystemUI : Form
         {
             MessageBox.Show(ex.Message, "Error");
         }
+    }
+
+    private bool isvalid()
+    {
+        if (textBoxReaderNameInfo.Text == string.Empty)
+        {
+            MessageBox.Show("Tên đọc giả đang rỗng");
+            return false;
+        }
+
+        if (textBoxReaderEmailInfo.Text.Trim() == string.Empty)
+        {
+            MessageBox.Show("Email không được rỗng");
+            return false;
+        }
+
+        if (textBoxReaderAddressInfo.Text == string.Empty)
+        {
+            MessageBox.Show("Địa chỉ đang rỗng");
+            return false;
+        }
+
+
+
+        if (comboBoxReaderType.Text == string.Empty)
+        {
+            MessageBox.Show("Vui lòng chon loại đọc giả");
+            return false;
+        }
+        return true;
+    }
+    private async void buttonReaderAdd_Click(object sender, EventArgs e)
+    {
+        if (!this.isvalid())
+        {
+            return;
+        }
+
+        var cmdReader = new CreateLibraryCardCommand()
+        {
+            Name = textBoxReaderNameInfo.Text.Trim(),
+            Address = textBoxReaderAddressInfo.Text.Trim(),
+            Email = textBoxReaderEmailInfo.Text.ToLower().Trim(),
+            TypeOfReader = comboBoxReaderType.Text.Trim(),
+            BirthDay = dtpReaderBodInfo.Value,
+            CreationDate = dtpReaderCreateDate.Value,
+        };
+
+        CreateLibraryCardResult result = await _mediator.Send(cmdReader);
+        if (result.Success)
+        {
+            MessageBox.Show("Thêm đọc giả thành công");
+            this.loadTableReader();
+        }
+        else
+        {
+            MessageBox.Show("Thêm đọc giả không thành công");
+        }
+    }
+
+    private void buttonReaderEdit_Click(object sender, EventArgs e)
+    {
+
     }
 }

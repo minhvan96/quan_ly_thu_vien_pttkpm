@@ -6,8 +6,8 @@
         public string Name { get; set; }
         public string Address { get; set; }
         public string Email { get; set; }
-        public DateTime BirthDay { get; set; }
-        public DateTime CreationDate { get; set; }
+        public DateTimeOffset? BirthDay { get; set; }
+        public DateTimeOffset? CreationDate { get; set; }
         public string TypeOfReader { get; set; }
     }
 }

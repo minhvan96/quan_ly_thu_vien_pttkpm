@@ -33,6 +33,9 @@
             this.txtTest = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.STC_BookTP = new System.Windows.Forms.TabPage();
+            this.QueryBookTab = new System.Windows.Forms.TabControl();
+            this.QueryBookTab_BookViewPage = new System.Windows.Forms.TabPage();
+            this.QueryBookTab_ImportBookPage = new System.Windows.Forms.TabPage();
             this.MakeBorrow = new System.Windows.Forms.TabPage();
             this.LibraryConfigurationTab = new System.Windows.Forms.TabPage();
             this.LibraryConfigurationTab_MainContainer = new System.Windows.Forms.SplitContainer();
@@ -52,7 +55,7 @@
             this.buttonReaderEdit = new System.Windows.Forms.Button();
             this.buttonReaderDelete = new System.Windows.Forms.Button();
             this.buttonReaderAdd = new System.Windows.Forms.Button();
-            this.dpkReaderCreateDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpReaderCreateDate = new System.Windows.Forms.DateTimePicker();
             this.labelReaderCreate = new System.Windows.Forms.Label();
             this.dtpReaderBodInfo = new System.Windows.Forms.DateTimePicker();
             this.labelReaderBodInfo = new System.Windows.Forms.Label();
@@ -78,12 +81,10 @@
             this.labelReaderSearch = new System.Windows.Forms.Label();
             this.BorrowBookList = new System.Windows.Forms.TabPage();
             this.STC_BookNew = new System.Windows.Forms.TabPage();
-            this.QueryBookTab = new System.Windows.Forms.TabControl();
-            this.QueryBookTab_BookViewPage = new System.Windows.Forms.TabPage();
-            this.QueryBookTab_ImportBookPage = new System.Windows.Forms.TabPage();
             this.SystemMainTabControl.SuspendLayout();
             this.STC_HomeTP.SuspendLayout();
             this.STC_BookTP.SuspendLayout();
+            this.QueryBookTab.SuspendLayout();
             this.LibraryConfigurationTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LibraryConfigurationTab_MainContainer)).BeginInit();
             this.LibraryConfigurationTab_MainContainer.Panel1.SuspendLayout();
@@ -97,7 +98,6 @@
             this.groupBoxDataReader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReader)).BeginInit();
             this.groupBoxReaderSearch.SuspendLayout();
-            this.QueryBookTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // SystemMainTabControl
@@ -160,6 +160,37 @@
             this.STC_BookTP.TabIndex = 1;
             this.STC_BookTP.Text = "Tra cứu sách";
             this.STC_BookTP.UseVisualStyleBackColor = true;
+            // 
+            // QueryBookTab
+            // 
+            this.QueryBookTab.Controls.Add(this.QueryBookTab_BookViewPage);
+            this.QueryBookTab.Controls.Add(this.QueryBookTab_ImportBookPage);
+            this.QueryBookTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.QueryBookTab.Location = new System.Drawing.Point(3, 4);
+            this.QueryBookTab.Name = "QueryBookTab";
+            this.QueryBookTab.SelectedIndex = 0;
+            this.QueryBookTab.Size = new System.Drawing.Size(1018, 582);
+            this.QueryBookTab.TabIndex = 0;
+            // 
+            // QueryBookTab_BookViewPage
+            // 
+            this.QueryBookTab_BookViewPage.Location = new System.Drawing.Point(4, 29);
+            this.QueryBookTab_BookViewPage.Name = "QueryBookTab_BookViewPage";
+            this.QueryBookTab_BookViewPage.Padding = new System.Windows.Forms.Padding(3);
+            this.QueryBookTab_BookViewPage.Size = new System.Drawing.Size(1010, 549);
+            this.QueryBookTab_BookViewPage.TabIndex = 0;
+            this.QueryBookTab_BookViewPage.Text = "Thông tin sách";
+            this.QueryBookTab_BookViewPage.UseVisualStyleBackColor = true;
+            // 
+            // QueryBookTab_ImportBookPage
+            // 
+            this.QueryBookTab_ImportBookPage.Location = new System.Drawing.Point(4, 29);
+            this.QueryBookTab_ImportBookPage.Name = "QueryBookTab_ImportBookPage";
+            this.QueryBookTab_ImportBookPage.Padding = new System.Windows.Forms.Padding(3);
+            this.QueryBookTab_ImportBookPage.Size = new System.Drawing.Size(1010, 549);
+            this.QueryBookTab_ImportBookPage.TabIndex = 1;
+            this.QueryBookTab_ImportBookPage.Text = "Thêm sách";
+            this.QueryBookTab_ImportBookPage.UseVisualStyleBackColor = true;
             // 
             // MakeBorrow
             // 
@@ -328,7 +359,7 @@
             this.groupBoxReaderInfo.Controls.Add(this.buttonReaderEdit);
             this.groupBoxReaderInfo.Controls.Add(this.buttonReaderDelete);
             this.groupBoxReaderInfo.Controls.Add(this.buttonReaderAdd);
-            this.groupBoxReaderInfo.Controls.Add(this.dpkReaderCreateDate);
+            this.groupBoxReaderInfo.Controls.Add(this.dtpReaderCreateDate);
             this.groupBoxReaderInfo.Controls.Add(this.labelReaderCreate);
             this.groupBoxReaderInfo.Controls.Add(this.dtpReaderBodInfo);
             this.groupBoxReaderInfo.Controls.Add(this.labelReaderBodInfo);
@@ -355,6 +386,7 @@
             this.buttonReaderEdit.TabIndex = 15;
             this.buttonReaderEdit.Text = "Sửa";
             this.buttonReaderEdit.UseVisualStyleBackColor = true;
+            this.buttonReaderEdit.Click += new System.EventHandler(this.buttonReaderEdit_Click);
             // 
             // buttonReaderDelete
             // 
@@ -373,13 +405,14 @@
             this.buttonReaderAdd.TabIndex = 13;
             this.buttonReaderAdd.Text = "Thêm";
             this.buttonReaderAdd.UseVisualStyleBackColor = true;
+            this.buttonReaderAdd.Click += new System.EventHandler(this.buttonReaderAdd_Click);
             // 
-            // dpkReaderCreateDate
+            // dtpReaderCreateDate
             // 
-            this.dpkReaderCreateDate.Location = new System.Drawing.Point(6, 315);
-            this.dpkReaderCreateDate.Name = "dpkReaderCreateDate";
-            this.dpkReaderCreateDate.Size = new System.Drawing.Size(196, 27);
-            this.dpkReaderCreateDate.TabIndex = 12;
+            this.dtpReaderCreateDate.Location = new System.Drawing.Point(6, 315);
+            this.dtpReaderCreateDate.Name = "dtpReaderCreateDate";
+            this.dtpReaderCreateDate.Size = new System.Drawing.Size(196, 27);
+            this.dtpReaderCreateDate.TabIndex = 12;
             // 
             // labelReaderCreate
             // 
@@ -600,37 +633,6 @@
             this.STC_BookNew.Text = "Thêm Sách";
             this.STC_BookNew.UseVisualStyleBackColor = true;
             // 
-            // QueryBookTab
-            // 
-            this.QueryBookTab.Controls.Add(this.QueryBookTab_BookViewPage);
-            this.QueryBookTab.Controls.Add(this.QueryBookTab_ImportBookPage);
-            this.QueryBookTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.QueryBookTab.Location = new System.Drawing.Point(3, 4);
-            this.QueryBookTab.Name = "QueryBookTab";
-            this.QueryBookTab.SelectedIndex = 0;
-            this.QueryBookTab.Size = new System.Drawing.Size(1018, 582);
-            this.QueryBookTab.TabIndex = 0;
-            // 
-            // QueryBookTab_BookViewPage
-            // 
-            this.QueryBookTab_BookViewPage.Location = new System.Drawing.Point(4, 29);
-            this.QueryBookTab_BookViewPage.Name = "QueryBookTab_BookViewPage";
-            this.QueryBookTab_BookViewPage.Padding = new System.Windows.Forms.Padding(3);
-            this.QueryBookTab_BookViewPage.Size = new System.Drawing.Size(1010, 549);
-            this.QueryBookTab_BookViewPage.TabIndex = 0;
-            this.QueryBookTab_BookViewPage.Text = "Thông tin sách";
-            this.QueryBookTab_BookViewPage.UseVisualStyleBackColor = true;
-            // 
-            // QueryBookTab_ImportBookPage
-            // 
-            this.QueryBookTab_ImportBookPage.Location = new System.Drawing.Point(4, 29);
-            this.QueryBookTab_ImportBookPage.Name = "QueryBookTab_ImportBookPage";
-            this.QueryBookTab_ImportBookPage.Padding = new System.Windows.Forms.Padding(3);
-            this.QueryBookTab_ImportBookPage.Size = new System.Drawing.Size(1010, 549);
-            this.QueryBookTab_ImportBookPage.TabIndex = 1;
-            this.QueryBookTab_ImportBookPage.Text = "Thêm sách";
-            this.QueryBookTab_ImportBookPage.UseVisualStyleBackColor = true;
-            // 
             // LibraryManagementSystemUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -645,6 +647,7 @@
             this.STC_HomeTP.ResumeLayout(false);
             this.STC_HomeTP.PerformLayout();
             this.STC_BookTP.ResumeLayout(false);
+            this.QueryBookTab.ResumeLayout(false);
             this.LibraryConfigurationTab.ResumeLayout(false);
             this.LibraryConfigurationTab_MainContainer.Panel1.ResumeLayout(false);
             this.LibraryConfigurationTab_MainContainer.Panel2.ResumeLayout(false);
@@ -661,7 +664,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReader)).EndInit();
             this.groupBoxReaderSearch.ResumeLayout(false);
             this.groupBoxReaderSearch.PerformLayout();
-            this.QueryBookTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -713,7 +715,7 @@
         private Button buttonReaderEdit;
         private Button buttonReaderDelete;
         private Button buttonReaderAdd;
-        private DateTimePicker dpkReaderCreateDate;
+        private DateTimePicker dtpReaderCreateDate;
         private Label labelReaderCreate;
         private DateTimePicker dtpReaderBodInfo;
         private TabPage BorrowBookList;
