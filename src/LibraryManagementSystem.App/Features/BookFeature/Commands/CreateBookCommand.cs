@@ -1,4 +1,5 @@
 ﻿using LibraryManagementSystem.Domain.Common;
+using LibraryManagementSystem.Domain.Entities;
 using MediatR;
 
 namespace LibraryManagementSystem.App.Features.BookFeature.Commands;
@@ -10,12 +11,21 @@ public class CreateBookCommand : IRequest<CreateBookResult>
     public Guid TypeId { get; init; }
     public Guid AuthorId { get; init; }
     public Guid PublisherId { get; init; }
+
+    public DateTimeOffset? Published { get; set; }
+    public int quantily { get; set; }
+
 }
 
 public record CreateBookResult : RequestResult
 {
+    public Guid Id { get; set; }
     /// <inheritdoc />
-    public CreateBookResult(bool success) : base(success)
+    public CreateBookResult(Book book , bool success) : base(success)
     {
+        if (success)
+        {
+            Id = book.Id;
+        }
     }
 }

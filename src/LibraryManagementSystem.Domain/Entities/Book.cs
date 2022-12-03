@@ -51,6 +51,23 @@ public class Book : Entity
         PublisherId = publisherId;
     }
 
+    public Book(string name,
+        string code,
+        Guid bookTypeId,
+        Guid authorId,
+        Guid publisherId,
+        int inStock,
+        DateTimeOffset? published = null)
+    {
+        Code = code;
+        BookTypeId = bookTypeId;
+        Name = name;
+        AuthorId = authorId;
+        Published = published;
+        PublisherId = publisherId;
+        InStock = inStock;
+    }
+
     public string Name { get; set; }
     public DateTimeOffset? Published { get; set; }
     public string Code { get; set; }

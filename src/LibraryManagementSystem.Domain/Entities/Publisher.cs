@@ -19,5 +19,10 @@ public class Publisher : Entity
         Name = name;
     }
 
+    public Publisher(string name)
+    {
+        Name = name;
+    }
+
     public string Name { get; }
 }

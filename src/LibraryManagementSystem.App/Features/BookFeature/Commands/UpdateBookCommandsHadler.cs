@@ -15,11 +15,22 @@ internal class UpdateBookCommandsHadler : IRequestHandler<UpdateBookCommand, Upd
 
     public async Task<UpdateBookResult> Handle(UpdateBookCommand request, CancellationToken cancellationToken)
     {
-        var book = await _context.Books.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
+        try
+        {
+            var book = await _context.Books.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
 
-        if (!string.IsNullOrWhiteSpace(request.Name)) book.Name = request.Name;
+            book.Name = request.Name;
+            book.AuthorId = request.AuthorId;
+            book.InStock = request.quantily;
+            book.BookTypeId = request.TypeId;
+            book.PublisherId = request.PublisherId;
+            book.Published = request.Published;
 
-        await _context.SaveChangesAsync(cancellationToken);
-        return new UpdateBookResult(true);
+            await _context.SaveChangesAsync(cancellationToken);
+            return new UpdateBookResult(true);
+        }catch (Exception ex)
+        {
+            return new UpdateBookResult(false);
+        }
     }
 }
