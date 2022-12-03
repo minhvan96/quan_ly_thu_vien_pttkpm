@@ -1,5 +1,8 @@
 using LibraryManagementSystem.App.Features.BookFeature.Commands;
+using LibraryManagementSystem.App.Features.BookFeature.Dtos;
 using LibraryManagementSystem.App.Features.BookFeature.Queries;
+using LibraryManagementSystem.App.Features.CallCardFeature.Dtos;
+using LibraryManagementSystem.App.Features.LibraryCardFeature.Queries;
 using LibraryManagementSystem.App.Features.LibraryConfigurationFeature.Commands;
 using LibraryManagementSystem.App.Features.LibraryConfigurationFeature.Queries;
 using LibraryManagementSystem.App.UI.Book;
@@ -10,11 +13,13 @@ namespace LibraryManagementSystem.App;
 public partial class LibraryManagementSystemUI : Form
 {
     private readonly IMediator _mediator;
+    private List<LibraryCardDto> listReaders;
 
     public LibraryManagementSystemUI(IMediator mediator)
     {
         InitializeComponent();
         _mediator = mediator;
+        listReaders = new List<LibraryCardDto>();
     }
 
     private async void button1_Click(object sender, EventArgs e)
@@ -71,7 +76,7 @@ public partial class LibraryManagementSystemUI : Form
         //switch(tabPage)
     }
 
-    private void SystemMainTabControl_Selected(object sender, TabControlEventArgs e)
+    private async void SystemMainTabControl_Selected(object sender, TabControlEventArgs e)
     {
         var tabControl = (TabControl)sender;
         var tabPage = tabControl.SelectedTab;
@@ -103,6 +108,14 @@ public partial class LibraryManagementSystemUI : Form
                 STC_BookTP.Controls.Clear();
                 STC_BookTP.Controls.Add(myUserControl);
                 break;
+            }
+            case "Reader":
+            {
+                    var list_reader = new LibraryCardQuery();
+                    var readers = _mediator.Send(list_reader);
+                    listReaders = readers.Items.Cast<LibraryCardQuery>().ToList();
+                    dataGridViewReader.DataSource = listReader.ToList();
+                    break;
             }
         }
     }
