@@ -14,7 +14,6 @@ public class LibraryDbContext : DbContext
     public DbSet<LibraryCard> LibraryCards => Set<LibraryCard>();
     public DbSet<LibraryConfiguration> LibraryConfigurations => Set<LibraryConfiguration>();
     public DbSet<Publisher> Publishers => Set<Publisher>();
-    public DbSet<Reader> Readers => Set<Reader>();
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
