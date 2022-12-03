@@ -16,14 +16,23 @@ public class CreateBookCommandHandler : IRequestHandler<CreateBookCommand, Creat
     /// <inheritdoc />
     public async Task<CreateBookResult> Handle(CreateBookCommand request, CancellationToken cancellationToken)
     {
-        var newBook = new Book(request.Name,
-            request.Code,
-            request.TypeId,
-            request.AuthorId,
-            request.PublisherId);
+        try
+        {
+            var newBook = new Book(request.Name,
+                request.Code,
+                request.TypeId,
+                request.AuthorId,
+                request.PublisherId,
+                request.quantily,
+                request.Published
+                );
 
-        await _context.AddAsync(newBook, cancellationToken);
-        await _context.SaveChangesAsync(cancellationToken);
-        return new CreateBookResult(true);
+            var book = await _context.AddAsync(newBook, cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
+            return new CreateBookResult(book.Entity, true);
+        }catch(Exception ex)
+        {
+            return new CreateBookResult(null, false);
+        }
     }
 }

@@ -1,9 +1,17 @@
-﻿using LibraryManagementSystem.App.Features.BookFeature.Queries;
+﻿using LibraryManagementSystem.App.Features.AuthorFeature.Commands;
+using LibraryManagementSystem.App.Features.AuthorFeature.Dtos;
+using LibraryManagementSystem.App.Features.AuthorFeature.Queries;
+using LibraryManagementSystem.App.Features.BookFeature.Commands;
+using LibraryManagementSystem.App.Features.BookFeature.Queries;
 using LibraryManagementSystem.App.Features.BookTypeFeature.Queries;
 using LibraryManagementSystem.App.Features.LibraryConfigurationFeature.Queries;
+using LibraryManagementSystem.App.Features.PubblisherFeature.Commands;
+using LibraryManagementSystem.App.Features.PubblisherFeature.Dtos;
+using LibraryManagementSystem.App.Features.PubblisherFeature.Queries;
 using MediatR;
 using System.Data;
 using System.Globalization;
+using System.Windows.Forms;
 
 namespace LibraryManagementSystem.App.UI.Book
 {
@@ -85,6 +93,8 @@ namespace LibraryManagementSystem.App.UI.Book
             var books = await _mediator.Send(new ListBooksQuery());
 
             BM_ManageBookDGV.Rows.Clear();
+            BM_ManageBookDGV.Refresh();
+            BM_ManageBookDGV.DataSource = null;
             foreach (var book in books.Items)
             {
                 var configurationGridViewRow = new DataGridViewRow();
@@ -95,14 +105,126 @@ namespace LibraryManagementSystem.App.UI.Book
                 configurationGridViewRow.Cells[3].Value = book.Publisher;
                 configurationGridViewRow.Cells[4].Value = book.TypeName;
                 configurationGridViewRow.Cells[5].Value = book.PublishedDate;
-                configurationGridViewRow.Cells[6].Value = "Xóa";
+                configurationGridViewRow.Cells[6].Value = book.InStock;
+                configurationGridViewRow.Cells[7].Value = "Xóa";
                 BM_ManageBookDGV.Rows.Add(configurationGridViewRow);
             }
         }
 
-        private void BookManager_AddBookButton_Click(object sender, EventArgs e)
+        //kiem tra author ton tại chưa, nếu chưa thì thêm author
+        private async Task<AuthorDto> getAuthor(string name)
+        {
+            CreateAuthorCommand cmdAuthor;
+
+            var queryAuthor = new GetAuthorQuery()
+            {
+                Name = txbAuthor.Text
+            };
+            AuthorDto Author = await _mediator.Send(queryAuthor);
+
+            if (Author == null)
+            {
+                cmdAuthor = new CreateAuthorCommand()
+                {
+                    Name = txbAuthor.Text
+                };
+
+                Author = await _mediator.Send(cmdAuthor);
+            }
+
+            return Author;
+        }
+
+        //Kiem tra publiser tồn tại chưa nếu chưa thì thêm publisher
+        private async Task<PublisherDto> getPubliserResult(string name)
+        {
+            CreatePubliserCommand cmdPublisher;
+            var queryPubliser = new GetPublisherQuery()
+            {
+                Name = txbPublisher.Text
+            };
+
+            PublisherDto Publiser = await _mediator.Send(queryPubliser);
+            if (Publiser == null)
+            {
+                cmdPublisher = new CreatePubliserCommand()
+                {
+                    Name = txbPublisher.Text
+                };
+
+                Publiser = await _mediator.Send(cmdPublisher);
+            }
+            return Publiser;
+        }
+
+
+        private bool isvalid()
+        {
+            Guid typeId = BookManager_BookTypeCbb.SelectedValue == null ? Guid.Empty : (Guid)BookManager_BookTypeCbb.SelectedValue;
+            if (typeId == Guid.Empty)
+            {
+                MessageBox.Show("Không thể bỏ trống thể loại sách");
+                return false;
+            }
+
+            if(txbName.Text == string.Empty)
+            {
+                MessageBox.Show("Không thể bỏ trống tên sách");
+                return false;
+            }
+
+            if(txbAuthor.Text == string.Empty)
+            {
+                MessageBox.Show("Không thể bỏ trống tên tác giả");
+                return false;
+            }
+
+
+
+            if(txbPublisher.Text == string.Empty)
+            {
+                MessageBox.Show("Không thể bỏ trống nhà xuất bản sách");
+                return false;
+            }
+            return true;
+        }
+
+        private async void BookManager_AddBookButton_Click(object sender, EventArgs e)
         {
 
+            if (!this.isvalid())
+            {
+                return;
+            }
+
+            AuthorDto resultAuthor = await getAuthor(txbAuthor.Text);
+            PublisherDto resultPubliser = await getPubliserResult(txbPublisher.Text);
+
+           
+
+            var cmdBook = new CreateBookCommand()
+            {
+                Name = txbName.Text,
+                AuthorId = resultAuthor.Id,
+                Code = "phu",
+                PublisherId = resultPubliser.Id,
+                TypeId = (Guid)BookManager_BookTypeCbb.SelectedValue,
+                Published = dtpPushlshed.Value,
+                quantily = Convert.ToInt32(txbQuantily.Value)
+
+            };
+
+            CreateBookResult result =  await _mediator.Send(cmdBook);
+            if (result.Success)
+            {
+                MessageBox.Show("Thêm sách thành công");
+                txbId.Text = result.Id.ToString();
+                this.loadTable();
+            }
+            else
+            {
+                MessageBox.Show("Thêm sách không thành công");
+            }
         }
 
         private void BM_ManageBookDGV_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -117,7 +239,72 @@ namespace LibraryManagementSystem.App.UI.Book
 
             BookManager_BookTypeCbb.SelectedIndex = BookManager_BookTypeCbb.FindString(BM_ManageBookDGV.Rows[e.RowIndex].Cells[4].Value.ToString());
 
-            dtpPushlsh.Value = Convert.ToDateTime(BM_ManageBookDGV.Rows[e.RowIndex].Cells[5].Value.ToString());
+            dtpPushlshed.Value = Convert.ToDateTime(BM_ManageBookDGV.Rows[e.RowIndex].Cells[5].Value.ToString());
+        }
+
+        private async void BookManager_UpdateBookButton_Click(object sender, EventArgs e)
+        {
+            if (!this.isvalid())
+            {
+                return;
+            }
+
+            AuthorDto resultAuthor = await getAuthor(txbAuthor.Text);
+            PublisherDto resultPubliser = await getPubliserResult(txbPublisher.Text);
+
+            var cmd = new UpdateBookCommand()
+            {
+                Id = new Guid(txbId.Text),
+                Name = txbName.Text,
+                AuthorId = resultAuthor.Id,
+                Code = txbId.Text,
+                PublisherId = resultPubliser.Id,
+                TypeId = (Guid)BookManager_BookTypeCbb.SelectedValue,
+                quantily = Convert.ToInt32(txbQuantily.Value),
+                Published = dtpPushlshed.Value
+            };
+            UpdateBookResult result = await _mediator.Send(cmd);
+            if (result.Success)
+            {
+                MessageBox.Show("Cập nhật sách thành công");
+
+                this.loadTable();
+            }
+            else
+            {
+                MessageBox.Show("Cập nhật sách không thành công");
+            }
+
+        }
+
+        private async void BM_ManageBookDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+                e.RowIndex >= 0)
+            {
+
+                DialogResult isDelete = MessageBox.Show("Cảnh báo thao tác này sẽ không thể quay lại, bạn muốn xóa?", "Thông báo", MessageBoxButtons.OKCancel);
+
+                if(isDelete == DialogResult.OK)
+                {
+                    var cmd = new DeleteBookCommand
+                    {
+                        Id = new Guid(txbId.Text)
+                    };
+                    var result = await _mediator.Send(cmd);
+                    if (result.Success)
+                    {
+                        MessageBox.Show("Xóa sách thành công");
+                        this.loadTable();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa sách không thành công");
+                    }
+                }
+            }
         }
     }
 }

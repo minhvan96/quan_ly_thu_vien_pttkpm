@@ -11,6 +11,10 @@ public class UpdateBookCommand : IRequest<UpdateBookResult>
     public Guid TypeId { get; init; }
     public Guid AuthorId { get; init; }
     public Guid PublisherId { get; init; }
+    public DateTimeOffset? Published { get; set; }
+    public int quantily { get; set; }
+
+
 }
 
 public record UpdateBookResult : RequestResult

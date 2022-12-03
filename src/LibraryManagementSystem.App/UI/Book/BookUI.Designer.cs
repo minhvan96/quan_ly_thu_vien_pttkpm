@@ -49,11 +49,12 @@
             this.BookMenu_ManageBookPage = new System.Windows.Forms.TabPage();
             this.BookManager_MainSplitContainer = new System.Windows.Forms.SplitContainer();
             this.BookManager_AddBookGroup = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.lbQuantity = new System.Windows.Forms.Label();
+            this.BookManager_UpdateBookButton = new System.Windows.Forms.Button();
             this.txbId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.BookManager_AddBookButton = new System.Windows.Forms.Button();
-            this.dtpPushlsh = new System.Windows.Forms.DateTimePicker();
+            this.dtpPushlshed = new System.Windows.Forms.DateTimePicker();
             this.txbPublisher = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -71,7 +72,9 @@
             this.BM_ManageBookDGV_PublisherCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BM_ManageBookDGV_BookTypeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BM_ManageBookDGV_PublishedYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BM_ManageBookDGV_DeleteCol = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.txbQuantily = new System.Windows.Forms.NumericUpDown();
             this.tabControl1.SuspendLayout();
             this.BookMenu_SearchBookPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BookPageContainer)).BeginInit();
@@ -89,6 +92,7 @@
             this.BookManager_AddBookGroup.SuspendLayout();
             this.BookManager_BookViewGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BM_ManageBookDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txbQuantily)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -320,11 +324,13 @@
             // 
             // BookManager_AddBookGroup
             // 
-            this.BookManager_AddBookGroup.Controls.Add(this.button2);
+            this.BookManager_AddBookGroup.Controls.Add(this.txbQuantily);
+            this.BookManager_AddBookGroup.Controls.Add(this.lbQuantity);
+            this.BookManager_AddBookGroup.Controls.Add(this.BookManager_UpdateBookButton);
             this.BookManager_AddBookGroup.Controls.Add(this.txbId);
             this.BookManager_AddBookGroup.Controls.Add(this.label1);
             this.BookManager_AddBookGroup.Controls.Add(this.BookManager_AddBookButton);
-            this.BookManager_AddBookGroup.Controls.Add(this.dtpPushlsh);
+            this.BookManager_AddBookGroup.Controls.Add(this.dtpPushlshed);
             this.BookManager_AddBookGroup.Controls.Add(this.txbPublisher);
             this.BookManager_AddBookGroup.Controls.Add(this.label5);
             this.BookManager_AddBookGroup.Controls.Add(this.label6);
@@ -342,14 +348,24 @@
             this.BookManager_AddBookGroup.TabStop = false;
             this.BookManager_AddBookGroup.Text = "Quản lý sách";
             // 
-            // button2
+            // lbQuantity
             // 
-            this.button2.Location = new System.Drawing.Point(916, 106);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 29);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "Cập nhật";
-            this.button2.UseVisualStyleBackColor = true;
+            this.lbQuantity.AutoSize = true;
+            this.lbQuantity.Location = new System.Drawing.Point(877, 23);
+            this.lbQuantity.Name = "lbQuantity";
+            this.lbQuantity.Size = new System.Drawing.Size(69, 20);
+            this.lbQuantity.TabIndex = 17;
+            this.lbQuantity.Text = "Số lượng";
+            // 
+            // BookManager_UpdateBookButton
+            // 
+            this.BookManager_UpdateBookButton.Location = new System.Drawing.Point(916, 106);
+            this.BookManager_UpdateBookButton.Name = "BookManager_UpdateBookButton";
+            this.BookManager_UpdateBookButton.Size = new System.Drawing.Size(91, 29);
+            this.BookManager_UpdateBookButton.TabIndex = 15;
+            this.BookManager_UpdateBookButton.Text = "Cập nhật";
+            this.BookManager_UpdateBookButton.UseVisualStyleBackColor = true;
+            this.BookManager_UpdateBookButton.Click += new System.EventHandler(this.BookManager_UpdateBookButton_Click);
             // 
             // txbId
             // 
@@ -379,12 +395,12 @@
             this.BookManager_AddBookButton.UseVisualStyleBackColor = true;
             this.BookManager_AddBookButton.Click += new System.EventHandler(this.BookManager_AddBookButton_Click);
             // 
-            // dtpPushlsh
+            // dtpPushlshed
             // 
-            this.dtpPushlsh.Location = new System.Drawing.Point(547, 108);
-            this.dtpPushlsh.Name = "dtpPushlsh";
-            this.dtpPushlsh.Size = new System.Drawing.Size(241, 27);
-            this.dtpPushlsh.TabIndex = 9;
+            this.dtpPushlshed.Location = new System.Drawing.Point(547, 108);
+            this.dtpPushlshed.Name = "dtpPushlshed";
+            this.dtpPushlshed.Size = new System.Drawing.Size(241, 27);
+            this.dtpPushlshed.TabIndex = 9;
             // 
             // txbPublisher
             // 
@@ -415,7 +431,7 @@
             // 
             this.txbName.Location = new System.Drawing.Point(279, 50);
             this.txbName.Name = "txbName";
-            this.txbName.Size = new System.Drawing.Size(462, 27);
+            this.txbName.Size = new System.Drawing.Size(339, 27);
             this.txbName.TabIndex = 3;
             // 
             // label2
@@ -429,6 +445,7 @@
             // 
             // BookManager_BookTypeCbb
             // 
+            this.BookManager_BookTypeCbb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.BookManager_BookTypeCbb.FormattingEnabled = true;
             this.BookManager_BookTypeCbb.Location = new System.Drawing.Point(6, 107);
             this.BookManager_BookTypeCbb.Name = "BookManager_BookTypeCbb";
@@ -446,15 +463,15 @@
             // 
             // txbAuthor
             // 
-            this.txbAuthor.Location = new System.Drawing.Point(763, 50);
+            this.txbAuthor.Location = new System.Drawing.Point(650, 50);
             this.txbAuthor.Name = "txbAuthor";
-            this.txbAuthor.Size = new System.Drawing.Size(241, 27);
+            this.txbAuthor.Size = new System.Drawing.Size(204, 27);
             this.txbAuthor.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(763, 27);
+            this.label4.Location = new System.Drawing.Point(650, 27);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 20);
             this.label4.TabIndex = 7;
@@ -483,6 +500,7 @@
             this.BM_ManageBookDGV_PublisherCol,
             this.BM_ManageBookDGV_BookTypeCol,
             this.BM_ManageBookDGV_PublishedYear,
+            this.InStock,
             this.BM_ManageBookDGV_DeleteCol});
             this.BM_ManageBookDGV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BM_ManageBookDGV.Location = new System.Drawing.Point(3, 23);
@@ -495,6 +513,7 @@
             this.BM_ManageBookDGV.Size = new System.Drawing.Size(1004, 377);
             this.BM_ManageBookDGV.TabIndex = 0;
             this.BM_ManageBookDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BM_ManageBookDGV_CellClick);
+            this.BM_ManageBookDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BM_ManageBookDGV_CellContentClick);
             // 
             // Id
             // 
@@ -551,6 +570,14 @@
             this.BM_ManageBookDGV_PublishedYear.Name = "BM_ManageBookDGV_PublishedYear";
             this.BM_ManageBookDGV_PublishedYear.ReadOnly = true;
             // 
+            // InStock
+            // 
+            this.InStock.HeaderText = "Số lượng";
+            this.InStock.MinimumWidth = 6;
+            this.InStock.Name = "InStock";
+            this.InStock.ReadOnly = true;
+            this.InStock.Width = 125;
+            // 
             // BM_ManageBookDGV_DeleteCol
             // 
             this.BM_ManageBookDGV_DeleteCol.HeaderText = "Xoá";
@@ -558,6 +585,13 @@
             this.BM_ManageBookDGV_DeleteCol.Name = "BM_ManageBookDGV_DeleteCol";
             this.BM_ManageBookDGV_DeleteCol.ReadOnly = true;
             this.BM_ManageBookDGV_DeleteCol.Width = 50;
+            // 
+            // txbQuantily
+            // 
+            this.txbQuantily.Location = new System.Drawing.Point(877, 46);
+            this.txbQuantily.Name = "txbQuantily";
+            this.txbQuantily.Size = new System.Drawing.Size(101, 27);
+            this.txbQuantily.TabIndex = 18;
             // 
             // BookUI
             // 
@@ -585,6 +619,7 @@
             this.BookManager_AddBookGroup.PerformLayout();
             this.BookManager_BookViewGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BM_ManageBookDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txbQuantily)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -613,7 +648,7 @@
         private Button BookManager_AddBookButton;
         private TextBox txbPublisher;
         private Label label6;
-        private DateTimePicker dtpPushlsh;
+        private DateTimePicker dtpPushlshed;
         private Label label5;
         private Label label4;
         private ComboBox BookManager_BookTypeCbb;
@@ -623,17 +658,20 @@
         private Label label2;
         private SplitContainer BookManager_MainSplitContainer;
         private GroupBox BookManager_AddBookGroup;
-        private Button button2;
+        private Button BookManager_UpdateBookButton;
         private TextBox txbId;
         private Label label1;
         private GroupBox BookManager_BookViewGroup;
         private DataGridView BM_ManageBookDGV;
+        private Label lbQuantity;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn BM_ManageBookDGV_BookNameCol;
         private DataGridViewTextBoxColumn BM_ManageBookDGV_AuthorCol;
         private DataGridViewTextBoxColumn BM_ManageBookDGV_PublisherCol;
         private DataGridViewTextBoxColumn BM_ManageBookDGV_BookTypeCol;
         private DataGridViewTextBoxColumn BM_ManageBookDGV_PublishedYear;
+        private DataGridViewTextBoxColumn InStock;
         private DataGridViewButtonColumn BM_ManageBookDGV_DeleteCol;
+        private NumericUpDown txbQuantily;
     }
 }
