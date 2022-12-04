@@ -10,7 +10,10 @@ using LibraryManagementSystem.App.Features.LibraryConfigurationFeature.Queries;
 using LibraryManagementSystem.App.Features.PubblisherFeature.Dtos;
 using LibraryManagementSystem.App.UI.Book;
 using MediatR;
+using Microsoft.VisualBasic;
+using System.Net;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace LibraryManagementSystem.App;
 
@@ -97,15 +100,27 @@ public partial class LibraryManagementSystemUI : Form
         {
             var configurationGridViewRow = new DataGridViewRow();
             configurationGridViewRow.CreateCells(dataGridViewReader);
-            configurationGridViewRow.Cells[0].Value = reader.Name;
-            configurationGridViewRow.Cells[1].Value = reader.Address;
-            configurationGridViewRow.Cells[2].Value = reader.TypeOfReader;
-            configurationGridViewRow.Cells[3].Value = reader.Email;
-            configurationGridViewRow.Cells[4].Value = reader.BirthDay;
-            configurationGridViewRow.Cells[5].Value = reader.CreationDate;
+            configurationGridViewRow.Cells[0].Value = reader.Id;
+            configurationGridViewRow.Cells[1].Value = reader.Name;
+            configurationGridViewRow.Cells[2].Value = reader.Address;
+            configurationGridViewRow.Cells[3].Value = reader.TypeOfReader;
+            configurationGridViewRow.Cells[4].Value = reader.Email;
+            configurationGridViewRow.Cells[5].Value = reader.BirthDay;
+            configurationGridViewRow.Cells[6].Value = reader.CreationDate;
 
             dataGridViewReader.Rows.Add(configurationGridViewRow);
         }
+    }
+
+    private async void RefreshReader()
+    {
+        textBoxReaderIdInfo.Text = "";
+        textBoxReaderNameInfo.Text = "";
+        textBoxReaderAddressInfo.Text = "";
+        textBoxReaderEmailInfo.Text = "";
+        comboBoxReaderType.Text = "";
+        dtpReaderBodInfo.Value = DateTime.Today;
+        dtpReaderCreateDate.Value = DateTime.Today;
     }
 
     private async void SystemMainTabControl_Selected(object sender, TabControlEventArgs e)
@@ -275,8 +290,106 @@ public partial class LibraryManagementSystemUI : Form
         }
     }
 
-    private void buttonReaderEdit_Click(object sender, EventArgs e)
+    private async void buttonReaderEdit_Click(object sender, EventArgs e)
     {
+        if (!this.isvalid())
+        {
+            return;
+        }
+        var cmdReader = new UpdateLibraryCardCommand()
+        {
+            Id = new Guid(textBoxReaderIdInfo.Text),
+            Name = textBoxReaderNameInfo.Text.Trim(),
+            Address = textBoxReaderAddressInfo.Text.Trim(),
+            Email = textBoxReaderEmailInfo.Text.ToLower().Trim(),
+            TypeOfReader = comboBoxReaderType.Text.Trim(),
+            BirthDay = dtpReaderBodInfo.Value,
+            CreationDate = dtpReaderCreateDate.Value,
+        };
 
+
+        UpdateLibraryCardResult result = await _mediator.Send(cmdReader);
+        if (result.Success)
+        {
+            MessageBox.Show("Edit đọc giả thành công");
+            this.loadTableReader();
+        }
+        else
+        {
+            MessageBox.Show("Edit đọc giả không thành công");
+        }
+    }
+
+    private void dataGridViewReader_CellClick(object sender, DataGridViewCellEventArgs e)
+    {
+        if (e.RowIndex == -1)
+            return;
+
+        textBoxReaderIdInfo.Text = dataGridViewReader.Rows[e.RowIndex].Cells[0].Value.ToString();
+        textBoxReaderNameInfo.Text = dataGridViewReader.Rows[e.RowIndex].Cells[1].Value.ToString();
+        textBoxReaderAddressInfo.Text = dataGridViewReader.Rows[e.RowIndex].Cells[2].Value.ToString();
+        comboBoxReaderType.Text = dataGridViewReader.Rows[e.RowIndex].Cells[3].Value.ToString();
+        textBoxReaderEmailInfo.Text = dataGridViewReader.Rows[e.RowIndex].Cells[4].Value.ToString();
+        dtpReaderBodInfo.Value =  Convert.ToDateTime(dataGridViewReader.Rows[e.RowIndex].Cells[5].Value.ToString());
+        dtpReaderCreateDate.Value = Convert.ToDateTime(dataGridViewReader.Rows[e.RowIndex].Cells[6].Value.ToString()); ;
+    }
+
+    private void buttonReaderRefresh_Click(object sender, EventArgs e)
+    {
+        RefreshReader();
+    }
+
+    private async void buttonReaderDelete_Click(object sender, EventArgs e)
+    {
+        DialogResult isDelete = MessageBox.Show("Cảnh báo thao tác này sẽ không thể quay lại, bạn muốn xóa?", "Thông báo", MessageBoxButtons.OKCancel);
+
+        if (isDelete == DialogResult.OK)
+        {
+            var cmd = new DeleteLibraryCardCommand
+            {
+                Id = new Guid(textBoxReaderIdInfo.Text.Trim())
+            };
+            var result = await _mediator.Send(cmd);
+            if (result.Success)
+            {
+                MessageBox.Show("Xóa đọc giả thành công");
+                this.loadTableReader();
+            }
+            else
+            {
+                MessageBox.Show("Xóa đọc giả không thành công");
+            }
+        }
+    }
+
+    private async void buttonReaderSearch_Click(object sender, EventArgs e)
+    {
+        var searchOptions = SearchLibaryCardOptions.Name;
+        //if (textBoxSearchReader.Text != "")
+         //   searchOptions = SearchLibaryCardOptions.Name;
+        var listLibraryCardQuery = new LibraryCardQuery
+        {
+            SearchCriteria = textBoxSearchReader.Text,
+            SearchOption = searchOptions
+        };
+        var configurations = await _mediator.Send(listLibraryCardQuery);
+
+        dataGridViewReader.Rows.Clear();
+        foreach (var configuration in configurations.Items)
+        {
+            var configurationGridViewRow = new DataGridViewRow();
+            configurationGridViewRow.CreateCells(dataGridViewReader);
+            configurationGridViewRow.Cells[0].Value = configuration.Id;
+            configurationGridViewRow.Cells[1].Value = configuration.Name;
+            configurationGridViewRow.Cells[2].Value = configuration.Address;
+            configurationGridViewRow.Cells[3].Value = configuration.TypeOfReader;
+            configurationGridViewRow.Cells[4].Value = configuration.Email;
+            configurationGridViewRow.Cells[5].Value = configuration.BirthDay;
+            configurationGridViewRow.Cells[6].Value = configuration.CreationDate;
+
+            dataGridViewReader.Rows.Add(configurationGridViewRow);
+
+
+        }
     }
 }

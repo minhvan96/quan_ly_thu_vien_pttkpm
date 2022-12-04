@@ -13,9 +13,8 @@ public class LibraryCardQuery : ListQuery<LibraryCardDto>
 public enum SearchLibaryCardOptions
 {
     None = 0,
-    ReaderName = 1,
-    TypeName = 2,
-    Email = 4,
-    Address = 8,
-    All = ReaderName | TypeName | Email | Address
+    Name = 1,
+    Email = 2,
+    Address = 4,
+    All = Name | Email | Address
 }

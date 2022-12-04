@@ -33,6 +33,7 @@ public class LibraryCardQueryHadler : IListQueryHandler<LibraryCardQuery, Librar
                 Address = x.Address,
                 BirthDay = x.BirthDay,
                 Email = x.Email,
+                CreationDate = x.CreationDate,
                 TypeOfReader = x.TypeOfReader
             })
             .ToPagedListAsync(request.PageIndex, request.PageSize, cancellationToken: cancellationToken);
