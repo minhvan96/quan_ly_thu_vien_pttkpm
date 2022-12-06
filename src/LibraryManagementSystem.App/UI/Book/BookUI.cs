@@ -196,8 +196,7 @@ namespace LibraryManagementSystem.App.UI.Book
                 Id = new Guid("b7eef645-ef23-4cb2-8927-f9a8c817b4b7")
             };
             var year = await _mediator.Send(cmdCofnig);
-
-            if (DateTime.Now.AddYears(-dtpPushlshed.Value.Year).Year > year.Value)
+            if ((DateTime.Now.Year - dtpPushlshed.Value.Year) > year.Value)
             {
                 MessageBox.Show("Năm xuất bản không thể quá " + year.Value + " năm.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;

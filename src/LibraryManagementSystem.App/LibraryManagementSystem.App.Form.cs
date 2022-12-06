@@ -170,6 +170,44 @@ public partial class LibraryManagementSystemUI : Form
         }
         return true;
     }
+
+    private async void loadTableReader()
+    {
+        var listReadersQuery = new LibraryCardQuery
+        {
+            SearchOption = SearchLibaryCardOptions.None
+        };
+        var readers = await _mediator.Send(listReadersQuery);
+
+        dataGridViewReader.Rows.Clear();
+        dataGridViewReader.Refresh();
+        dataGridViewReader.DataSource = null;
+        foreach (var reader in readers.Items)
+        {
+            var configurationGridViewRow = new DataGridViewRow();
+            configurationGridViewRow.CreateCells(dataGridViewReader);
+            configurationGridViewRow.Cells[0].Value = reader.Id;
+            configurationGridViewRow.Cells[1].Value = reader.Name;
+            configurationGridViewRow.Cells[2].Value = reader.Address;
+            configurationGridViewRow.Cells[3].Value = reader.TypeOfReader;
+            configurationGridViewRow.Cells[4].Value = reader.Email;
+            configurationGridViewRow.Cells[5].Value = reader.BirthDay;
+            configurationGridViewRow.Cells[6].Value = reader.CreationDate;
+
+            dataGridViewReader.Rows.Add(configurationGridViewRow);
+        }
+    }
+
+    private async void RefreshReader()
+    {
+        textBoxReaderIdInfo.Text = "";
+        textBoxReaderNameInfo.Text = "";
+        textBoxReaderAddressInfo.Text = "";
+        textBoxReaderEmailInfo.Text = "";
+        comboBoxReaderType.Text = "";
+        dtpReaderBodInfo.Value = DateTime.Today;
+        dtpReaderCreateDate.Value = DateTime.Today;
+    }
     private async void buttonReaderAdd_Click(object sender, EventArgs e)
     {
         if (!this.isvalid())
