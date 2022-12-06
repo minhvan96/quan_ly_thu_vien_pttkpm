@@ -1,20 +1,35 @@
+﻿using LibraryManagementSystem.App.Features.AuthorFeature.Dtos;
 using LibraryManagementSystem.App.Features.BookFeature.Commands;
+using LibraryManagementSystem.App.Features.BookFeature.Dtos;
 using LibraryManagementSystem.App.Features.BookFeature.Queries;
+using LibraryManagementSystem.App.Features.CallCardFeature.Dtos;
+using LibraryManagementSystem.App.Features.LibraryCardFeature.Commands;
+using LibraryManagementSystem.App.Features.LibraryCardFeature.Queries;
 using LibraryManagementSystem.App.Features.LibraryConfigurationFeature.Commands;
 using LibraryManagementSystem.App.Features.LibraryConfigurationFeature.Queries;
+using LibraryManagementSystem.App.Features.PubblisherFeature.Dtos;
 using LibraryManagementSystem.App.UI.Book;
 using MediatR;
+using Microsoft.VisualBasic;
+using System.Net;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace LibraryManagementSystem.App;
 
 public partial class LibraryManagementSystemUI : Form
 {
     private readonly IMediator _mediator;
+    private List<LibraryCardDto> listReaders;
+    private TabPage? pageMain;
+    private readonly TabPage _pageMain;
 
     public LibraryManagementSystemUI(IMediator mediator)
     {
         InitializeComponent();
         _mediator = mediator;
+        this._pageMain = pageMain;
+        listReaders = new List<LibraryCardDto>();
     }
 
     private void SystemMainTabControl_Selected(object sender, TabControlEventArgs e)
@@ -49,6 +64,11 @@ public partial class LibraryManagementSystemUI : Form
                 STC_BookTP.Controls.Clear();
                 STC_BookTP.Controls.Add(myUserControl);
                 break;
+            }
+            case "Reader":
+            {
+                 loadTableReader();
+                 break;
             }
         }
     }
@@ -118,6 +138,167 @@ public partial class LibraryManagementSystemUI : Form
         catch (Exception ex)
         {
             MessageBox.Show(ex.Message, "Error");
+        }
+    }
+
+    private bool isvalid()
+    {
+        if (textBoxReaderNameInfo.Text == string.Empty)
+        {
+            MessageBox.Show("Tên đọc giả đang rỗng");
+            return false;
+        }
+
+        if (textBoxReaderEmailInfo.Text.Trim() == string.Empty)
+        {
+            MessageBox.Show("Email không được rỗng");
+            return false;
+        }
+
+        if (textBoxReaderAddressInfo.Text == string.Empty)
+        {
+            MessageBox.Show("Địa chỉ đang rỗng");
+            return false;
+        }
+
+
+
+        if (comboBoxReaderType.Text == string.Empty)
+        {
+            MessageBox.Show("Vui lòng chon loại đọc giả");
+            return false;
+        }
+        return true;
+    }
+    private async void buttonReaderAdd_Click(object sender, EventArgs e)
+    {
+        if (!this.isvalid())
+        {
+            return;
+        }
+
+        var cmdReader = new CreateLibraryCardCommand()
+        {
+            Name = textBoxReaderNameInfo.Text.Trim(),
+            Address = textBoxReaderAddressInfo.Text.Trim(),
+            Email = textBoxReaderEmailInfo.Text.ToLower().Trim(),
+            TypeOfReader = comboBoxReaderType.Text.Trim(),
+            BirthDay = dtpReaderBodInfo.Value,
+            CreationDate = dtpReaderCreateDate.Value,
+        };
+
+        CreateLibraryCardResult result = await _mediator.Send(cmdReader);
+        if (result.Success)
+        {
+            MessageBox.Show("Thêm đọc giả thành công");
+            this.loadTableReader();
+        }
+        else
+        {
+            MessageBox.Show("Thêm đọc giả không thành công");
+        }
+    }
+
+    private async void buttonReaderEdit_Click(object sender, EventArgs e)
+    {
+        if (!this.isvalid())
+        {
+            return;
+        }
+        var cmdReader = new UpdateLibraryCardCommand()
+        {
+            Id = new Guid(textBoxReaderIdInfo.Text),
+            Name = textBoxReaderNameInfo.Text.Trim(),
+            Address = textBoxReaderAddressInfo.Text.Trim(),
+            Email = textBoxReaderEmailInfo.Text.ToLower().Trim(),
+            TypeOfReader = comboBoxReaderType.Text.Trim(),
+            BirthDay = dtpReaderBodInfo.Value,
+            CreationDate = dtpReaderCreateDate.Value,
+        };
+
+
+        UpdateLibraryCardResult result = await _mediator.Send(cmdReader);
+        if (result.Success)
+        {
+            MessageBox.Show("Edit đọc giả thành công");
+            this.loadTableReader();
+        }
+        else
+        {
+            MessageBox.Show("Edit đọc giả không thành công");
+        }
+    }
+
+    private void dataGridViewReader_CellClick(object sender, DataGridViewCellEventArgs e)
+    {
+        if (e.RowIndex == -1)
+            return;
+
+        textBoxReaderIdInfo.Text = dataGridViewReader.Rows[e.RowIndex].Cells[0].Value.ToString();
+        textBoxReaderNameInfo.Text = dataGridViewReader.Rows[e.RowIndex].Cells[1].Value.ToString();
+        textBoxReaderAddressInfo.Text = dataGridViewReader.Rows[e.RowIndex].Cells[2].Value.ToString();
+        comboBoxReaderType.Text = dataGridViewReader.Rows[e.RowIndex].Cells[3].Value.ToString();
+        textBoxReaderEmailInfo.Text = dataGridViewReader.Rows[e.RowIndex].Cells[4].Value.ToString();
+        dtpReaderBodInfo.Value =  Convert.ToDateTime(dataGridViewReader.Rows[e.RowIndex].Cells[5].Value.ToString());
+        dtpReaderCreateDate.Value = Convert.ToDateTime(dataGridViewReader.Rows[e.RowIndex].Cells[6].Value.ToString()); ;
+    }
+
+    private void buttonReaderRefresh_Click(object sender, EventArgs e)
+    {
+        RefreshReader();
+    }
+
+    private async void buttonReaderDelete_Click(object sender, EventArgs e)
+    {
+        DialogResult isDelete = MessageBox.Show("Cảnh báo thao tác này sẽ không thể quay lại, bạn muốn xóa?", "Thông báo", MessageBoxButtons.OKCancel);
+
+        if (isDelete == DialogResult.OK)
+        {
+            var cmd = new DeleteLibraryCardCommand
+            {
+                Id = new Guid(textBoxReaderIdInfo.Text.Trim())
+            };
+            var result = await _mediator.Send(cmd);
+            if (result.Success)
+            {
+                MessageBox.Show("Xóa đọc giả thành công");
+                this.loadTableReader();
+            }
+            else
+            {
+                MessageBox.Show("Xóa đọc giả không thành công");
+            }
+        }
+    }
+
+    private async void buttonReaderSearch_Click(object sender, EventArgs e)
+    {
+        var searchOptions = SearchLibaryCardOptions.Name;
+        //if (textBoxSearchReader.Text != "")
+         //   searchOptions = SearchLibaryCardOptions.Name;
+        var listLibraryCardQuery = new LibraryCardQuery
+        {
+            SearchCriteria = textBoxSearchReader.Text,
+            SearchOption = searchOptions
+        };
+        var configurations = await _mediator.Send(listLibraryCardQuery);
+
+        dataGridViewReader.Rows.Clear();
+        foreach (var configuration in configurations.Items)
+        {
+            var configurationGridViewRow = new DataGridViewRow();
+            configurationGridViewRow.CreateCells(dataGridViewReader);
+            configurationGridViewRow.Cells[0].Value = configuration.Id;
+            configurationGridViewRow.Cells[1].Value = configuration.Name;
+            configurationGridViewRow.Cells[2].Value = configuration.Address;
+            configurationGridViewRow.Cells[3].Value = configuration.TypeOfReader;
+            configurationGridViewRow.Cells[4].Value = configuration.Email;
+            configurationGridViewRow.Cells[5].Value = configuration.BirthDay;
+            configurationGridViewRow.Cells[6].Value = configuration.CreationDate;
+
+            dataGridViewReader.Rows.Add(configurationGridViewRow);
+
+
         }
     }
 }

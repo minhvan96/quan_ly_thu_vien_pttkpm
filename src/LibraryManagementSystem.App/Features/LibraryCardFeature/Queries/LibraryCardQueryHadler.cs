@@ -1,5 +1,6 @@
 ﻿using LibraryManagementSystem.App.Configurations.Mediator;
-using LibraryManagementSystem.App.Features.ReaderFeature.Dtos;
+using LibraryManagementSystem.App.Features.LibraryCardFeature.Dtos;
+using LibraryManagementSystem.App.Features.LibraryCardFeature.Queries;
 using LibraryManagementSystem.Domain.Common;
 using LibraryManagementSystem.Infrastructure.Data;
 using LibraryManagementSystem.Infrastructure.Database;
@@ -11,28 +12,29 @@ namespace LibraryManagementSystem.App.Features.ReaderFeature.Queries;
 //}
 
 
-public class ListReaderQueryHadler : IListQueryHandler<ListReaderQuery, ReaderDto>
+public class LibraryCardQueryHadler : IListQueryHandler<LibraryCardQuery, LibraryCardDto>
 {
     private readonly LibraryDbContext _context;
 
-    public ListReaderQueryHadler(LibraryDbContext context)
+    public LibraryCardQueryHadler(LibraryDbContext context)
     {
         _context = context;
     }
 
     /// <inheritdoc />
-    public async Task<IPagedList<ReaderDto>> Handle(ListReaderQuery request, CancellationToken cancellationToken)
+    public async Task<IPagedList<LibraryCardDto>> Handle(LibraryCardQuery request, CancellationToken cancellationToken)
     {
-        var reader = await _context.Readers
+        var reader = await _context.LibraryCards
             //.Where(x => x)
-            .Select(x => new ReaderDto
+            .Select(x => new LibraryCardDto
             {
                 Id = x.Id,
                 Name = x.Name,
                 Address = x.Address,
-                DOB = x.Dob,
+                BirthDay = x.BirthDay,
                 Email = x.Email,
-                ReaderType = x.ReaderType
+                CreationDate = x.CreationDate,
+                TypeOfReader = x.TypeOfReader
             })
             .ToPagedListAsync(request.PageIndex, request.PageSize, cancellationToken: cancellationToken);
         return reader;

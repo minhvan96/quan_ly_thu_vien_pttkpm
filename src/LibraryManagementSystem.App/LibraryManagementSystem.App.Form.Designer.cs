@@ -50,10 +50,13 @@
             this.LibraryConfigurationValueeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Reader = new System.Windows.Forms.TabPage();
             this.groupBoxReaderInfo = new System.Windows.Forms.GroupBox();
+            this.buttonReaderRefresh = new System.Windows.Forms.Button();
+            this.labelReaderId = new System.Windows.Forms.Label();
+            this.textBoxReaderIdInfo = new System.Windows.Forms.TextBox();
             this.buttonReaderEdit = new System.Windows.Forms.Button();
             this.buttonReaderDelete = new System.Windows.Forms.Button();
             this.buttonReaderAdd = new System.Windows.Forms.Button();
-            this.dpkReaderCreateDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpReaderCreateDate = new System.Windows.Forms.DateTimePicker();
             this.labelReaderCreate = new System.Windows.Forms.Label();
             this.dtpReaderBodInfo = new System.Windows.Forms.DateTimePicker();
             this.labelReaderBodInfo = new System.Windows.Forms.Label();
@@ -67,6 +70,7 @@
             this.labelReaderNameInfo = new System.Windows.Forms.Label();
             this.groupBoxDataReader = new System.Windows.Forms.GroupBox();
             this.dataGridViewReader = new System.Windows.Forms.DataGridView();
+            this.dgv_Reader_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_Reader_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_Reader_Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_Reader_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,7 +79,7 @@
             this.dgv_Reader_Create_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxReaderSearch = new System.Windows.Forms.GroupBox();
             this.buttonReaderSearch = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxSearchReader = new System.Windows.Forms.TextBox();
             this.labelReaderSearch = new System.Windows.Forms.Label();
             this.BorrowBookList = new System.Windows.Forms.TabPage();
             this.STC_BookNew = new System.Windows.Forms.TabPage();
@@ -282,6 +286,7 @@
             // 
             // LibraryConfigurationDataGridView
             // 
+            this.LibraryConfigurationDataGridView.AllowUserToResizeColumns = false;
             this.LibraryConfigurationDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.LibraryConfigurationDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.LibraryConfigurationCodeColumn,
@@ -333,10 +338,13 @@
             // 
             // groupBoxReaderInfo
             // 
+            this.groupBoxReaderInfo.Controls.Add(this.buttonReaderRefresh);
+            this.groupBoxReaderInfo.Controls.Add(this.labelReaderId);
+            this.groupBoxReaderInfo.Controls.Add(this.textBoxReaderIdInfo);
             this.groupBoxReaderInfo.Controls.Add(this.buttonReaderEdit);
             this.groupBoxReaderInfo.Controls.Add(this.buttonReaderDelete);
             this.groupBoxReaderInfo.Controls.Add(this.buttonReaderAdd);
-            this.groupBoxReaderInfo.Controls.Add(this.dpkReaderCreateDate);
+            this.groupBoxReaderInfo.Controls.Add(this.dtpReaderCreateDate);
             this.groupBoxReaderInfo.Controls.Add(this.labelReaderCreate);
             this.groupBoxReaderInfo.Controls.Add(this.dtpReaderBodInfo);
             this.groupBoxReaderInfo.Controls.Add(this.labelReaderBodInfo);
@@ -348,51 +356,81 @@
             this.groupBoxReaderInfo.Controls.Add(this.labelReaderAddressInfo);
             this.groupBoxReaderInfo.Controls.Add(this.textBoxReaderNameInfo);
             this.groupBoxReaderInfo.Controls.Add(this.labelReaderNameInfo);
-            this.groupBoxReaderInfo.Location = new System.Drawing.Point(813, 93);
+            this.groupBoxReaderInfo.Location = new System.Drawing.Point(3, 401);
             this.groupBoxReaderInfo.Name = "groupBoxReaderInfo";
-            this.groupBoxReaderInfo.Size = new System.Drawing.Size(208, 493);
+            this.groupBoxReaderInfo.Size = new System.Drawing.Size(1012, 185);
             this.groupBoxReaderInfo.TabIndex = 2;
             this.groupBoxReaderInfo.TabStop = false;
             this.groupBoxReaderInfo.Text = "Thông tin đọc giả";
             // 
+            // buttonReaderRefresh
+            // 
+            this.buttonReaderRefresh.Location = new System.Drawing.Point(635, 150);
+            this.buttonReaderRefresh.Name = "buttonReaderRefresh";
+            this.buttonReaderRefresh.Size = new System.Drawing.Size(94, 29);
+            this.buttonReaderRefresh.TabIndex = 18;
+            this.buttonReaderRefresh.Text = "Refresh";
+            this.buttonReaderRefresh.UseVisualStyleBackColor = true;
+            this.buttonReaderRefresh.Click += new System.EventHandler(this.buttonReaderRefresh_Click);
+            // 
+            // labelReaderId
+            // 
+            this.labelReaderId.AutoSize = true;
+            this.labelReaderId.Location = new System.Drawing.Point(6, 26);
+            this.labelReaderId.Name = "labelReaderId";
+            this.labelReaderId.Size = new System.Drawing.Size(87, 20);
+            this.labelReaderId.TabIndex = 17;
+            this.labelReaderId.Text = "Mã đọc giả:";
+            // 
+            // textBoxReaderIdInfo
+            // 
+            this.textBoxReaderIdInfo.Location = new System.Drawing.Point(6, 49);
+            this.textBoxReaderIdInfo.Name = "textBoxReaderIdInfo";
+            this.textBoxReaderIdInfo.ReadOnly = true;
+            this.textBoxReaderIdInfo.Size = new System.Drawing.Size(196, 27);
+            this.textBoxReaderIdInfo.TabIndex = 16;
+            // 
             // buttonReaderEdit
             // 
-            this.buttonReaderEdit.Location = new System.Drawing.Point(50, 436);
+            this.buttonReaderEdit.Location = new System.Drawing.Point(507, 150);
             this.buttonReaderEdit.Name = "buttonReaderEdit";
             this.buttonReaderEdit.Size = new System.Drawing.Size(94, 29);
             this.buttonReaderEdit.TabIndex = 15;
             this.buttonReaderEdit.Text = "Sửa";
             this.buttonReaderEdit.UseVisualStyleBackColor = true;
+            this.buttonReaderEdit.Click += new System.EventHandler(this.buttonReaderEdit_Click);
             // 
             // buttonReaderDelete
             // 
-            this.buttonReaderDelete.Location = new System.Drawing.Point(50, 401);
+            this.buttonReaderDelete.Location = new System.Drawing.Point(368, 150);
             this.buttonReaderDelete.Name = "buttonReaderDelete";
             this.buttonReaderDelete.Size = new System.Drawing.Size(94, 29);
             this.buttonReaderDelete.TabIndex = 14;
             this.buttonReaderDelete.Text = "Xóa";
             this.buttonReaderDelete.UseVisualStyleBackColor = true;
+            this.buttonReaderDelete.Click += new System.EventHandler(this.buttonReaderDelete_Click);
             // 
             // buttonReaderAdd
             // 
-            this.buttonReaderAdd.Location = new System.Drawing.Point(50, 365);
+            this.buttonReaderAdd.Location = new System.Drawing.Point(236, 150);
             this.buttonReaderAdd.Name = "buttonReaderAdd";
             this.buttonReaderAdd.Size = new System.Drawing.Size(94, 29);
             this.buttonReaderAdd.TabIndex = 13;
             this.buttonReaderAdd.Text = "Thêm";
             this.buttonReaderAdd.UseVisualStyleBackColor = true;
+            this.buttonReaderAdd.Click += new System.EventHandler(this.buttonReaderAdd_Click);
             // 
-            // dpkReaderCreateDate
+            // dtpReaderCreateDate
             // 
-            this.dpkReaderCreateDate.Location = new System.Drawing.Point(6, 315);
-            this.dpkReaderCreateDate.Name = "dpkReaderCreateDate";
-            this.dpkReaderCreateDate.Size = new System.Drawing.Size(196, 27);
-            this.dpkReaderCreateDate.TabIndex = 12;
+            this.dtpReaderCreateDate.Location = new System.Drawing.Point(507, 102);
+            this.dtpReaderCreateDate.Name = "dtpReaderCreateDate";
+            this.dtpReaderCreateDate.Size = new System.Drawing.Size(196, 27);
+            this.dtpReaderCreateDate.TabIndex = 12;
             // 
             // labelReaderCreate
             // 
             this.labelReaderCreate.AutoSize = true;
-            this.labelReaderCreate.Location = new System.Drawing.Point(6, 292);
+            this.labelReaderCreate.Location = new System.Drawing.Point(507, 79);
             this.labelReaderCreate.Name = "labelReaderCreate";
             this.labelReaderCreate.Size = new System.Drawing.Size(97, 20);
             this.labelReaderCreate.TabIndex = 11;
@@ -400,7 +438,7 @@
             // 
             // dtpReaderBodInfo
             // 
-            this.dtpReaderBodInfo.Location = new System.Drawing.Point(6, 261);
+            this.dtpReaderBodInfo.Location = new System.Drawing.Point(253, 102);
             this.dtpReaderBodInfo.Name = "dtpReaderBodInfo";
             this.dtpReaderBodInfo.Size = new System.Drawing.Size(196, 27);
             this.dtpReaderBodInfo.TabIndex = 10;
@@ -408,7 +446,7 @@
             // labelReaderBodInfo
             // 
             this.labelReaderBodInfo.AutoSize = true;
-            this.labelReaderBodInfo.Location = new System.Drawing.Point(6, 239);
+            this.labelReaderBodInfo.Location = new System.Drawing.Point(253, 79);
             this.labelReaderBodInfo.Name = "labelReaderBodInfo";
             this.labelReaderBodInfo.Size = new System.Drawing.Size(77, 20);
             this.labelReaderBodInfo.TabIndex = 9;
@@ -416,7 +454,7 @@
             // 
             // textBoxReaderEmailInfo
             // 
-            this.textBoxReaderEmailInfo.Location = new System.Drawing.Point(6, 209);
+            this.textBoxReaderEmailInfo.Location = new System.Drawing.Point(6, 102);
             this.textBoxReaderEmailInfo.Name = "textBoxReaderEmailInfo";
             this.textBoxReaderEmailInfo.Size = new System.Drawing.Size(196, 27);
             this.textBoxReaderEmailInfo.TabIndex = 8;
@@ -424,7 +462,7 @@
             // labelRaederEmailInfo
             // 
             this.labelRaederEmailInfo.AutoSize = true;
-            this.labelRaederEmailInfo.Location = new System.Drawing.Point(6, 187);
+            this.labelRaederEmailInfo.Location = new System.Drawing.Point(6, 79);
             this.labelRaederEmailInfo.Name = "labelRaederEmailInfo";
             this.labelRaederEmailInfo.Size = new System.Drawing.Size(49, 20);
             this.labelRaederEmailInfo.TabIndex = 7;
@@ -436,7 +474,7 @@
             this.comboBoxReaderType.Items.AddRange(new object[] {
             "X",
             "Y"});
-            this.comboBoxReaderType.Location = new System.Drawing.Point(6, 155);
+            this.comboBoxReaderType.Location = new System.Drawing.Point(764, 49);
             this.comboBoxReaderType.Name = "comboBoxReaderType";
             this.comboBoxReaderType.Size = new System.Drawing.Size(196, 28);
             this.comboBoxReaderType.TabIndex = 6;
@@ -444,7 +482,7 @@
             // labelReaderType
             // 
             this.labelReaderType.AutoSize = true;
-            this.labelReaderType.Location = new System.Drawing.Point(6, 132);
+            this.labelReaderType.Location = new System.Drawing.Point(764, 23);
             this.labelReaderType.Name = "labelReaderType";
             this.labelReaderType.Size = new System.Drawing.Size(94, 20);
             this.labelReaderType.TabIndex = 5;
@@ -452,7 +490,7 @@
             // 
             // textBoxReaderAddressInfo
             // 
-            this.textBoxReaderAddressInfo.Location = new System.Drawing.Point(6, 101);
+            this.textBoxReaderAddressInfo.Location = new System.Drawing.Point(507, 49);
             this.textBoxReaderAddressInfo.Name = "textBoxReaderAddressInfo";
             this.textBoxReaderAddressInfo.Size = new System.Drawing.Size(196, 27);
             this.textBoxReaderAddressInfo.TabIndex = 4;
@@ -460,7 +498,7 @@
             // labelReaderAddressInfo
             // 
             this.labelReaderAddressInfo.AutoSize = true;
-            this.labelReaderAddressInfo.Location = new System.Drawing.Point(6, 79);
+            this.labelReaderAddressInfo.Location = new System.Drawing.Point(507, 23);
             this.labelReaderAddressInfo.Name = "labelReaderAddressInfo";
             this.labelReaderAddressInfo.Size = new System.Drawing.Size(58, 20);
             this.labelReaderAddressInfo.TabIndex = 3;
@@ -468,7 +506,7 @@
             // 
             // textBoxReaderNameInfo
             // 
-            this.textBoxReaderNameInfo.Location = new System.Drawing.Point(6, 49);
+            this.textBoxReaderNameInfo.Location = new System.Drawing.Point(253, 49);
             this.textBoxReaderNameInfo.Name = "textBoxReaderNameInfo";
             this.textBoxReaderNameInfo.Size = new System.Drawing.Size(196, 27);
             this.textBoxReaderNameInfo.TabIndex = 2;
@@ -476,7 +514,7 @@
             // labelReaderNameInfo
             // 
             this.labelReaderNameInfo.AutoSize = true;
-            this.labelReaderNameInfo.Location = new System.Drawing.Point(6, 27);
+            this.labelReaderNameInfo.Location = new System.Drawing.Point(253, 26);
             this.labelReaderNameInfo.Name = "labelReaderNameInfo";
             this.labelReaderNameInfo.Size = new System.Drawing.Size(89, 20);
             this.labelReaderNameInfo.TabIndex = 1;
@@ -487,7 +525,7 @@
             this.groupBoxDataReader.Controls.Add(this.dataGridViewReader);
             this.groupBoxDataReader.Location = new System.Drawing.Point(3, 93);
             this.groupBoxDataReader.Name = "groupBoxDataReader";
-            this.groupBoxDataReader.Size = new System.Drawing.Size(805, 497);
+            this.groupBoxDataReader.Size = new System.Drawing.Size(1015, 305);
             this.groupBoxDataReader.TabIndex = 1;
             this.groupBoxDataReader.TabStop = false;
             this.groupBoxDataReader.Text = "Danh sách đọc giả";
@@ -496,21 +534,33 @@
             // 
             this.dataGridViewReader.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewReader.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_Reader_Id,
             this.dgv_Reader_Name,
             this.dgv_Reader_Address,
             this.dgv_Reader_Type,
             this.dgv_Reader_Email,
             this.dgv_Reader_Bod,
             this.dgv_Reader_Create_Date});
-            this.dataGridViewReader.Location = new System.Drawing.Point(3, 27);
+            this.dataGridViewReader.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewReader.Location = new System.Drawing.Point(3, 23);
             this.dataGridViewReader.Name = "dataGridViewReader";
             this.dataGridViewReader.RowHeadersWidth = 51;
             this.dataGridViewReader.RowTemplate.Height = 29;
-            this.dataGridViewReader.Size = new System.Drawing.Size(797, 463);
+            this.dataGridViewReader.Size = new System.Drawing.Size(1009, 279);
             this.dataGridViewReader.TabIndex = 0;
+            this.dataGridViewReader.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewReader_CellClick);
+            // 
+            // dgv_Reader_Id
+            // 
+            this.dgv_Reader_Id.HeaderText = "Id";
+            this.dgv_Reader_Id.MinimumWidth = 6;
+            this.dgv_Reader_Id.Name = "dgv_Reader_Id";
+            this.dgv_Reader_Id.Visible = false;
+            this.dgv_Reader_Id.Width = 125;
             // 
             // dgv_Reader_Name
             // 
+            this.dgv_Reader_Name.FillWeight = 200F;
             this.dgv_Reader_Name.HeaderText = "Họ và tên";
             this.dgv_Reader_Name.MinimumWidth = 6;
             this.dgv_Reader_Name.Name = "dgv_Reader_Name";
@@ -518,10 +568,10 @@
             // 
             // dgv_Reader_Address
             // 
+            this.dgv_Reader_Address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dgv_Reader_Address.HeaderText = "Địa chỉ";
             this.dgv_Reader_Address.MinimumWidth = 6;
             this.dgv_Reader_Address.Name = "dgv_Reader_Address";
-            this.dgv_Reader_Address.Width = 125;
             // 
             // dgv_Reader_Type
             // 
@@ -532,11 +582,12 @@
             // 
             // dgv_Reader_Email
             // 
+            this.dgv_Reader_Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_Reader_Email.FillWeight = 200F;
             this.dgv_Reader_Email.HeaderText = "Email";
             this.dgv_Reader_Email.MinimumWidth = 6;
             this.dgv_Reader_Email.Name = "dgv_Reader_Email";
             this.dgv_Reader_Email.ReadOnly = true;
-            this.dgv_Reader_Email.Width = 125;
             // 
             // dgv_Reader_Bod
             // 
@@ -555,7 +606,7 @@
             // groupBoxReaderSearch
             // 
             this.groupBoxReaderSearch.Controls.Add(this.buttonReaderSearch);
-            this.groupBoxReaderSearch.Controls.Add(this.textBox1);
+            this.groupBoxReaderSearch.Controls.Add(this.textBoxSearchReader);
             this.groupBoxReaderSearch.Controls.Add(this.labelReaderSearch);
             this.groupBoxReaderSearch.Location = new System.Drawing.Point(3, 5);
             this.groupBoxReaderSearch.Name = "groupBoxReaderSearch";
@@ -572,13 +623,14 @@
             this.buttonReaderSearch.TabIndex = 2;
             this.buttonReaderSearch.Text = "Tìm kiếm";
             this.buttonReaderSearch.UseVisualStyleBackColor = true;
+            this.buttonReaderSearch.Click += new System.EventHandler(this.buttonReaderSearch_Click);
             // 
-            // textBox1
+            // textBoxSearchReader
             // 
-            this.textBox1.Location = new System.Drawing.Point(123, 33);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(217, 27);
-            this.textBox1.TabIndex = 1;
+            this.textBoxSearchReader.Location = new System.Drawing.Point(123, 33);
+            this.textBoxSearchReader.Name = "textBoxSearchReader";
+            this.textBoxSearchReader.Size = new System.Drawing.Size(217, 27);
+            this.textBoxSearchReader.TabIndex = 1;
             // 
             // labelReaderSearch
             // 
@@ -662,16 +714,10 @@
         private TabPage Reader;
         private GroupBox groupBoxReaderSearch;
         private Button buttonReaderSearch;
-        private TextBox textBox1;
+        private TextBox textBoxSearchReader;
         private Label labelReaderSearch;
         private GroupBox groupBoxDataReader;
         private DataGridView dataGridViewReader;
-        private DataGridViewTextBoxColumn dgv_Reader_Name;
-        private DataGridViewTextBoxColumn dgv_Reader_Address;
-        private DataGridViewTextBoxColumn dgv_Reader_Type;
-        private DataGridViewTextBoxColumn dgv_Reader_Email;
-        private DataGridViewTextBoxColumn dgv_Reader_Bod;
-        private DataGridViewTextBoxColumn dgv_Reader_Create_Date;
         private GroupBox groupBoxReaderInfo;
         private ComboBox comboBoxReaderType;
         private Label labelReaderType;
@@ -685,7 +731,7 @@
         private Button buttonReaderEdit;
         private Button buttonReaderDelete;
         private Button buttonReaderAdd;
-        private DateTimePicker dpkReaderCreateDate;
+        private DateTimePicker dtpReaderCreateDate;
         private Label labelReaderCreate;
         private DateTimePicker dtpReaderBodInfo;
         private TabPage BorrowBookList;
@@ -693,6 +739,16 @@
         private TabControl QueryBookTab;
         private TabPage QueryBookTab_BookViewPage;
         private TabPage QueryBookTab_ImportBookPage;
+        private Label labelReaderId;
+        private TextBox textBoxReaderIdInfo;
+        private DataGridViewTextBoxColumn dgv_Reader_Id;
+        private DataGridViewTextBoxColumn dgv_Reader_Name;
+        private DataGridViewTextBoxColumn dgv_Reader_Address;
+        private DataGridViewTextBoxColumn dgv_Reader_Type;
+        private DataGridViewTextBoxColumn dgv_Reader_Email;
+        private DataGridViewTextBoxColumn dgv_Reader_Bod;
+        private DataGridViewTextBoxColumn dgv_Reader_Create_Date;
+        private Button buttonReaderRefresh;
         private TabPage STC_HomeTP;
     }
 }

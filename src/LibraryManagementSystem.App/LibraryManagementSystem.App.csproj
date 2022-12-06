@@ -48,7 +48,6 @@
 
     <ItemGroup>
       <Folder Include="Features\BookTypeFeature\Commands\" />
-      <Folder Include="Features\ReaderFeature\Commands\" />
     </ItemGroup>
 
     <ItemGroup>
