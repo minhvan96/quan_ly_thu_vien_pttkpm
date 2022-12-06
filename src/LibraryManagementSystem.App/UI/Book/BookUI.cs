@@ -4,11 +4,13 @@ using LibraryManagementSystem.App.Features.AuthorFeature.Queries;
 using LibraryManagementSystem.App.Features.BookFeature.Commands;
 using LibraryManagementSystem.App.Features.BookFeature.Queries;
 using LibraryManagementSystem.App.Features.BookTypeFeature.Queries;
+using LibraryManagementSystem.App.Features.LibraryConfigurationFeature.Dtos;
 using LibraryManagementSystem.App.Features.LibraryConfigurationFeature.Queries;
 using LibraryManagementSystem.App.Features.PubblisherFeature.Commands;
 using LibraryManagementSystem.App.Features.PubblisherFeature.Dtos;
 using LibraryManagementSystem.App.Features.PubblisherFeature.Queries;
 using MediatR;
+using System;
 using System.Data;
 using System.Globalization;
 using System.Windows.Forms;
@@ -17,6 +19,7 @@ namespace LibraryManagementSystem.App.UI.Book
 {
     public partial class BookUI : UserControl
     {
+        private static Random random = new Random();
         private readonly IMediator _mediator;
         private readonly TabPage _pageMain;
         
@@ -90,6 +93,7 @@ namespace LibraryManagementSystem.App.UI.Book
 
         private async void loadTable()
         {
+
             var books = await _mediator.Send(new ListBooksQuery());
 
             BM_ManageBookDGV.Rows.Clear();
@@ -158,24 +162,24 @@ namespace LibraryManagementSystem.App.UI.Book
         }
 
 
-        private bool isvalid()
+        private async Task<Boolean> IsValid()
         {
             Guid typeId = BookManager_BookTypeCbb.SelectedValue == null ? Guid.Empty : (Guid)BookManager_BookTypeCbb.SelectedValue;
             if (typeId == Guid.Empty)
             {
-                MessageBox.Show("Không thể bỏ trống thể loại sách");
+                MessageBox.Show("Không thể bỏ trống thể loại sách.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
             if(txbName.Text == string.Empty)
             {
-                MessageBox.Show("Không thể bỏ trống tên sách");
+                MessageBox.Show("Không thể bỏ trống tên sách.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
             if(txbAuthor.Text == string.Empty)
             {
-                MessageBox.Show("Không thể bỏ trống tên tác giả");
+                MessageBox.Show("Không thể bỏ trống tên tác giả.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -183,19 +187,34 @@ namespace LibraryManagementSystem.App.UI.Book
 
             if(txbPublisher.Text == string.Empty)
             {
-                MessageBox.Show("Không thể bỏ trống nhà xuất bản sách");
+                MessageBox.Show("Không thể bỏ trống nhà xuất bản sách.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+
+            var cmdCofnig = new GetLibraryConfigurationQuery()
+            {
+                Id = new Guid("b7eef645-ef23-4cb2-8927-f9a8c817b4b7")
+            };
+            var year = await _mediator.Send(cmdCofnig);
+
+            if (DateTime.Now.AddYears(-dtpPushlshed.Value.Year).Year > year.Value)
+            {
+                MessageBox.Show("Năm xuất bản không thể quá " + year.Value + " năm.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
             return true;
         }
 
         private async void BookManager_AddBookButton_Click(object sender, EventArgs e)
         {
 
-            if (!this.isvalid())
+            if (await this.IsValid() == false)
             {
                 return;
             }
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            string code = new string(Enumerable.Repeat(chars, 10).Select(s => s[random.Next(s.Length)]).ToArray());
 
             AuthorDto resultAuthor = await getAuthor(txbAuthor.Text);
             PublisherDto resultPubliser = await getPubliserResult(txbPublisher.Text);
@@ -206,7 +225,7 @@ namespace LibraryManagementSystem.App.UI.Book
             {
                 Name = txbName.Text,
                 AuthorId = resultAuthor.Id,
-                Code = "phu",
+                Code = code,
                 PublisherId = resultPubliser.Id,
                 TypeId = (Guid)BookManager_BookTypeCbb.SelectedValue,
                 Published = dtpPushlshed.Value,
@@ -217,13 +236,13 @@ namespace LibraryManagementSystem.App.UI.Book
             CreateBookResult result =  await _mediator.Send(cmdBook);
             if (result.Success)
             {
-                MessageBox.Show("Thêm sách thành công");
+                MessageBox.Show("Thêm sách thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txbId.Text = result.Id.ToString();
                 this.loadTable();
             }
             else
             {
-                MessageBox.Show("Thêm sách không thành công");
+                MessageBox.Show("Thêm sách không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -244,7 +263,7 @@ namespace LibraryManagementSystem.App.UI.Book
 
         private async void BookManager_UpdateBookButton_Click(object sender, EventArgs e)
         {
-            if (!this.isvalid())
+            if (await this.IsValid() == false)
             {
                 return;
             }
@@ -266,13 +285,13 @@ namespace LibraryManagementSystem.App.UI.Book
             UpdateBookResult result = await _mediator.Send(cmd);
             if (result.Success)
             {
-                MessageBox.Show("Cập nhật sách thành công");
+                MessageBox.Show("Cập nhật sách thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 this.loadTable();
             }
             else
             {
-                MessageBox.Show("Cập nhật sách không thành công");
+                MessageBox.Show("Cập nhật sách không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -285,7 +304,7 @@ namespace LibraryManagementSystem.App.UI.Book
                 e.RowIndex >= 0)
             {
 
-                DialogResult isDelete = MessageBox.Show("Cảnh báo thao tác này sẽ không thể quay lại, bạn muốn xóa?", "Thông báo", MessageBoxButtons.OKCancel);
+                DialogResult isDelete = MessageBox.Show("Cảnh báo thao tác này sẽ không thể quay lại, bạn muốn xóa?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
                 if(isDelete == DialogResult.OK)
                 {
