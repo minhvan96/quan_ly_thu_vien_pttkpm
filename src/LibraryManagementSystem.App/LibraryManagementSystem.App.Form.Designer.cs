@@ -83,7 +83,10 @@
             this.labelReaderSearch = new System.Windows.Forms.Label();
             this.BorrowBookList = new System.Windows.Forms.TabPage();
             this.STC_BookNew = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SystemMainTabControl.SuspendLayout();
+            this.STC_HomeTP.SuspendLayout();
             this.STC_BookTP.SuspendLayout();
             this.QueryBookTab.SuspendLayout();
             this.LibraryConfigurationTab.SuspendLayout();
@@ -121,6 +124,8 @@
             // 
             // STC_HomeTP
             // 
+            this.STC_HomeTP.Controls.Add(this.label3);
+            this.STC_HomeTP.Controls.Add(this.label2);
             this.STC_HomeTP.Location = new System.Drawing.Point(4, 29);
             this.STC_HomeTP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.STC_HomeTP.Name = "STC_HomeTP";
@@ -660,6 +665,26 @@
             this.STC_BookNew.Text = "Thêm Sách";
             this.STC_BookNew.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(234, 221);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(593, 81);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "QUẢN LÝ THƯ VIỆN";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(422, 155);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(187, 50);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Ứng dụng";
+            // 
             // LibraryManagementSystemUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -671,6 +696,8 @@
             this.Text = "Library Management System";
             this.Load += new System.EventHandler(this.LibraryManagementSystemUI_Load);
             this.SystemMainTabControl.ResumeLayout(false);
+            this.STC_HomeTP.ResumeLayout(false);
+            this.STC_HomeTP.PerformLayout();
             this.STC_BookTP.ResumeLayout(false);
             this.QueryBookTab.ResumeLayout(false);
             this.LibraryConfigurationTab.ResumeLayout(false);
@@ -750,5 +777,7 @@
         private DataGridViewTextBoxColumn dgv_Reader_Create_Date;
         private Button buttonReaderRefresh;
         private TabPage STC_HomeTP;
+        private Label label3;
+        private Label label2;
     }
 }
