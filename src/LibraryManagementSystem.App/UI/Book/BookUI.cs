@@ -183,8 +183,6 @@ namespace LibraryManagementSystem.App.UI.Book
                 return false;
             }
 
-
-
             if(txbPublisher.Text == string.Empty)
             {
                 MessageBox.Show("Không thể bỏ trống nhà xuất bản sách.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -258,6 +256,8 @@ namespace LibraryManagementSystem.App.UI.Book
             BookManager_BookTypeCbb.SelectedIndex = BookManager_BookTypeCbb.FindString(BM_ManageBookDGV.Rows[e.RowIndex].Cells[4].Value.ToString());
 
             dtpPushlshed.Value = Convert.ToDateTime(BM_ManageBookDGV.Rows[e.RowIndex].Cells[5].Value.ToString());
+            txbQuantily.Value = int.Parse(BM_ManageBookDGV.Rows[e.RowIndex].Cells[6].Value.ToString());
+
         }
 
         private async void BookManager_UpdateBookButton_Click(object sender, EventArgs e)
@@ -304,25 +304,36 @@ namespace LibraryManagementSystem.App.UI.Book
             {
 
                 DialogResult isDelete = MessageBox.Show("Cảnh báo thao tác này sẽ không thể quay lại, bạn muốn xóa?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-                if(isDelete == DialogResult.OK)
+                String id = txbId.Text == "" ? BM_ManageBookDGV.Rows[e.RowIndex].Cells[0].Value.ToString() : txbId.Text;
+                if (isDelete == DialogResult.OK)
                 {
                     var cmd = new DeleteBookCommand
                     {
-                        Id = new Guid(txbId.Text)
+                        Id = new Guid(id)
                     };
                     var result = await _mediator.Send(cmd);
                     if (result.Success)
                     {
-                        MessageBox.Show("Xóa sách thành công");
+                        MessageBox.Show("Xóa sách thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.loadTable();
                     }
                     else
                     {
-                        MessageBox.Show("Xóa sách không thành công");
+                        MessageBox.Show("Xóa sách không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txbId.Text = "";
+            txbAuthor.Text = "";
+            txbName.Text = "";
+            txbPublisher.Text = "";
+            txbQuantily.Value = 1;
+            dtpPushlshed.Value = DateTime.Now;
+            BookManager_BookTypeCbb.SelectedIndex = 0;
         }
     }
 }

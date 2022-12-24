@@ -49,6 +49,8 @@
             this.BookMenu_ManageBookPage = new System.Windows.Forms.TabPage();
             this.BookManager_MainSplitContainer = new System.Windows.Forms.SplitContainer();
             this.BookManager_AddBookGroup = new System.Windows.Forms.GroupBox();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.txbQuantily = new System.Windows.Forms.NumericUpDown();
             this.lbQuantity = new System.Windows.Forms.Label();
             this.BookManager_UpdateBookButton = new System.Windows.Forms.Button();
             this.txbId = new System.Windows.Forms.TextBox();
@@ -74,7 +76,6 @@
             this.BM_ManageBookDGV_PublishedYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BM_ManageBookDGV_DeleteCol = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.txbQuantily = new System.Windows.Forms.NumericUpDown();
             this.tabControl1.SuspendLayout();
             this.BookMenu_SearchBookPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BookPageContainer)).BeginInit();
@@ -90,9 +91,9 @@
             this.BookManager_MainSplitContainer.Panel2.SuspendLayout();
             this.BookManager_MainSplitContainer.SuspendLayout();
             this.BookManager_AddBookGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txbQuantily)).BeginInit();
             this.BookManager_BookViewGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BM_ManageBookDGV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txbQuantily)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -324,6 +325,7 @@
             // 
             // BookManager_AddBookGroup
             // 
+            this.BookManager_AddBookGroup.Controls.Add(this.btnClear);
             this.BookManager_AddBookGroup.Controls.Add(this.txbQuantily);
             this.BookManager_AddBookGroup.Controls.Add(this.lbQuantity);
             this.BookManager_AddBookGroup.Controls.Add(this.BookManager_UpdateBookButton);
@@ -348,10 +350,37 @@
             this.BookManager_AddBookGroup.TabStop = false;
             this.BookManager_AddBookGroup.Text = "Quản lý sách";
             // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(899, 50);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(94, 29);
+            this.btnClear.TabIndex = 19;
+            this.btnClear.Text = "Hủy";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // txbQuantily
+            // 
+            this.txbQuantily.Location = new System.Drawing.Point(774, 50);
+            this.txbQuantily.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txbQuantily.Name = "txbQuantily";
+            this.txbQuantily.Size = new System.Drawing.Size(101, 27);
+            this.txbQuantily.TabIndex = 18;
+            this.txbQuantily.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // lbQuantity
             // 
             this.lbQuantity.AutoSize = true;
-            this.lbQuantity.Location = new System.Drawing.Point(877, 23);
+            this.lbQuantity.Location = new System.Drawing.Point(774, 27);
             this.lbQuantity.Name = "lbQuantity";
             this.lbQuantity.Size = new System.Drawing.Size(69, 20);
             this.lbQuantity.TabIndex = 17;
@@ -431,7 +460,7 @@
             // 
             this.txbName.Location = new System.Drawing.Point(279, 50);
             this.txbName.Name = "txbName";
-            this.txbName.Size = new System.Drawing.Size(339, 27);
+            this.txbName.Size = new System.Drawing.Size(262, 27);
             this.txbName.TabIndex = 3;
             // 
             // label2
@@ -463,15 +492,15 @@
             // 
             // txbAuthor
             // 
-            this.txbAuthor.Location = new System.Drawing.Point(650, 50);
+            this.txbAuthor.Location = new System.Drawing.Point(574, 50);
             this.txbAuthor.Name = "txbAuthor";
-            this.txbAuthor.Size = new System.Drawing.Size(204, 27);
+            this.txbAuthor.Size = new System.Drawing.Size(167, 27);
             this.txbAuthor.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(650, 27);
+            this.label4.Location = new System.Drawing.Point(574, 27);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 20);
             this.label4.TabIndex = 7;
@@ -586,13 +615,6 @@
             this.BM_ManageBookDGV_DeleteCol.ReadOnly = true;
             this.BM_ManageBookDGV_DeleteCol.Width = 50;
             // 
-            // txbQuantily
-            // 
-            this.txbQuantily.Location = new System.Drawing.Point(877, 46);
-            this.txbQuantily.Name = "txbQuantily";
-            this.txbQuantily.Size = new System.Drawing.Size(101, 27);
-            this.txbQuantily.TabIndex = 18;
-            // 
             // BookUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -617,9 +639,9 @@
             this.BookManager_MainSplitContainer.ResumeLayout(false);
             this.BookManager_AddBookGroup.ResumeLayout(false);
             this.BookManager_AddBookGroup.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txbQuantily)).EndInit();
             this.BookManager_BookViewGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BM_ManageBookDGV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txbQuantily)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -673,5 +695,6 @@
         private DataGridViewTextBoxColumn InStock;
         private DataGridViewButtonColumn BM_ManageBookDGV_DeleteCol;
         private NumericUpDown txbQuantily;
+        private Button btnClear;
     }
 }
