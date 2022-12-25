@@ -12,6 +12,7 @@ using LibraryManagementSystem.App.UI.Book;
 using MediatR;
 using Microsoft.VisualBasic;
 using System.Net;
+using System.Windows.Forms;
 using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
@@ -160,12 +161,15 @@ public partial class LibraryManagementSystemUI : Form
             MessageBox.Show("Địa chỉ đang rỗng");
             return false;
         }
-
-
-
         if (comboBoxReaderType.Text == string.Empty)
         {
             MessageBox.Show("Vui lòng chon loại đọc giả");
+            return false;
+        }
+        int years = DateTime.Now.Year - dtpReaderBodInfo.Value.Year;
+        if (years < 18 || years > 35)
+        {
+            MessageBox.Show("Tuổi độc giả từ 18 đến 35.");
             return false;
         }
         return true;
@@ -230,6 +234,7 @@ public partial class LibraryManagementSystemUI : Form
         {
             MessageBox.Show("Thêm đọc giả thành công");
             this.loadTableReader();
+            RefreshReader();
         }
         else
         {
@@ -254,6 +259,7 @@ public partial class LibraryManagementSystemUI : Form
             CreationDate = dtpReaderCreateDate.Value,
         };
 
+        DateTime aa = dtpReaderBodInfo.Value;
 
         UpdateLibraryCardResult result = await _mediator.Send(cmdReader);
         if (result.Success)
@@ -271,6 +277,15 @@ public partial class LibraryManagementSystemUI : Form
     {
         if (e.RowIndex == -1)
             return;
+        string createDate = dataGridViewReader.Rows[e.RowIndex].Cells[6].Value.ToString();
+        long timeCreate = Convert.ToDateTime(createDate).Ticks / 10000000 - 62135596800;
+        long unixSecondsNow = DateTimeOffset.Now.ToUnixTimeSeconds();
+        long unixSeconds = unixSecondsNow + 15778463;
+        if ( timeCreate < unixSecondsNow || timeCreate > unixSeconds)
+        {
+            MessageBox.Show("Thẻ đã hết hạn sử dụng.");
+            //return;
+        }
 
         textBoxReaderIdInfo.Text = dataGridViewReader.Rows[e.RowIndex].Cells[0].Value.ToString();
         textBoxReaderNameInfo.Text = dataGridViewReader.Rows[e.RowIndex].Cells[1].Value.ToString();
@@ -278,7 +293,7 @@ public partial class LibraryManagementSystemUI : Form
         comboBoxReaderType.Text = dataGridViewReader.Rows[e.RowIndex].Cells[3].Value.ToString();
         textBoxReaderEmailInfo.Text = dataGridViewReader.Rows[e.RowIndex].Cells[4].Value.ToString();
         dtpReaderBodInfo.Value =  Convert.ToDateTime(dataGridViewReader.Rows[e.RowIndex].Cells[5].Value.ToString());
-        dtpReaderCreateDate.Value = Convert.ToDateTime(dataGridViewReader.Rows[e.RowIndex].Cells[6].Value.ToString()); ;
+        dtpReaderCreateDate.Value = Convert.ToDateTime(createDate); ;
     }
 
     private void buttonReaderRefresh_Click(object sender, EventArgs e)

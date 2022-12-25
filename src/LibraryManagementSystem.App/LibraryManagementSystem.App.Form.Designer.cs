@@ -393,7 +393,7 @@
             this.buttonReaderRefresh.Name = "buttonReaderRefresh";
             this.buttonReaderRefresh.Size = new System.Drawing.Size(94, 29);
             this.buttonReaderRefresh.TabIndex = 18;
-            this.buttonReaderRefresh.Text = "Refresh";
+            this.buttonReaderRefresh.Text = "Làm lại";
             this.buttonReaderRefresh.UseVisualStyleBackColor = true;
             this.buttonReaderRefresh.Click += new System.EventHandler(this.buttonReaderRefresh_Click);
             // 
@@ -496,8 +496,8 @@
             // 
             this.comboBoxReaderType.FormattingEnabled = true;
             this.comboBoxReaderType.Items.AddRange(new object[] {
-            "X",
-            "Y"});
+            "VIP",
+            "Thường"});
             this.comboBoxReaderType.Location = new System.Drawing.Point(764, 49);
             this.comboBoxReaderType.Name = "comboBoxReaderType";
             this.comboBoxReaderType.Size = new System.Drawing.Size(196, 28);
