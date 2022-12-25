@@ -15,19 +15,18 @@ public static class PredefinedBooks
         {
             var line = reader.ReadLine();
             var values = line?.Split(',');
-            var book = CreateBook(values[0], values[1], values[2], values[3], values[4], values[5], values[6], int.Parse(values[7]), int.Parse(values[8]));
+            var book = CreateBook(values[0], values[1], values[2], values[3], values[4], values[5], int.Parse(values[6]), int.Parse(values[7]));
             books.Add(book);
         }
 
         return books;
     }
 
-    private static Book CreateBook(string id, string name, string barCode, string typeId, string authorId,
+    private static Book CreateBook(string id, string name, string typeId, string authorId,
         string publisherId, string publishedDate, int inStock, int publishYear)
     {
         return new Book(new Guid(id),
             name,
-            barCode,
             new Guid(typeId),
             new Guid(authorId),
             new Guid(publisherId),

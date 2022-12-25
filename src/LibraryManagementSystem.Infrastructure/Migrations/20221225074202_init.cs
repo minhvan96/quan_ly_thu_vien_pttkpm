@@ -26,19 +26,6 @@ namespace LibraryManagementSystem.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BookStatus",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    UpdatedDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BookStatus", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "BookTypes",
                 columns: table => new
                 {
@@ -130,7 +117,6 @@ namespace LibraryManagementSystem.Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(512)", maxLength: 512, nullable: false),
                     EntryDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    Code = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     PublisherId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     BookTypeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     AuthorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -229,9 +215,6 @@ namespace LibraryManagementSystem.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "BookStatus");
-
             migrationBuilder.DropTable(
                 name: "CallCardDetails");
 

@@ -19,7 +19,6 @@ public class CreateBookCommandHandler : IRequestHandler<CreateBookCommand, Creat
         try
         {
             var newBook = new Book(request.Name,
-                request.Code,
                 request.TypeId,
                 request.AuthorId,
                 request.PublisherId,

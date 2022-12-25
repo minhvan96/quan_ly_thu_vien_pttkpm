@@ -24,7 +24,6 @@ public class GetBookQueryHandler : IRequestHandler<GetBookQuery, BookDto?>
             {
                 Id = x.Id,
                 Name = x.Name,
-                Code = x.Code,
                 Author = x.Author.Name,
                 TypeName = x.BookType.Name
             })

@@ -55,7 +55,6 @@ public class ListBooksQueryHandler : IListQueryHandler<ListBooksQuery, BookDto>
             {
                 Id = book.Id,
                 Name = book.Name,
-                Code = book.Code,
                 Author = book.Author.Name,
                 Publisher = book.Publisher.Name,
                 EntryDate = book.EntryDate,

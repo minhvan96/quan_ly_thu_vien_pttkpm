@@ -213,8 +213,6 @@ namespace LibraryManagementSystem.App.UI.Book
             {
                 return;
             }
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            string code = new string(Enumerable.Repeat(chars, 10).Select(s => s[random.Next(s.Length)]).ToArray());
 
             AuthorDto resultAuthor = await getAuthor(txbAuthor.Text);
             PublisherDto resultPubliser = await getPubliserResult(txbPublisher.Text);
@@ -225,7 +223,6 @@ namespace LibraryManagementSystem.App.UI.Book
             {
                 Name = txbName.Text,
                 AuthorId = resultAuthor.Id,
-                Code = code,
                 PublisherId = resultPubliser.Id,
                 TypeId = (Guid)BookManager_BookTypeCbb.SelectedValue,
                 EntryDate = dtpEntryDate.Value,
@@ -280,7 +277,6 @@ namespace LibraryManagementSystem.App.UI.Book
                 Id = new Guid(txbId.Text),
                 Name = txbName.Text,
                 AuthorId = resultAuthor.Id,
-                Code = txbId.Text,
                 PublisherId = resultPubliser.Id,
                 TypeId = (Guid)BookManager_BookTypeCbb.SelectedValue,
                 quantily = Convert.ToInt32(txbQuantily.Value),

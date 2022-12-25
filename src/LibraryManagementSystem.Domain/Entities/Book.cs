@@ -14,12 +14,10 @@ public class Book : Entity
     private Book()
     {
         Name = string.Empty;
-        Code = string.Empty;
     }
 
     public Book(Guid id,
         string name,
-        string code,
         Guid bookTypeId,
         Guid authorId,
         Guid publisherId,
@@ -28,7 +26,6 @@ public class Book : Entity
         DateTimeOffset? entryDate = null)
         : base(id)
     {
-        Code = code;
         BookTypeId = bookTypeId;
         Name = name;
         AuthorId = authorId;
@@ -39,13 +36,11 @@ public class Book : Entity
     }
 
     public Book(string name,
-        string code,
         Guid bookTypeId,
         Guid authorId,
         Guid publisherId,
         DateTimeOffset? entryDate = null)
     {
-        Code = code;
         BookTypeId = bookTypeId;
         Name = name;
         AuthorId = authorId;
@@ -54,14 +49,12 @@ public class Book : Entity
     }
 
     public Book(string name,
-        string code,
         Guid bookTypeId,
         Guid authorId,
         Guid publisherId,
         int inStock,
         DateTimeOffset? entryDate = null)
     {
-        Code = code;
         BookTypeId = bookTypeId;
         Name = name;
         AuthorId = authorId;
@@ -71,7 +64,6 @@ public class Book : Entity
     }
 
     public Book(string name,
-        string code,
         Guid bookTypeId,
         Guid authorId,
         Guid publisherId,
@@ -79,7 +71,6 @@ public class Book : Entity
         int publishYear,
         DateTimeOffset? entryDate = null)
     {
-        Code = code;
         BookTypeId = bookTypeId;
         Name = name;
         AuthorId = authorId;
@@ -91,7 +82,6 @@ public class Book : Entity
 
     public string Name { get; set; }
     public DateTimeOffset? EntryDate { get; set; }
-    public string Code { get; set; }
     public Guid PublisherId { get; set; }
     public Guid BookTypeId { get; set; }
     public Guid AuthorId { get; set; }

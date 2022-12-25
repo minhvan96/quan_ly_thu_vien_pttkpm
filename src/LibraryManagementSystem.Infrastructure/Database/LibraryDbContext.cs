@@ -8,7 +8,6 @@ public class LibraryDbContext : DbContext
     public DbSet<Author> Authors => Set<Author>();
     public DbSet<Book> Books => Set<Book>();
     public DbSet<BookType> BookTypes => Set<BookType>();
-    public DbSet<BookStatus> BookStatus => Set<BookStatus>();
     public DbSet<CallCardDetail> CallCardDetails => Set<CallCardDetail>();
     public DbSet<CallCard> CallCards => Set<CallCard>();
     public DbSet<LibraryCard> LibraryCards => Set<LibraryCard>();

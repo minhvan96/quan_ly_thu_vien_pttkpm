@@ -25,9 +25,6 @@ internal class BookEntityTypeConfiguration : DomainEntityTypeConfiguration<Book>
         builder.Property(book => book.Name)
             .IsRequired()
             .HasMaxLength(512);
-        builder.Property(book => book.Code)
-            .IsRequired()
-            .HasMaxLength(128);
 
         builder.HasOne(book => book.Publisher)
             .WithMany()

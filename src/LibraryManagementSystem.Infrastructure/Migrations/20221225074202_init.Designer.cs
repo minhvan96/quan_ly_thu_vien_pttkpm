@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryManagementSystem.Infrastructure.Migrations
 {
     [DbContext(typeof(LibraryDbContext))]
-    [Migration("20221225023112_init")]
+    [Migration("20221225074202_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -59,11 +59,6 @@ namespace LibraryManagementSystem.Infrastructure.Migrations
                     b.Property<Guid>("BookTypeId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
-
                     b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("datetimeoffset");
 
@@ -96,23 +91,6 @@ namespace LibraryManagementSystem.Infrastructure.Migrations
                     b.HasIndex("PublisherId");
 
                     b.ToTable("Books", (string)null);
-                });
-
-            modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.BookStatus", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTimeOffset>("CreatedDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<DateTimeOffset>("UpdatedDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("BookStatus", (string)null);
                 });
 
             modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.BookType", b =>
