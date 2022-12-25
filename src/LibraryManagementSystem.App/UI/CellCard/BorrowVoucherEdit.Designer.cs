@@ -112,7 +112,7 @@
             this.btn_Submit.TabIndex = 0;
             this.btn_Submit.Text = "Cập nhật";
             this.btn_Submit.UseVisualStyleBackColor = true;
-            this.btn_Submit.Click += new System.EventHandler(this.btn_Submit_Click);
+            this.btn_Submit.Click += new System.EventHandler(this.btn_update_callCard_Click);
             // 
             // groupBox3
             // 

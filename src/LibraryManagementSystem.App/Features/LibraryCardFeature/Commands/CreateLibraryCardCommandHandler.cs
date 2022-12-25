@@ -23,8 +23,8 @@ public class CreateLibraryCardCommandHandler : IRequestHandler<CreateLibraryCard
                 request.Address,
                 request.Email,
                 request.TypeOfReader,
-                request.CreationDate,
-                request.BirthDay
+                request.BirthDay,
+                request.CreationDate
                 );
 
             var libraryCard = await _context.AddAsync(newReader, cancellationToken);

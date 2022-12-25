@@ -34,7 +34,10 @@ internal class BookEntityTypeConfiguration : DomainEntityTypeConfiguration<Book>
             .HasForeignKey(book => book.PublisherId)
             .IsRequired();
 
-        builder.Property(book => book.Published)
+        builder.Property(book => book.EntryDate)
             .IsRequired(false);
+
+        builder.Property(book => book.PublishYear)
+            .IsRequired();
     }
 }

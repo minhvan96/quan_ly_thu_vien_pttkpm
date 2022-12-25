@@ -31,6 +31,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_returnBook = new System.Windows.Forms.Button();
             this.btn_Delete = new System.Windows.Forms.Button();
             this.btn_update = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -40,7 +41,6 @@
             this.BorrowDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BookCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_returnBook = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -80,6 +80,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thao tác";
             // 
+            // btn_returnBook
+            // 
+            this.btn_returnBook.Location = new System.Drawing.Point(648, 35);
+            this.btn_returnBook.Name = "btn_returnBook";
+            this.btn_returnBook.Size = new System.Drawing.Size(209, 33);
+            this.btn_returnBook.TabIndex = 2;
+            this.btn_returnBook.Text = "Trả sách";
+            this.btn_returnBook.UseVisualStyleBackColor = true;
+            this.btn_returnBook.Click += new System.EventHandler(this.btn_returnBook_Click);
+            // 
             // btn_Delete
             // 
             this.btn_Delete.Location = new System.Drawing.Point(412, 35);
@@ -88,7 +98,7 @@
             this.btn_Delete.TabIndex = 1;
             this.btn_Delete.Text = "Xóa phiếu mượn";
             this.btn_Delete.UseVisualStyleBackColor = true;
-            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
+            this.btn_Delete.Click += new System.EventHandler(this.btn_DeleteCallCard_Click);
             // 
             // btn_update
             // 
@@ -174,16 +184,6 @@
             this.BookCount.MinimumWidth = 6;
             this.BookCount.Name = "BookCount";
             this.BookCount.ReadOnly = true;
-            // 
-            // btn_returnBook
-            // 
-            this.btn_returnBook.Location = new System.Drawing.Point(648, 35);
-            this.btn_returnBook.Name = "btn_returnBook";
-            this.btn_returnBook.Size = new System.Drawing.Size(209, 33);
-            this.btn_returnBook.TabIndex = 2;
-            this.btn_returnBook.Text = "Trả sách";
-            this.btn_returnBook.UseVisualStyleBackColor = true;
-            this.btn_returnBook.Click += new System.EventHandler(this.btn_returnBook_Click);
             // 
             // BorrowVoucherList
             // 

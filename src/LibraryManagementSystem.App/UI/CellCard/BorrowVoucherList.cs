@@ -44,8 +44,14 @@ namespace LibraryManagementSystem.App
             _pageMain.Controls.Add(myUserControl);
         }
 
-        private async void btn_Delete_Click(object sender, EventArgs e)
+        private async void btn_DeleteCallCard_Click(object sender, EventArgs e)
         {
+            if (dtg_BorrowBookList.SelectedRows.Count < 1)
+            {
+                MessageBox.Show("Vui lòng chọn phiếu mượn!.");
+                return;
+            }
+
             var confirmDelete = MessageBox.Show("Bạn có chắc chắn muốn xóa phiếu mượn này không!", "Xác nhận xóa", MessageBoxButtons.YesNo);
             var bookSelectedRow = dtg_BorrowBookList.SelectedRows[0];
             var borrowBookId = new Guid(bookSelectedRow.Cells["Id"].Value.ToString());
@@ -78,6 +84,11 @@ namespace LibraryManagementSystem.App
 
         private async void btn_returnBook_Click(object sender, EventArgs e)
         {
+            if (dtg_BorrowBookList.SelectedRows.Count < 1)
+            {
+                MessageBox.Show("Vui lòng chọn phiếu mượn!.");
+                return;
+            }
             var confirmReturn = MessageBox.Show("Xác nhận trả sách!", "Xác nhận", MessageBoxButtons.YesNo);
             var bookSelectedRow = dtg_BorrowBookList.SelectedRows[0];
             var borrowBookId = new Guid(bookSelectedRow.Cells["Id"].Value.ToString());

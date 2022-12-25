@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryManagementSystem.Infrastructure.Migrations
 {
     [DbContext(typeof(LibraryDbContext))]
-    [Migration("20221206095622_Init")]
-    partial class Init
+    [Migration("20221225023112_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,6 +67,9 @@ namespace LibraryManagementSystem.Infrastructure.Migrations
                     b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<DateTimeOffset?>("EntryDate")
+                        .HasColumnType("datetimeoffset");
+
                     b.Property<int>("InStock")
                         .HasColumnType("int");
 
@@ -75,8 +78,8 @@ namespace LibraryManagementSystem.Infrastructure.Migrations
                         .HasMaxLength(512)
                         .HasColumnType("nvarchar(512)");
 
-                    b.Property<DateTimeOffset?>("Published")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<int>("PublishYear")
+                        .HasColumnType("int");
 
                     b.Property<Guid>("PublisherId")
                         .HasColumnType("uniqueidentifier");

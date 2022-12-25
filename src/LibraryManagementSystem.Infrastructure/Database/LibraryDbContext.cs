@@ -19,8 +19,9 @@ public class LibraryDbContext : DbContext
     {
         base.OnConfiguring(optionsBuilder);
         optionsBuilder.UseSqlServer(
-             //@"Data Source=DESKTOP-A5AJ2N7\NGHIADX;Initial Catalog=LibraryManagementSystem;Integrated Security=True;TrustServerCertificate=True;");
-        "Data Source=.;Initial Catalog=LibraryManagementSystem;Integrated Security=True;TrustServerCertificate=True");
+             @"Data Source=DESKTOP-Q4QRVQK;Initial Catalog=LibraryManagementSystem;Integrated Security=True;TrustServerCertificate=True;");
+
+        //"Data Source=(localdb)\\ProjectModels;Initial Catalog=LibraryManagementSystem;Integrated Security=True;TrustServerCertificate=True");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -108,11 +108,13 @@ namespace LibraryManagementSystem.App.UI.Book
                 configurationGridViewRow.Cells[2].Value = book.Author;
                 configurationGridViewRow.Cells[3].Value = book.Publisher;
                 configurationGridViewRow.Cells[4].Value = book.TypeName;
-                configurationGridViewRow.Cells[5].Value = book.PublishedDate;
+                configurationGridViewRow.Cells[5].Value = book.publishedYear;
                 configurationGridViewRow.Cells[6].Value = book.InStock;
-                configurationGridViewRow.Cells[7].Value = "Xóa";
+                configurationGridViewRow.Cells[7].Value = book.EntryDate;
+                configurationGridViewRow.Cells[8].Value = "Xóa";
                 BM_ManageBookDGV.Rows.Add(configurationGridViewRow);
             }
+            txtPublishYear.Value = DateTime.Now.Year;
         }
 
         //kiem tra author ton tại chưa, nếu chưa thì thêm author
@@ -183,20 +185,19 @@ namespace LibraryManagementSystem.App.UI.Book
                 return false;
             }
 
-
-
             if(txbPublisher.Text == string.Empty)
             {
                 MessageBox.Show("Không thể bỏ trống nhà xuất bản sách.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
+
             var cmdCofnig = new GetLibraryConfigurationQuery()
             {
                 Id = new Guid("b7eef645-ef23-4cb2-8927-f9a8c817b4b7")
             };
             var year = await _mediator.Send(cmdCofnig);
-            if ((DateTime.Now.Year - dtpPushlshed.Value.Year) > year.Value)
+            if ((DateTime.Now.Year - Convert.ToInt32(dtpEntryDate.Value.Year)) > year.Value)
             {
                 MessageBox.Show("Năm xuất bản không thể quá " + year.Value + " năm.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -227,8 +228,9 @@ namespace LibraryManagementSystem.App.UI.Book
                 Code = code,
                 PublisherId = resultPubliser.Id,
                 TypeId = (Guid)BookManager_BookTypeCbb.SelectedValue,
-                Published = dtpPushlshed.Value,
-                quantily = Convert.ToInt32(txbQuantily.Value)
+                EntryDate = dtpEntryDate.Value,
+                quantily = Convert.ToInt32(txbQuantily.Value),
+                PublishedYear = Convert.ToInt32(txtPublishYear.Value)
 
             };
 
@@ -256,8 +258,11 @@ namespace LibraryManagementSystem.App.UI.Book
             txbPublisher.Text = BM_ManageBookDGV.Rows[e.RowIndex].Cells[3].Value.ToString();
 
             BookManager_BookTypeCbb.SelectedIndex = BookManager_BookTypeCbb.FindString(BM_ManageBookDGV.Rows[e.RowIndex].Cells[4].Value.ToString());
+            txtPublishYear.Value = int.Parse(BM_ManageBookDGV.Rows[e.RowIndex].Cells[5].Value.ToString());
 
-            dtpPushlshed.Value = Convert.ToDateTime(BM_ManageBookDGV.Rows[e.RowIndex].Cells[5].Value.ToString());
+            txbQuantily.Value = int.Parse(BM_ManageBookDGV.Rows[e.RowIndex].Cells[6].Value.ToString());
+            dtpEntryDate.Value = Convert.ToDateTime(BM_ManageBookDGV.Rows[e.RowIndex].Cells[7].Value.ToString());
+
         }
 
         private async void BookManager_UpdateBookButton_Click(object sender, EventArgs e)
@@ -279,7 +284,8 @@ namespace LibraryManagementSystem.App.UI.Book
                 PublisherId = resultPubliser.Id,
                 TypeId = (Guid)BookManager_BookTypeCbb.SelectedValue,
                 quantily = Convert.ToInt32(txbQuantily.Value),
-                Published = dtpPushlshed.Value
+                Published = dtpEntryDate.Value,
+                publishedYear = Convert.ToInt32(txtPublishYear.Value)
             };
             UpdateBookResult result = await _mediator.Send(cmd);
             if (result.Success)
@@ -304,25 +310,39 @@ namespace LibraryManagementSystem.App.UI.Book
             {
 
                 DialogResult isDelete = MessageBox.Show("Cảnh báo thao tác này sẽ không thể quay lại, bạn muốn xóa?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-                if(isDelete == DialogResult.OK)
+                String id = txbId.Text == "" ? BM_ManageBookDGV.Rows[e.RowIndex].Cells[0].Value.ToString() : txbId.Text;
+                if (isDelete == DialogResult.OK)
                 {
                     var cmd = new DeleteBookCommand
                     {
-                        Id = new Guid(txbId.Text)
+                        Id = new Guid(id)
                     };
                     var result = await _mediator.Send(cmd);
                     if (result.Success)
                     {
-                        MessageBox.Show("Xóa sách thành công");
+                        MessageBox.Show("Xóa sách thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.loadTable();
                     }
                     else
                     {
-                        MessageBox.Show("Xóa sách không thành công");
+                        MessageBox.Show("Xóa sách không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
         }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txbId.Text = "";
+            txbAuthor.Text = "";
+            txbName.Text = "";
+            txbPublisher.Text = "";
+            txbQuantily.Value = 1;
+            dtpEntryDate.Value = DateTime.Now;
+            txtPublishYear.Value = DateTime.Now.Year;
+            BookManager_BookTypeCbb.SelectedIndex = 0;
+        }
+
+       
     }
 }

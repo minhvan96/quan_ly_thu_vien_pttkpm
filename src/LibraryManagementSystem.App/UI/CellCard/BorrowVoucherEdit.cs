@@ -79,7 +79,22 @@ namespace LibraryManagementSystem.App
             var bookSelectedRow = dtg_bookListSelected.SelectedRows[0];
             var bookId = new Guid(bookSelectedRow.Cells["BookId"].Value.ToString());
             var bookFindInd = bookList.FindIndex(x => x.Id == bookId);
-            bookList[bookFindInd].InStock += 1;
+            if (bookFindInd > -1)
+            {
+                bookList[bookFindInd].InStock += 1;
+            }
+            else
+            {
+                var bookDto = new BookDto()
+                {
+                    Id = new Guid(bookSelectedRow.Cells["BookId"].Value.ToString()),
+                    Name = bookSelectedRow.Cells["BookName"].Value.ToString(),
+                    TypeName = bookSelectedRow.Cells[3].Value.ToString(),
+                    Author = bookSelectedRow.Cells[2].Value.ToString(),
+                    InStock = 1
+                };
+                bookList.Add(bookDto);
+            }
 
             // remove in selected table
             var bookSelectedFindInd = bookSelectedList.FindIndex(x => x.BookId == bookId);
@@ -135,7 +150,7 @@ namespace LibraryManagementSystem.App
             ReturnCallCardListView();
         }
 
-        private async void btn_Submit_Click(object sender, EventArgs e)
+        private async void btn_update_callCard_Click(object sender, EventArgs e)
         {
             bookSelectedListNeedDelete = bookSelectedListLoaded.Where(l => !bookSelectedList.Any(s => s.BookId == l.BookId)).ToList();
             bookSelectedListNeedAdd = bookSelectedList.Where(l => !bookSelectedListLoaded.Any(s => s.BookId == l.BookId)).ToList();

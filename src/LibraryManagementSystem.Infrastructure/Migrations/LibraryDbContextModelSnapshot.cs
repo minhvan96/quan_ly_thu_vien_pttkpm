@@ -64,6 +64,9 @@ namespace LibraryManagementSystem.Infrastructure.Migrations
                     b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<DateTimeOffset?>("EntryDate")
+                        .HasColumnType("datetimeoffset");
+
                     b.Property<int>("InStock")
                         .HasColumnType("int");
 
@@ -72,8 +75,8 @@ namespace LibraryManagementSystem.Infrastructure.Migrations
                         .HasMaxLength(512)
                         .HasColumnType("nvarchar(512)");
 
-                    b.Property<DateTimeOffset?>("Published")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<int>("PublishYear")
+                        .HasColumnType("int");
 
                     b.Property<Guid>("PublisherId")
                         .HasColumnType("uniqueidentifier");

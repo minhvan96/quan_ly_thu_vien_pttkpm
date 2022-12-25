@@ -58,9 +58,11 @@ public class ListBooksQueryHandler : IListQueryHandler<ListBooksQuery, BookDto>
                 Code = book.Code,
                 Author = book.Author.Name,
                 Publisher = book.Publisher.Name,
-                PublishedDate = book.Published,
+                EntryDate = book.EntryDate,
                 TypeName = book.BookType.Name,
-                InStock = book.InStock
+                InStock = book.InStock,
+                publishedYear = book.PublishYear
+
             })
             .ToPagedListAsync(request.PageIndex, request.PageSize, cancellationToken: cancellationToken);
         return books;

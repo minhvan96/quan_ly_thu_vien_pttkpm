@@ -30,6 +30,8 @@
         {
             this.SystemMainTabControl = new System.Windows.Forms.TabControl();
             this.STC_HomeTP = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.STC_BookTP = new System.Windows.Forms.TabPage();
             this.QueryBookTab = new System.Windows.Forms.TabControl();
             this.QueryBookTab_BookViewPage = new System.Windows.Forms.TabPage();
@@ -82,9 +84,6 @@
             this.textBoxSearchReader = new System.Windows.Forms.TextBox();
             this.labelReaderSearch = new System.Windows.Forms.Label();
             this.BorrowBookList = new System.Windows.Forms.TabPage();
-            this.STC_BookNew = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.SystemMainTabControl.SuspendLayout();
             this.STC_HomeTP.SuspendLayout();
             this.STC_BookTP.SuspendLayout();
@@ -112,7 +111,6 @@
             this.SystemMainTabControl.Controls.Add(this.LibraryConfigurationTab);
             this.SystemMainTabControl.Controls.Add(this.Reader);
             this.SystemMainTabControl.Controls.Add(this.BorrowBookList);
-            this.SystemMainTabControl.Controls.Add(this.STC_BookNew);
             this.SystemMainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SystemMainTabControl.Location = new System.Drawing.Point(0, 0);
             this.SystemMainTabControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -134,6 +132,26 @@
             this.STC_HomeTP.TabIndex = 0;
             this.STC_HomeTP.Text = "HOME";
             this.STC_HomeTP.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(422, 155);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(187, 50);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Ứng dụng";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(234, 221);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(593, 81);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "QUẢN LÝ THƯ VIỆN";
             // 
             // STC_BookTP
             // 
@@ -291,6 +309,7 @@
             // 
             // LibraryConfigurationDataGridView
             // 
+            this.LibraryConfigurationDataGridView.AllowUserToAddRows = false;
             this.LibraryConfigurationDataGridView.AllowUserToResizeColumns = false;
             this.LibraryConfigurationDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.LibraryConfigurationDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -374,7 +393,7 @@
             this.buttonReaderRefresh.Name = "buttonReaderRefresh";
             this.buttonReaderRefresh.Size = new System.Drawing.Size(94, 29);
             this.buttonReaderRefresh.TabIndex = 18;
-            this.buttonReaderRefresh.Text = "Refresh";
+            this.buttonReaderRefresh.Text = "Làm lại";
             this.buttonReaderRefresh.UseVisualStyleBackColor = true;
             this.buttonReaderRefresh.Click += new System.EventHandler(this.buttonReaderRefresh_Click);
             // 
@@ -477,8 +496,8 @@
             // 
             this.comboBoxReaderType.FormattingEnabled = true;
             this.comboBoxReaderType.Items.AddRange(new object[] {
-            "X",
-            "Y"});
+            "VIP",
+            "Thường"});
             this.comboBoxReaderType.Location = new System.Drawing.Point(764, 49);
             this.comboBoxReaderType.Name = "comboBoxReaderType";
             this.comboBoxReaderType.Size = new System.Drawing.Size(196, 28);
@@ -656,35 +675,6 @@
             this.BorrowBookList.Text = "Danh sách mượn";
             this.BorrowBookList.UseVisualStyleBackColor = true;
             // 
-            // STC_BookNew
-            // 
-            this.STC_BookNew.Location = new System.Drawing.Point(4, 29);
-            this.STC_BookNew.Name = "STC_BookNew";
-            this.STC_BookNew.Size = new System.Drawing.Size(1024, 590);
-            this.STC_BookNew.TabIndex = 6;
-            this.STC_BookNew.Text = "Thêm Sách";
-            this.STC_BookNew.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(234, 221);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(593, 81);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "QUẢN LÝ THƯ VIỆN";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(422, 155);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(187, 50);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Ứng dụng";
-            // 
             // LibraryManagementSystemUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -762,7 +752,6 @@
         private Label labelReaderCreate;
         private DateTimePicker dtpReaderBodInfo;
         private TabPage BorrowBookList;
-        private TabPage STC_BookNew;
         private TabControl QueryBookTab;
         private TabPage QueryBookTab_BookViewPage;
         private TabPage QueryBookTab_ImportBookPage;

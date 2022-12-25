@@ -24,7 +24,7 @@ internal class UpdateBookCommandsHadler : IRequestHandler<UpdateBookCommand, Upd
             book.InStock = request.quantily;
             book.BookTypeId = request.TypeId;
             book.PublisherId = request.PublisherId;
-            book.Published = request.Published;
+            book.EntryDate = request.Published;
 
             await _context.SaveChangesAsync(cancellationToken);
             return new UpdateBookResult(true);

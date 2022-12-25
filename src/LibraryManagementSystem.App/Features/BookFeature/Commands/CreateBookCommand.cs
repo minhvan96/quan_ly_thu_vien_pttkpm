@@ -12,8 +12,9 @@ public class CreateBookCommand : IRequest<CreateBookResult>
     public Guid AuthorId { get; init; }
     public Guid PublisherId { get; init; }
 
-    public DateTimeOffset? Published { get; set; }
+    public DateTimeOffset? EntryDate { get; set; }
     public int quantily { get; set; }
+    public int PublishedYear { get; set; }
 
 }
 
