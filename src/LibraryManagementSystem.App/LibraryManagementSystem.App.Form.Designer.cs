@@ -309,6 +309,7 @@
             // 
             // LibraryConfigurationDataGridView
             // 
+            this.LibraryConfigurationDataGridView.AllowUserToAddRows = false;
             this.LibraryConfigurationDataGridView.AllowUserToResizeColumns = false;
             this.LibraryConfigurationDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.LibraryConfigurationDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {

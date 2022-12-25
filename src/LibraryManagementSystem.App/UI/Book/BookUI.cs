@@ -114,6 +114,7 @@ namespace LibraryManagementSystem.App.UI.Book
                 configurationGridViewRow.Cells[8].Value = "Xóa";
                 BM_ManageBookDGV.Rows.Add(configurationGridViewRow);
             }
+            txtPublishYear.Value = DateTime.Now.Year;
         }
 
         //kiem tra author ton tại chưa, nếu chưa thì thêm author
@@ -190,12 +191,13 @@ namespace LibraryManagementSystem.App.UI.Book
                 return false;
             }
 
+
             var cmdCofnig = new GetLibraryConfigurationQuery()
             {
                 Id = new Guid("b7eef645-ef23-4cb2-8927-f9a8c817b4b7")
             };
             var year = await _mediator.Send(cmdCofnig);
-            if ((DateTime.Now.Year - Convert.ToInt32(txtPublishYear.Value)) > year.Value)
+            if ((DateTime.Now.Year - Convert.ToInt32(dtpEntryDate.Value.Year)) > year.Value)
             {
                 MessageBox.Show("Năm xuất bản không thể quá " + year.Value + " năm.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -337,7 +339,7 @@ namespace LibraryManagementSystem.App.UI.Book
             txbPublisher.Text = "";
             txbQuantily.Value = 1;
             dtpEntryDate.Value = DateTime.Now;
-            txtPublishYear.Value = 1;
+            txtPublishYear.Value = DateTime.Now.Year;
             BookManager_BookTypeCbb.SelectedIndex = 0;
         }
 
