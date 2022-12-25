@@ -44,7 +44,7 @@ namespace LibraryManagementSystem.App
             _pageMain.Controls.Add(myUserControl);
         }
 
-        private async void btn_Delete_Click(object sender, EventArgs e)
+        private async void btn_DeleteCallCard_Click(object sender, EventArgs e)
         {
             var confirmDelete = MessageBox.Show("Bạn có chắc chắn muốn xóa phiếu mượn này không!", "Xác nhận xóa", MessageBoxButtons.YesNo);
             var bookSelectedRow = dtg_BorrowBookList.SelectedRows[0];

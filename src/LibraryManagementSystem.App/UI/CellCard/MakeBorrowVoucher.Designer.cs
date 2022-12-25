@@ -303,7 +303,7 @@
             this.btn_submit.TabIndex = 0;
             this.btn_submit.Text = "Xác nhận";
             this.btn_submit.UseVisualStyleBackColor = true;
-            this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click);
+            this.btn_submit.Click += new System.EventHandler(this.btn_borrowBook_Click);
             // 
             // MakeBorrowVoucher
             // 

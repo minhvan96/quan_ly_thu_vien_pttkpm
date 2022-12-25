@@ -108,9 +108,10 @@ namespace LibraryManagementSystem.App.UI.Book
                 configurationGridViewRow.Cells[2].Value = book.Author;
                 configurationGridViewRow.Cells[3].Value = book.Publisher;
                 configurationGridViewRow.Cells[4].Value = book.TypeName;
-                configurationGridViewRow.Cells[5].Value = book.PublishedDate;
+                configurationGridViewRow.Cells[5].Value = book.publishedYear;
                 configurationGridViewRow.Cells[6].Value = book.InStock;
-                configurationGridViewRow.Cells[7].Value = "Xóa";
+                configurationGridViewRow.Cells[7].Value = book.EntryDate;
+                configurationGridViewRow.Cells[8].Value = "Xóa";
                 BM_ManageBookDGV.Rows.Add(configurationGridViewRow);
             }
         }
@@ -194,7 +195,7 @@ namespace LibraryManagementSystem.App.UI.Book
                 Id = new Guid("b7eef645-ef23-4cb2-8927-f9a8c817b4b7")
             };
             var year = await _mediator.Send(cmdCofnig);
-            if ((DateTime.Now.Year - dtpPushlshed.Value.Year) > year.Value)
+            if ((DateTime.Now.Year - Convert.ToInt32(txtPublishYear.Value)) > year.Value)
             {
                 MessageBox.Show("Năm xuất bản không thể quá " + year.Value + " năm.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -225,8 +226,9 @@ namespace LibraryManagementSystem.App.UI.Book
                 Code = code,
                 PublisherId = resultPubliser.Id,
                 TypeId = (Guid)BookManager_BookTypeCbb.SelectedValue,
-                Published = dtpPushlshed.Value,
-                quantily = Convert.ToInt32(txbQuantily.Value)
+                EntryDate = dtpEntryDate.Value,
+                quantily = Convert.ToInt32(txbQuantily.Value),
+                PublishedYear = Convert.ToInt32(txtPublishYear.Value)
 
             };
 
@@ -254,9 +256,10 @@ namespace LibraryManagementSystem.App.UI.Book
             txbPublisher.Text = BM_ManageBookDGV.Rows[e.RowIndex].Cells[3].Value.ToString();
 
             BookManager_BookTypeCbb.SelectedIndex = BookManager_BookTypeCbb.FindString(BM_ManageBookDGV.Rows[e.RowIndex].Cells[4].Value.ToString());
+            txtPublishYear.Value = int.Parse(BM_ManageBookDGV.Rows[e.RowIndex].Cells[5].Value.ToString());
 
-            dtpPushlshed.Value = Convert.ToDateTime(BM_ManageBookDGV.Rows[e.RowIndex].Cells[5].Value.ToString());
             txbQuantily.Value = int.Parse(BM_ManageBookDGV.Rows[e.RowIndex].Cells[6].Value.ToString());
+            dtpEntryDate.Value = Convert.ToDateTime(BM_ManageBookDGV.Rows[e.RowIndex].Cells[7].Value.ToString());
 
         }
 
@@ -279,7 +282,8 @@ namespace LibraryManagementSystem.App.UI.Book
                 PublisherId = resultPubliser.Id,
                 TypeId = (Guid)BookManager_BookTypeCbb.SelectedValue,
                 quantily = Convert.ToInt32(txbQuantily.Value),
-                Published = dtpPushlshed.Value
+                Published = dtpEntryDate.Value,
+                publishedYear = Convert.ToInt32(txtPublishYear.Value)
             };
             UpdateBookResult result = await _mediator.Send(cmd);
             if (result.Success)
@@ -332,8 +336,11 @@ namespace LibraryManagementSystem.App.UI.Book
             txbName.Text = "";
             txbPublisher.Text = "";
             txbQuantily.Value = 1;
-            dtpPushlshed.Value = DateTime.Now;
+            dtpEntryDate.Value = DateTime.Now;
+            txtPublishYear.Value = 1;
             BookManager_BookTypeCbb.SelectedIndex = 0;
         }
+
+       
     }
 }

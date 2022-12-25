@@ -13,6 +13,7 @@ public class UpdateBookCommand : IRequest<UpdateBookResult>
     public Guid PublisherId { get; init; }
     public DateTimeOffset? Published { get; set; }
     public int quantily { get; set; }
+    public int publishedYear { get; set; }
 
 
 }

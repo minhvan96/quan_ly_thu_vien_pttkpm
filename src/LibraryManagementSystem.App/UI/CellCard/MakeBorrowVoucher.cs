@@ -102,7 +102,7 @@ public partial class MakeBorrowVoucher : UserControl
         dtg_bookListSelected.DataSource = new BindingSource(bookSelectedList, "");
     }
 
-    private async void btn_submit_Click(object sender, EventArgs e)
+    private async void btn_borrowBook_Click(object sender, EventArgs e)
     {
         var checkBookSelected = dtg_bookListSelected.Rows.Count > 0;
         if (!checkBookSelected)
@@ -141,4 +141,5 @@ public partial class MakeBorrowVoucher : UserControl
             MessageBox.Show("Có lỗi xảy ra, vui lòng thử lại!");
         }
     }
+
 }

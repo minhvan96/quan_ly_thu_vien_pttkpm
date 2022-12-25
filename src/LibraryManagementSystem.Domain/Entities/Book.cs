@@ -24,16 +24,18 @@ public class Book : Entity
         Guid authorId,
         Guid publisherId,
         int inStock,
-        DateTimeOffset? published = null)
+        int publishYear,
+        DateTimeOffset? entryDate = null)
         : base(id)
     {
         Code = code;
         BookTypeId = bookTypeId;
         Name = name;
         AuthorId = authorId;
-        Published = published;
+        EntryDate = entryDate;
         PublisherId = publisherId;
         InStock = inStock;
+        PublishYear = publishYear;
     }
 
     public Book(string name,
@@ -41,13 +43,13 @@ public class Book : Entity
         Guid bookTypeId,
         Guid authorId,
         Guid publisherId,
-        DateTimeOffset? published = null)
+        DateTimeOffset? entryDate = null)
     {
         Code = code;
         BookTypeId = bookTypeId;
         Name = name;
         AuthorId = authorId;
-        Published = published;
+        EntryDate = entryDate;
         PublisherId = publisherId;
     }
 
@@ -57,24 +59,44 @@ public class Book : Entity
         Guid authorId,
         Guid publisherId,
         int inStock,
-        DateTimeOffset? published = null)
+        DateTimeOffset? entryDate = null)
     {
         Code = code;
         BookTypeId = bookTypeId;
         Name = name;
         AuthorId = authorId;
-        Published = published;
+        EntryDate = entryDate;
         PublisherId = publisherId;
         InStock = inStock;
     }
 
+    public Book(string name,
+        string code,
+        Guid bookTypeId,
+        Guid authorId,
+        Guid publisherId,
+        int inStock,
+        int publishYear,
+        DateTimeOffset? entryDate = null)
+    {
+        Code = code;
+        BookTypeId = bookTypeId;
+        Name = name;
+        AuthorId = authorId;
+        EntryDate = entryDate;
+        PublisherId = publisherId;
+        InStock = inStock;
+        PublishYear = publishYear;
+    }
+
     public string Name { get; set; }
-    public DateTimeOffset? Published { get; set; }
+    public DateTimeOffset? EntryDate { get; set; }
     public string Code { get; set; }
     public Guid PublisherId { get; set; }
     public Guid BookTypeId { get; set; }
     public Guid AuthorId { get; set; }
     public int InStock { get; set; }
+    public int PublishYear { get; set; }
 
     public BookType BookType
     {

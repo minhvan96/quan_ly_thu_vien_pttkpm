@@ -135,7 +135,7 @@ namespace LibraryManagementSystem.App
             ReturnCallCardListView();
         }
 
-        private async void btn_Submit_Click(object sender, EventArgs e)
+        private async void btn_update_callCard_Click(object sender, EventArgs e)
         {
             bookSelectedListNeedDelete = bookSelectedListLoaded.Where(l => !bookSelectedList.Any(s => s.BookId == l.BookId)).ToList();
             bookSelectedListNeedAdd = bookSelectedList.Where(l => !bookSelectedListLoaded.Any(s => s.BookId == l.BookId)).ToList();
