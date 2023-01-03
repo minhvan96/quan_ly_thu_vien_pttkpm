@@ -95,6 +95,7 @@
             // 
             // txt_AuthorName
             // 
+            this.txt_AuthorName.Enabled = false;
             this.txt_AuthorName.Location = new System.Drawing.Point(129, 110);
             this.txt_AuthorName.Name = "txt_AuthorName";
             this.txt_AuthorName.Size = new System.Drawing.Size(326, 27);

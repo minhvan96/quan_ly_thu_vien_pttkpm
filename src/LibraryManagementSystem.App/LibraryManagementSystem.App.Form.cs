@@ -131,8 +131,8 @@ public partial class LibraryManagementSystemUI : Form
             };
             var result = await _mediator.Send(updateLibraryConfigurationCommand);
             const string title = "UPDATE STATUS";
-            var message = "Update Data Successfully";
-            if (!result.Success) message = "Update data has failed";
+            var message = "Cập nhật thành công";
+            if (!result.Success) message = "Cập nhật thất bại";
 
             MessageBox.Show(message, title);
         }
@@ -281,11 +281,11 @@ public partial class LibraryManagementSystemUI : Form
         long timeCreate = Convert.ToDateTime(createDate).Ticks / 10000000 - 62135596800;
         long unixSecondsNow = DateTimeOffset.Now.ToUnixTimeSeconds();
         long unixSeconds = unixSecondsNow + 15778463;
-        if ( timeCreate < unixSecondsNow || timeCreate > unixSeconds)
-        {
-            MessageBox.Show("Thẻ đã hết hạn sử dụng.");
-            //return;
-        }
+        //if ( timeCreate < unixSecondsNow || timeCreate > unixSeconds)
+        //{
+        //    MessageBox.Show("Thẻ đã hết hạn sử dụng.");
+        //    //return;
+        //}
 
         textBoxReaderIdInfo.Text = dataGridViewReader.Rows[e.RowIndex].Cells[0].Value.ToString();
         textBoxReaderNameInfo.Text = dataGridViewReader.Rows[e.RowIndex].Cells[1].Value.ToString();

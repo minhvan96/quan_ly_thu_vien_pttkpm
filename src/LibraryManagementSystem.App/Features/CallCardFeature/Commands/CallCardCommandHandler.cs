@@ -28,7 +28,7 @@ public class CallCardCommandHandler : IRequestHandler<CallCardCommand, CallCardR
 
         var configTHGTT = configuation.FirstOrDefault(x => x.Code == LibraryConfigurationConstants.THGTT).Value;
         var checkExpirationCard = await _context.LibraryCards
-            .Where(x => x.Id == request.LibraryCardId && x.CreatedDate.AddDays(configTHGTT) >= today)
+            .Where(x => x.Id == request.LibraryCardId && x.CreationDate.Value.AddMonths(configTHGTT) >= today)
             .FirstOrDefaultAsync();
         if (checkExpirationCard == null) return new CallCardResult(false, "Thẻ đã hết hạn!");
 

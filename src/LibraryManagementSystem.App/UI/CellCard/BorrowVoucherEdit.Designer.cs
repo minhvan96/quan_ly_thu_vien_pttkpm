@@ -129,6 +129,7 @@
             // 
             // cbb_Reader
             // 
+            this.cbb_Reader.Enabled = false;
             this.cbb_Reader.FormattingEnabled = true;
             this.cbb_Reader.Location = new System.Drawing.Point(151, 35);
             this.cbb_Reader.Name = "cbb_Reader";

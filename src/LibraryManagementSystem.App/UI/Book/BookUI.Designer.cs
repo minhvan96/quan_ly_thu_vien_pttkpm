@@ -33,7 +33,6 @@
             this.BookPageContainer = new System.Windows.Forms.SplitContainer();
             this.BookPageSearchGroup = new System.Windows.Forms.GroupBox();
             this.SearchBookSearchCriteriaLabel = new System.Windows.Forms.Label();
-            this.SearchBookByStatusCheckBox = new System.Windows.Forms.CheckBox();
             this.SearchBookByAuthorCheckBox = new System.Windows.Forms.CheckBox();
             this.SearchBookByTypeCheckBox = new System.Windows.Forms.CheckBox();
             this.SearchBookByNameCheckBox = new System.Windows.Forms.CheckBox();
@@ -143,7 +142,6 @@
             // BookPageSearchGroup
             // 
             this.BookPageSearchGroup.Controls.Add(this.SearchBookSearchCriteriaLabel);
-            this.BookPageSearchGroup.Controls.Add(this.SearchBookByStatusCheckBox);
             this.BookPageSearchGroup.Controls.Add(this.SearchBookByAuthorCheckBox);
             this.BookPageSearchGroup.Controls.Add(this.SearchBookByTypeCheckBox);
             this.BookPageSearchGroup.Controls.Add(this.SearchBookByNameCheckBox);
@@ -165,16 +163,6 @@
             this.SearchBookSearchCriteriaLabel.Size = new System.Drawing.Size(62, 20);
             this.SearchBookSearchCriteriaLabel.TabIndex = 6;
             this.SearchBookSearchCriteriaLabel.Text = "Từ khoá";
-            // 
-            // SearchBookByStatusCheckBox
-            // 
-            this.SearchBookByStatusCheckBox.AutoSize = true;
-            this.SearchBookByStatusCheckBox.Location = new System.Drawing.Point(287, 29);
-            this.SearchBookByStatusCheckBox.Name = "SearchBookByStatusCheckBox";
-            this.SearchBookByStatusCheckBox.Size = new System.Drawing.Size(98, 24);
-            this.SearchBookByStatusCheckBox.TabIndex = 5;
-            this.SearchBookByStatusCheckBox.Text = "Tình trạng";
-            this.SearchBookByStatusCheckBox.UseVisualStyleBackColor = true;
             // 
             // SearchBookByAuthorCheckBox
             // 
@@ -643,6 +631,7 @@
             this.InStock.MinimumWidth = 6;
             this.InStock.Name = "InStock";
             this.InStock.ReadOnly = true;
+            this.InStock.Width = 125;
             // 
             // EntryDate
             // 
@@ -699,7 +688,6 @@
         private SplitContainer BookPageContainer;
         private GroupBox BookPageSearchGroup;
         private Label SearchBookSearchCriteriaLabel;
-        private CheckBox SearchBookByStatusCheckBox;
         private CheckBox SearchBookByAuthorCheckBox;
         private CheckBox SearchBookByTypeCheckBox;
         private CheckBox SearchBookByNameCheckBox;

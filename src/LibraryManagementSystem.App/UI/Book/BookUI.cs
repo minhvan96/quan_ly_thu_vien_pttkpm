@@ -39,8 +39,6 @@ namespace LibraryManagementSystem.App.UI.Book
                 searchOptions |= SearchBookOptions.TypeName;
             if (SearchBookByAuthorCheckBox.Checked)
                 searchOptions |= SearchBookOptions.AuthorName;
-            if (SearchBookByStatusCheckBox.Checked)
-                searchOptions |= SearchBookOptions.StatusName;
             var listBooksQuery = new ListBooksQuery
             {
                 SearchCriteria = SearchBookSearchCriteriaTextBox.Text,
@@ -58,7 +56,16 @@ namespace LibraryManagementSystem.App.UI.Book
                 configurationGridViewRow.Cells[1].Value = book.Name;
                 configurationGridViewRow.Cells[2].Value = book.TypeName;
                 configurationGridViewRow.Cells[3].Value = book.Author;
-                configurationGridViewRow.Cells[4].Value = "tinh trang";
+                if(book.InStock > 0)
+                {
+                    configurationGridViewRow.Cells[4].Value = "Còn sách";
+
+                }
+                else
+                {
+                    configurationGridViewRow.Cells[4].Value = "Hết sách";
+
+                }
                 BookPageDataGridView.Rows.Add(configurationGridViewRow);
 
                 index++;
@@ -199,7 +206,7 @@ namespace LibraryManagementSystem.App.UI.Book
             var year = await _mediator.Send(cmdCofnig);
             if ((DateTime.Now.Year - Convert.ToInt32(dtpEntryDate.Value.Year)) > year.Value)
             {
-                MessageBox.Show("Năm xuất bản không thể quá " + year.Value + " năm.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ngày nhập không thể quá " + year.Value + " năm.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 

@@ -494,7 +494,9 @@
             // 
             // comboBoxReaderType
             // 
+            this.comboBoxReaderType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxReaderType.FormattingEnabled = true;
+            this.comboBoxReaderType.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.comboBoxReaderType.Items.AddRange(new object[] {
             "VIP",
             "Thường"});
@@ -556,6 +558,8 @@
             // 
             // dataGridViewReader
             // 
+            this.dataGridViewReader.AllowUserToAddRows = false;
+            this.dataGridViewReader.AllowUserToDeleteRows = false;
             this.dataGridViewReader.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewReader.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgv_Reader_Id,
@@ -568,6 +572,7 @@
             this.dataGridViewReader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewReader.Location = new System.Drawing.Point(3, 23);
             this.dataGridViewReader.Name = "dataGridViewReader";
+            this.dataGridViewReader.ReadOnly = true;
             this.dataGridViewReader.RowHeadersWidth = 51;
             this.dataGridViewReader.RowTemplate.Height = 29;
             this.dataGridViewReader.Size = new System.Drawing.Size(1009, 279);
@@ -579,6 +584,7 @@
             this.dgv_Reader_Id.HeaderText = "Id";
             this.dgv_Reader_Id.MinimumWidth = 6;
             this.dgv_Reader_Id.Name = "dgv_Reader_Id";
+            this.dgv_Reader_Id.ReadOnly = true;
             this.dgv_Reader_Id.Visible = false;
             this.dgv_Reader_Id.Width = 125;
             // 
@@ -588,6 +594,7 @@
             this.dgv_Reader_Name.HeaderText = "Họ và tên";
             this.dgv_Reader_Name.MinimumWidth = 6;
             this.dgv_Reader_Name.Name = "dgv_Reader_Name";
+            this.dgv_Reader_Name.ReadOnly = true;
             this.dgv_Reader_Name.Width = 125;
             // 
             // dgv_Reader_Address
@@ -596,12 +603,14 @@
             this.dgv_Reader_Address.HeaderText = "Địa chỉ";
             this.dgv_Reader_Address.MinimumWidth = 6;
             this.dgv_Reader_Address.Name = "dgv_Reader_Address";
+            this.dgv_Reader_Address.ReadOnly = true;
             // 
             // dgv_Reader_Type
             // 
             this.dgv_Reader_Type.HeaderText = "Loại đọc giả";
             this.dgv_Reader_Type.MinimumWidth = 6;
             this.dgv_Reader_Type.Name = "dgv_Reader_Type";
+            this.dgv_Reader_Type.ReadOnly = true;
             this.dgv_Reader_Type.Width = 125;
             // 
             // dgv_Reader_Email
@@ -618,6 +627,7 @@
             this.dgv_Reader_Bod.HeaderText = "Ngày sinh";
             this.dgv_Reader_Bod.MinimumWidth = 6;
             this.dgv_Reader_Bod.Name = "dgv_Reader_Bod";
+            this.dgv_Reader_Bod.ReadOnly = true;
             this.dgv_Reader_Bod.Width = 125;
             // 
             // dgv_Reader_Create_Date
@@ -625,6 +635,7 @@
             this.dgv_Reader_Create_Date.HeaderText = "Ngày lập thẻ";
             this.dgv_Reader_Create_Date.MinimumWidth = 6;
             this.dgv_Reader_Create_Date.Name = "dgv_Reader_Create_Date";
+            this.dgv_Reader_Create_Date.ReadOnly = true;
             this.dgv_Reader_Create_Date.Width = 125;
             // 
             // groupBoxReaderSearch
